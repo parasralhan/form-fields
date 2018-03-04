@@ -12,13 +12,13 @@ class Bonzer_Inputs{
 
   protected $_get_mappings = [
     'should_jquery_loaded' => 'load_jquery',
-    'env' => 'env',
   ];
 
   private function __construct(array $config = []){
     $defaults = [
       'load_jquery' => true,
       'env' => 'production',
+      'is_admin' => false
     ];
     $this->_config = array_merge($defaults, $config);
   }
@@ -33,11 +33,14 @@ class Bonzer_Inputs{
   public function __get($key){
     if (array_key_exists($key, $this->_get_mappings)) {
       return $this->_config[$this->_get_mappings[$key]];
+    } elseif(array_key_exists($key, $this->_config)){
+      return $this->_config[$key];
     }
     return false;
   }
   
   public static function is_dev(){
-    return $this->_config['env'];
+    return $this->_config['env'] == 'development';
   }
+
 }

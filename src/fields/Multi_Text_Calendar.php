@@ -25,7 +25,7 @@ class Multi_Text_Calendar extends Abstract_Input {
     <div class="input-wrapper multi-text-input-wapper multi-text-calendar-input-wapper" data-showif='<?php echo $this->_conditional_data(); ?>'>
       <label for="<?php echo $this->_id; ?>"><?php echo $this->_label; ?></label>
       <input type="hidden" id="<?php echo $this->_id; ?>" name="<?php echo $this->_name; ?>" class="input all-values" value="<?php echo $this->_value; ?>">
-      <input type="text" id="<?php echo $this->_id; ?>_text" class="input text calendar-input" placeholder="<?php echo $this->_label; ?>" <?php echo $this->_additional_attrs; ?>>
+      <input type="text" id="<?php echo $this->_id; ?>_text" class="input text calendar-input" placeholder="<?php echo $this->_placeholder; ?>" <?php echo $this->_additional_attrs; ?>>
       <button class="add button" type="button"><i class="fa fa-plus-circle"></i> Add</button>
       <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
       <ul class="values-entered">

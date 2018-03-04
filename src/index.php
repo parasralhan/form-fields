@@ -7,7 +7,24 @@ Bonzer\Inputs\Bonzer_Inputs::get_instance([
 ]);
 
 $input = new Input();
-echo $input->create('text', [
+echo $input->create('icon', [
   'id' => 'my_input',
-  'value' => ''
+  'value' => '',
+  'show_if' => [
+    [
+      'id' => 'dep',
+      'value' => 'paras'
+    ]
+  ]
+]);
+echo $input->create('text', [
+  'id' => 'my_input_hello',
+  'placeholder' => 'My Hello',
+  'value' => '',
+  'show_if' => [
+    [
+      'id' => 'dep',
+      'value' => 'paras'
+    ]
+  ]
 ]);

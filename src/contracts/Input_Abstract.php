@@ -29,7 +29,14 @@ abstract class Input_Abstract {
    *
    * @var string
    */
-  protected $_label;
+  protected $_label;  
+
+  /**
+   * Input field placeholder
+   *
+   * @var string
+   */
+  protected $_placeholder;
 
   /**
    * Input field value
@@ -93,6 +100,7 @@ abstract class Input_Abstract {
    *   'name' => $field_name,    string
    *   'id' => $field_id,        string
    *   'label' => $field_label,  string
+   *   'placeholder' => $field_placeholder,  string
    *   'value' => $value,        string
    *   'desc' => $description,   string
    *   'options' => $options,    array
@@ -106,11 +114,9 @@ abstract class Input_Abstract {
     $this->_name = $this->_set_attr( $args[ 'name' ] );
     $this->_id = $this->_set_attr( $args[ 'id' ] );
     $this->_label = $this->_set_attr( $args[ 'label' ] );
-    if ( isset( $args[ 'desc' ] ) ) {
-      $this->_desc = $args[ 'desc' ];
-    }
-    $this->_value = $args[ 'value' ];
-
+    $this->_desc = isset( $args[ 'desc' ] ) ? $args[ 'desc' ] : '';
+    $this->_value = isset( $args[ 'value' ] ) ? $args[ 'value' ] : '';
+    $this->_placeholder = isset( $args[ 'placeholder' ] ) ? $args[ 'placeholder' ] : '';
     if ( isset( $args[ 'options' ] ) && is_array( $args[ 'options' ] ) ) {
       $this->_options = $args[ 'options' ];
     }

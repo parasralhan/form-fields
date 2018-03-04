@@ -4,10 +4,11 @@
 */
 namespace Bonzer\Inputs\auth;
 
+use Bonzer\Inputs\Bonzer_Inputs;
+
 class Auth {
-
   public static function is_admin(){
-    return !defined('BONZER_INPUTS_IS_ADMIN') ? false : BONZER_INPUTS_IS_ADMIN;
+    $is_admin = Bonzer_Inputs::get_instance()->is_admin;
+    return $is_admin ?: false;
   }
-
 }

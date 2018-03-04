@@ -1,0 +1,120 @@
+@import (less) "variables.less";
+@import (less) "mixins.less";
+/*===============================================
+Icons
+=================================================*/
+ul{
+  float:none;
+  &.bonzer-inputs-all-icons{
+    margin-bottom: 0;
+    width: 100%;
+    display: none;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    position: absolute;
+    top: 63px;
+    border: 1px solid @light-border;
+    left: 0;
+    li{
+      width: 10%;
+      padding:2px;
+      display: inline-block;
+      margin-bottom:0;
+      &.icons-search-form{
+        width: 100%;
+        text-align: center;
+        input{
+          outline: none;
+          .roundedcorners(40px);
+          height: 40px;
+          max-width: 95% !important;
+          width: 500px !important;
+          display: inline-block;
+          float: none !important;
+          margin: 15px 0 25px !important;
+          padding: 17px;
+          &:focus{
+            border-color: @slate-400;
+          }
+        }
+      }
+      &.icon-types-wrapper{
+        width:100%;
+        background: @white;
+        border-top: 1px solid @light-border;
+        border-bottom: 1px solid @light-border;
+        ul{
+          padding: 0;
+          margin: 0;            
+          li{
+            width: auto;
+            float:left;
+            a{
+              .box-shadow(none);
+              padding:10px 11px;
+              &:focus{
+                outline: none;
+                .box-shadow(none);
+              }
+            }
+            &.active{
+              border-color: @violet-400;
+              background: @violet-300;
+              a{
+                background: @violet-300;
+                color: @white;
+              }
+            }
+          }
+        }
+      }
+      &.icons-wrapper{
+        background: @light-gray-color;
+        padding: 10px;
+        width:100%;
+        ul{
+          padding: 0;
+          margin: 0; 
+        }
+        >span{
+          width: 100%;
+          display: block;
+          margin: 0 0 10px;
+          background: @slate-600;
+          padding: 15px;
+          color: @white;
+          font-size: 20px;
+        }
+        .arrow{
+          position: static;
+          margin: 0;
+          &:after{
+            display: none;
+          }
+        }
+        ul.icons{
+          li{
+            width: 5%;
+            min-width: 50px;
+            height: 50px;
+            text-align: center;
+          }
+        }
+      }
+      a{
+        padding:13px 11px;
+        display: block;
+        background: @white;
+        color: @indigo-600;
+        text-decoration: none;
+        text-shadow: none;
+        border: 1px solid @light-border;
+        i.fa{
+          font-size: 14px;
+        }
+      }
+    }
+
+  }
+}

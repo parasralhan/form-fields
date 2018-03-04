@@ -3,8 +3,9 @@
 namespace Bonzer\Inputs\factories;
 
 use Bonzer\Inputs\exceptions\Invalid_Param_Exception;
-use Bonzer\Inputs\Bonzer_Inputs;
-
+use Bonzer\Inputs\Bonzer_Inputs,
+    Bonzer\Inputs\fields\utils\Icons,
+    Bonzer\Inputs\fields\utils\Regex as Regex_Reader;
 require_once dirname(__DIR__) . '/bootstrap.php';
 
 class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
@@ -12,6 +13,8 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
   protected static $_assets_loaded;
 
   protected $_Bonzer_Inputs;
+
+  protected $_assets_dir;
 
   protected $_valid_types = [
     'calendar',
@@ -50,6 +53,9 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
   public function create( $type, $args ) {
 
     if (!static::$_assets_loaded) {
+      $this->_assets_dir = dirname(__DIR__).'/assets';
+      $this->_build_icons_html();
+      $this->_complie_less();
       $this->_load_assets();
     }
 
@@ -75,6 +81,8 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
     if ( !isset( $args[ 'label' ] ) ) {
       $this->_args[ 'label' ] = $this->_label( $this->_args[ 'id' ] );
     }
+
+    $this->_args[ 'placeholder' ] = isset( $args[ 'placeholder' ] ) ? $args[ 'placeholder' ]: '';
 
     $input_class = $this->_classname( $type );
     $input = new $input_class( $this->_args );
@@ -115,24 +123,48 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
    * 
    * @Return void 
    * */
-  protected function _load_assets() {
-
+  protected function _load_assets() {    
     $this->_Bonzer_Inputs = Bonzer_Inputs::get_instance();
     $env = $this->_Bonzer_Inputs->env;
     $should_jquery_loaded = $this->_Bonzer_Inputs->should_jquery_loaded;
     $config = require dirname(__DIR__).'/config.php';
     $assets = $config['assets'];
-    $assets_js = array_merge($assets['js']['all'], $assets['js'][$env]);
+    $assets_js = $assets['js']['all'];
+    $assets_css = $assets['css']['all'];
     if (!$should_jquery_loaded) {
       unset($assets_js['jquery']);
     }
     foreach ($assets_js as $key => $src) {
       ?>
-        <script id="<?php echo $key; ?>" src="assets/<?php echo $src; ?>"></script>
+        <script id="<?php echo $key; ?>" src="<?php echo $src; ?>"></script>
       <?php
     }    
+    foreach ($assets_css as $key => $src) {
+      ?>
+      <link id="<?php echo $key; ?>" rel="stylesheet" href="<?php echo $src; ?>">
+      <?php
+    } 
+    ?>
+      <script>
+        <?php echo file_get_contents("{$this->_assets_dir}/js/main.js"); ?>
+      </script>
+      <style type="text/css">
+        <?php echo file_get_contents("{$this->_assets_dir}/css/styles.css"); ?>
+      </style>
+    <?php
     static::$_assets_loaded = true;
+  }
 
+  protected function _complie_less(){
+    $parser = new \Less_Parser();
+    $parser->parseFile( $this->_assets_dir.'/less/styles.less' );
+    $css = $parser->getCss();
+    file_put_contents($this->_assets_dir.'/css/styles.css', $css);
+  }
+
+  protected function _build_icons_html(){
+    $Icons = Icons::get_instance(new Regex_Reader());
+    $Icons->html();
   }
 
 }

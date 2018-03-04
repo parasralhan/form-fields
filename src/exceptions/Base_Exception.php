@@ -5,17 +5,13 @@ namespace Bonzer\Inputs\exceptions;
 use Exception;
 use Bonzer\Inputs\auth\Auth;
 use Bonzer\Inputs\Bonzer_Inputs;
+require_once dirname(__DIR__) . '/bootstrap.php';
 
 class Base_Exception extends Exception {
-
-  protected static $_BASE_DIR;
 
   protected $_message_to_unauthorized_user;
 
   public function __construct( $message ) {
-
-    static::$_BASE_DIR = dirname(__DIR__);
-    require_once "{static::$_BASE_DIR}/bootstrap.php";
 
     parent::__construct( $message );
 
