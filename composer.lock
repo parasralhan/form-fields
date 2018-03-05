@@ -4,9 +4,45 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b20d14bac0769c2bb03efa944f488e75",
-    "content-hash": "0add0d6e4d816f4e020747855504baf1",
+    "hash": "726b351bc58f2f7ce0c3dc7f2fa797a7",
+    "content-hash": "3364ce8eb9f65890cf104b4e0dda1ea8",
     "packages": [
+        {
+            "name": "bonzer/exceptions",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/parasralhan/exceptions.git",
+                "reference": "9d1ae73b537acc51ba4ebc597c7c04757b1c728c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/parasralhan/exceptions/zipball/9d1ae73b537acc51ba4ebc597c7c04757b1c728c",
+                "reference": "9d1ae73b537acc51ba4ebc597c7c04757b1c728c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bonzer\\Exceptions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paras Ralhan",
+                    "email": "ralhan.paras@gmail.com"
+                }
+            ],
+            "description": "Simple PHP Exception Utilities",
+            "time": "2018-03-04 16:48:03"
+        },
         {
             "name": "oyejorge/less.php",
             "version": "v1.7.0.14",
@@ -73,7 +109,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "bonzer/exceptions": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

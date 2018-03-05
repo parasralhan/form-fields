@@ -1,7 +1,7 @@
 <?php
-namespace Bonzer\Inputs\exceptions;
+namespace Bonzer\Exceptions;
 
-class Property_Not_Set_Exception extends Base_Exception {
+class Table_Name_Not_Provided_Exception extends Base_Exception {
 
     public function __construct ( $message ) {
 

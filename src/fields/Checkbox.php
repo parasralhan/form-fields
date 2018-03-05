@@ -4,7 +4,7 @@ namespace Bonzer\Inputs\fields;
 
 use Bonzer\Inputs\contracts\Input_Abstract;
 
-class Checkbox extends Abstract_Input {
+class Checkbox extends Input_Abstract {
 
   public function __construct( $args ) {
 

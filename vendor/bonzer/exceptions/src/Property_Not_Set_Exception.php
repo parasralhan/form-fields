@@ -1,7 +1,7 @@
 <?php
-namespace Bonzer\Inputs\exceptions;
+namespace Bonzer\Exceptions;
 
-class Invalid_Param_Exception extends Base_Exception {
+class Property_Not_Set_Exception extends Base_Exception {
 
     public function __construct ( $message ) {
 

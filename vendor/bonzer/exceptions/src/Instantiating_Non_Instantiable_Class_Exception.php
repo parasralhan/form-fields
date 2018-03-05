@@ -1,6 +1,6 @@
 <?php
 
-namespace Bonzer\Inputs\exceptions;
+namespace Bonzer\Exceptions;
 
 class Instantiating_Non_Instantiable_Class_Exception extends Base_Exception {
 

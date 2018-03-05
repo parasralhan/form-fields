@@ -6,6 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Bonzer\\Inputs\\' => array($baseDir . '/src'),
-    'Bonzer\\Exceptions\\' => array($vendorDir . '/bonzer/exceptions/src'),
+    'Bonzer\\Exceptions\\' => array($baseDir . '/src'),
 );

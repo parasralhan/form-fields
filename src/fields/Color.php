@@ -4,7 +4,7 @@ namespace Bonzer\Inputs\fields;
 
 use Bonzer\Inputs\contracts\Input_Abstract;
 
-class Color extends Abstract_Input {
+class Color extends Input_Abstract {
 
   public function __construct( $args ) {
 

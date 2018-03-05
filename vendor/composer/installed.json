@@ -62,5 +62,43 @@
             "php",
             "stylesheet"
         ]
+    },
+    {
+        "name": "bonzer/exceptions",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/parasralhan/exceptions.git",
+            "reference": "9d1ae73b537acc51ba4ebc597c7c04757b1c728c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/parasralhan/exceptions/zipball/9d1ae73b537acc51ba4ebc597c7c04757b1c728c",
+            "reference": "9d1ae73b537acc51ba4ebc597c7c04757b1c728c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2018-03-04 16:48:03",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Bonzer\\Exceptions\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paras Ralhan",
+                "email": "ralhan.paras@gmail.com"
+            }
+        ],
+        "description": "Simple PHP Exception Utilities"
     }
 ]

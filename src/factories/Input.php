@@ -2,7 +2,7 @@
 
 namespace Bonzer\Inputs\factories;
 
-use Bonzer\Inputs\exceptions\Invalid_Param_Exception;
+use Bonzer\Exceptions\Invalid_Param_Exception;
 use Bonzer\Inputs\Bonzer_Inputs,
     Bonzer\Inputs\fields\utils\Icons,
     Bonzer\Inputs\fields\utils\Regex as Regex_Reader;

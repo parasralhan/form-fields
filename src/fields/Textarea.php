@@ -2,9 +2,9 @@
 
 namespace Bonzer\Inputs\fields;
 
-use Bonzer\Inputs\contracts\Input_Abstract as Abstract_Input;
+use Bonzer\Inputs\contracts\Input_Abstract;
 
-class Textarea extends Abstract_Input {
+class Textarea extends Input_Abstract {
 
   public function __construct( $args ) {
 

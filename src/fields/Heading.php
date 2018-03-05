@@ -4,7 +4,7 @@ namespace Bonzer\Inputs\fields;
 
 use Bonzer\Inputs\contracts\Input_Abstract as Abstract_Input;
 
-class Heading extends Abstract_Input {
+class Heading extends Input_Abstract {
 
   public function __construct( $args) {
 

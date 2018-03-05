@@ -2,9 +2,9 @@
 
 namespace Bonzer\Inputs\fields;
 
-use Bonzer\Inputs\contracts\Input_Abstract as Abstract_Input;
+use Bonzer\Inputs\contracts\Input_Abstract;
 
-class Radio extends Abstract_Input {
+class Radio extends Input_Abstract {
 
   public function __construct( $args ) {
 

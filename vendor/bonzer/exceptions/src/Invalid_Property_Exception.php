@@ -1,7 +1,7 @@
 <?php
-namespace Bonzer\Inputs\exceptions;
+namespace Bonzer\Exceptions;
 
-class Key_Exists_Exception extends Base_Exception {
+class Invalid_Property_Exception extends Base_Exception {
 
     public function __construct ( $message ) {
 

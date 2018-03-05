@@ -10,6 +10,7 @@ class ComposerStaticInit821f001ea32811b5931679ce591d9f96
         'B' => 
         array (
             'Bonzer\\Inputs\\' => 14,
+            'Bonzer\\Exceptions\\' => 18,
         ),
     );
 
@@ -17,6 +18,10 @@ class ComposerStaticInit821f001ea32811b5931679ce591d9f96
         'Bonzer\\Inputs\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Bonzer\\Exceptions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bonzer/exceptions/src',
         ),
     );
 

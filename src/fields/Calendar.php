@@ -4,7 +4,7 @@ namespace Bonzer\Inputs\fields;
 
 use Bonzer\Inputs\contracts\Input_Abstract;
 
-class Calendar extends Abstract_Input {
+class Calendar extends Input_Abstract {
 
   public function __construct( $args ) {
     parent::__construct( $args );

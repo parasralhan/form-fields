@@ -2,7 +2,7 @@
 
 namespace Bonzer\Inputs\contracts;
 
-use Bonzer\Inputs\exceptions\Invalid_Param_Exception;
+use Bonzer\Exceptions\Invalid_Param_Exception;
 
 require_once dirname(__DIR__) . '/bootstrap.php';
 

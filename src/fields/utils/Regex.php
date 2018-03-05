@@ -2,8 +2,8 @@
 
 namespace Bonzer\Inputs\fields\utils;
 
-use Bonzer\Inputs\exceptions\Method_Call_Sequence_Exception,
-    Bonzer\Inputs\exceptions\Invalid_Param_Exception;
+use Bonzer\Exceptions\Method_Call_Sequence_Exception,
+    Bonzer\Exceptions\Invalid_Param_Exception;
 
 class Regex {
 

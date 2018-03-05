@@ -1,21 +1,25 @@
 <?php
 
-namespace Bonzer\Inputs\exceptions;
+namespace Bonzer\Exceptions;
 
 use Exception;
-use Bonzer\Inputs\auth\Auth;
-use Bonzer\Inputs\Bonzer_Inputs;
-require_once dirname(__DIR__) . '/bootstrap.php';
+use Bonzer\Exceptions\config\Configurer;
+
+require 'functions.php';
 
 class Base_Exception extends Exception {
 
   protected $_message_to_unauthorized_user;
 
+  protected static $_Configurer;
+
   public function __construct( $message ) {
+
+    static::$_Configurer = Configurer::get_instance();
 
     parent::__construct( $message );
 
-    $this->_message_to_unauthorized_user = __( 'Exception Occured, You must be logged in as ADMIN to View the detail', 'bonzer_inputs' );
+    $this->_message_to_unauthorized_user = __( 'Exception Occured, You must be logged in as ADMIN to View the detail', 'bonzer_exceptions' );
   }
 
   public function get_Message() {
@@ -85,11 +89,12 @@ class Base_Exception extends Exception {
   protected function _title() {
     return str_replace( ['_',
       __NAMESPACE__,
-      '\\' ], ' ', sprintf( __( '%s', 'bonzer_inputs' ), get_called_class() ) );
+      '\\' ], ' ', sprintf( __( '%s', 'bonzer_exceptions' ), get_called_class() ) );
   }
 
   protected static function _is_authorized(){
-    return Auth::is_admin() || Bonzer_Inputs::is_dev();
+    $config = static::$_Configurer->get_config();
+    return $config['is_admin'] || $config['env'] == 'development';
   }
 
 }

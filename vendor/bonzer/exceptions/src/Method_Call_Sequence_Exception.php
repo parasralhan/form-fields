@@ -1,5 +1,5 @@
 <?php
-namespace Bonzer\Inputs\exceptions;
+namespace Bonzer\Exceptions;
 
 class Method_Call_Sequence_Exception extends Base_Exception {
 

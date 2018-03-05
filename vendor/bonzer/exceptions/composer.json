@@ -1,6 +1,6 @@
 {
-    "name": "bonzer/inputs",
-    "description": "A form inputs library",
+    "name": "bonzer/exceptions",
+    "description": "Simple PHP Exception Utilities",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,13 +11,11 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.4.0",
-        "oyejorge/less.php": "v1.7.0.14",
-        "bonzer/exceptions": "dev-master"
-    },
-    "autoload": {
+        "php": ">=5.4.0"
+     },
+     "autoload": {
         "psr-4": {
-            "Bonzer\\Inputs\\": "src/"
+            "Bonzer\\Exceptions\\": "src/"
         }
-    }
+     }
 }
