@@ -13,7 +13,7 @@ jQuery(function ($) {
       instance = instance || remove_text;
       return function(){
         instance();
-      }
+      };
     }(jQuery)),
     /*==========================================================
      * ICON INPUT-TYPE TOGGLE
@@ -71,7 +71,7 @@ jQuery(function ($) {
               icon_class = $input.val(),
               icon;
           if (icon_class) {
-            icon = $('body').children('.bonzer-inputs-all-icons').find('a[data-icon-class="'+icon_class+'"]').html();
+            icon = $('body').find('.bonzer-inputs-all-icons.original').find('a[data-icon-class="'+icon_class+'"]').html();
             $input.siblings('.icon-holder').html(icon);
           };
         },
@@ -83,8 +83,8 @@ jQuery(function ($) {
               $icons_cloned;
           if (!$icons.length) {
             // Append Icons
-            $icons_cloned = $( "body" ).children('.bonzer-inputs-all-icons').clone().hide();
-            $icons_cloned.appendTo( $icon_input_wrapper );
+            $icons_cloned = $( "body" ).find('.bonzer-inputs-all-icons.original').clone().hide();
+            $icons_cloned.removeClass('original').appendTo( $icon_input_wrapper );
             $icons = $icons_cloned;
           }
           // Show Close Button
@@ -163,7 +163,7 @@ jQuery(function ($) {
         e.preventDefault();
         e.stopPropagation();
       } );
-    },
+    }
   };
 
   general.remove_text();

@@ -3,7 +3,15 @@
 namespace Bonzer\Inputs\traits;
 
 trait Attr {
-
+  /**
+   * --------------------------------------------------------------------------
+   * Builds html attributes string from array
+   * --------------------------------------------------------------------------
+   * 
+   * @param array $attrs
+   * 
+   * @Return string 
+   * */
   protected static function attr_builder( $attrs ) {
     if ( !empty( $attrs ) && count( $attrs ) > 0 ) {
       foreach ( $attrs as $key => $value ) {

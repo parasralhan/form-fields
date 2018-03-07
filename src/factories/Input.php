@@ -3,19 +3,35 @@
 namespace Bonzer\Inputs\factories;
 
 use Bonzer\Exceptions\Invalid_Param_Exception;
-use Bonzer\Inputs\Bonzer_Inputs,
-    Bonzer\Inputs\fields\utils\Icons,
-    Bonzer\Inputs\fields\utils\Regex as Regex_Reader;
-require_once dirname(__DIR__) . '/bootstrap.php';
+use Bonzer\Inputs\Assets_Loader,
+    Bonzer\Inputs\config\Configurer as Inputs_Configurer;
 
+require_once dirname( __DIR__ ) . '/bootstrap.php';
 class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
 
+  /**
+   * @var Input
+   */
+  private static $_instance;
+
+  /**
+   * @var bool
+   */
   protected static $_assets_loaded;
 
-  protected $_Bonzer_Inputs;
+  /**
+   * @var Assets_Loader
+   */
+  protected $_Assets_Loader;
 
-  protected $_assets_dir;
+  /**
+   * @var Inputs_Configurer
+   */
+  protected $_Configurer;
 
+  /**
+   * @var array
+   */
   protected $_valid_types = [
     'calendar',
     'checkbox',
@@ -42,6 +58,30 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
 
   /**
    * --------------------------------------------------------------------------
+   * Class Constructor
+   * --------------------------------------------------------------------------
+   * 
+   * 
+   * @Return Input 
+   * */
+  public function __construct() {
+    $this->_Configurer = Inputs_Configurer::get_instance();
+    $this->_Assets_Loader = Assets_Loader::get_instance();
+  }
+
+  /**
+   * 
+   * @Return Input 
+   * */
+  public static function get_instance() {
+    if ( static::$_instance ) {
+      return static::$_instance;
+    }
+    return static::$_instance = new static();
+  }
+
+  /**
+   * --------------------------------------------------------------------------
    * Create the Input field
    * --------------------------------------------------------------------------
    * 
@@ -52,11 +92,10 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
    * */
   public function create( $type, $args ) {
 
-    if (!static::$_assets_loaded) {
-      $this->_assets_dir = dirname(__DIR__).'/assets';
-      $this->_build_icons_html();
-      $this->_complie_less();
-      $this->_load_assets();
+    if ( !static::$_assets_loaded ) {
+      if ( $this->_Configurer->load_assets_automatically ) {
+        $this->_load_assets_automatically();
+      }
     }
 
     if ( !in_array( $type, $this->_valid_types ) ) {
@@ -82,7 +121,7 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
       $this->_args[ 'label' ] = $this->_label( $this->_args[ 'id' ] );
     }
 
-    $this->_args[ 'placeholder' ] = isset( $args[ 'placeholder' ] ) ? $args[ 'placeholder' ]: '';
+    $this->_args[ 'placeholder' ] = isset( $args[ 'placeholder' ] ) ? $args[ 'placeholder' ] : '';
 
     $input_class = $this->_classname( $type );
     $input = new $input_class( $this->_args );
@@ -118,53 +157,22 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
 
   /**
    * --------------------------------------------------------------------------
-   * Load Assets
+   * 
    * --------------------------------------------------------------------------
+   * 
+   * @param string $name
    * 
    * @Return void 
    * */
-  protected function _load_assets() {    
-    $this->_Bonzer_Inputs = Bonzer_Inputs::get_instance();
-    $env = $this->_Bonzer_Inputs->env;
-    $should_jquery_loaded = $this->_Bonzer_Inputs->should_jquery_loaded;
-    $config = require dirname(__DIR__).'/config.php';
-    $assets = $config['assets'];
-    $assets_js = $assets['js']['all'];
-    $assets_css = $assets['css']['all'];
-    if (!$should_jquery_loaded) {
-      unset($assets_js['jquery']);
+  protected function _load_assets_automatically() {
+    $fragments_loaded = $this->_Assets_Loader->get_fragments_loading_status();
+    if ( !$fragments_loaded[ 'head' ] ) {
+      $this->_Assets_Loader->load_head_fragment();
     }
-    foreach ($assets_js as $key => $src) {
-      ?>
-        <script id="<?php echo $key; ?>" src="<?php echo $src; ?>"></script>
-      <?php
-    }    
-    foreach ($assets_css as $key => $src) {
-      ?>
-      <link id="<?php echo $key; ?>" rel="stylesheet" href="<?php echo $src; ?>">
-      <?php
-    } 
-    ?>
-      <script>
-        <?php echo file_get_contents("{$this->_assets_dir}/js/main.js"); ?>
-      </script>
-      <style type="text/css">
-        <?php echo file_get_contents("{$this->_assets_dir}/css/styles.css"); ?>
-      </style>
-    <?php
+    if ( !$fragments_loaded[ 'body' ] ) {
+      $this->_Assets_Loader->load_before_body_close_fragment();
+    }
     static::$_assets_loaded = true;
-  }
-
-  protected function _complie_less(){
-    $parser = new \Less_Parser();
-    $parser->parseFile( $this->_assets_dir.'/less/styles.less' );
-    $css = $parser->getCss();
-    file_put_contents($this->_assets_dir.'/css/styles.css', $css);
-  }
-
-  protected function _build_icons_html(){
-    $Icons = Icons::get_instance(new Regex_Reader());
-    $Icons->html();
   }
 
 }

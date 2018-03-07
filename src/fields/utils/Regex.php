@@ -5,7 +5,7 @@ namespace Bonzer\Inputs\fields\utils;
 use Bonzer\Exceptions\Method_Call_Sequence_Exception,
     Bonzer\Exceptions\Invalid_Param_Exception;
 
-class Regex {
+class Regex implements \Bonzer\Inputs\contracts\interfaces\Regex{
 
   /**
    * Filepath

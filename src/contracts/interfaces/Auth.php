@@ -4,12 +4,10 @@
  * @author  Paras Ralhan <ralhan.paras@gmail.com>
  */
 
-namespace Bonzer\Inputs\auth;
+namespace Bonzer\Inputs\contracts\interfaces;
 
-use Bonzer\Inputs\config\Configurer;
+interface Auth {
 
-class Auth implements \Bonzer\Inputs\contracts\interfaces\Auth{
-  
   /**
    * --------------------------------------------------------------------------
    * Checks whether the current user is Administrator or not flaged by Config
@@ -17,8 +15,6 @@ class Auth implements \Bonzer\Inputs\contracts\interfaces\Auth{
    * 
    * @Return bool 
    * */
-  public static function is_admin(){
-    $is_admin = Configurer::get_instance()->is_admin;
-    return $is_admin ?: false;
-  }
+  public static function is_admin();
+
 }

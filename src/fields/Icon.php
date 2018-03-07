@@ -2,20 +2,24 @@
 
 namespace Bonzer\Inputs\fields;
 
-use Bonzer\Inputs\contracts\Input_Abstract as Abstract_Input;
+use Bonzer\Inputs\contracts\Input_Abstract,
+    Bonzer\Inputs\fields\utils\Icons,
+    Bonzer\Inputs\fields\utils\Regex as Regex_Reader;
 
 class Icon extends Input_Abstract {
+
+  protected static $_icons_loaded = false;
 
   public function __construct( $args ) {
     parent::__construct( $args );
   }
 
   /**
-    * --------------------------------------------------------------------------
-    * Build Icon input
-    * --------------------------------------------------------------------------
-    *
-    * @Return: html
+   * --------------------------------------------------------------------------
+   * Build Icon input
+   * --------------------------------------------------------------------------
+   *
+   * @Return: html
    * */
   protected function _build_input() {
 
@@ -35,9 +39,26 @@ class Icon extends Input_Abstract {
     </div>
 
     <?php
+    if ( !static::$_icons_loaded ) {
+      $this->_build_icons_html();
+      static::$_icons_loaded = true;
+    }
+
     $contents = ob_get_contents();
     ob_end_clean();
     return $contents;
+  }
+
+  /**
+   * --------------------------------------------------------------------------
+   * Icons for Icon Input field
+   * --------------------------------------------------------------------------
+   * 
+   * @Return void 
+   * */
+  protected function _build_icons_html() {
+    $Icons = Icons::get_instance( new Regex_Reader() );
+    $Icons->html();
   }
 
 }

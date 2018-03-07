@@ -4,30 +4,63 @@ namespace Bonzer\Inputs\fields\utils;
 
 use Bonzer\Inputs\fields\utils\Regex as Regex_Parser;
 
-class Icons {
+class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
 
+  /**
+   * @var Icons
+   */
   private static $_instance;
 
+  /**
+   * @var array
+   */
   protected $_fa_icons;
 
+  /**
+   * @var array
+   */
   protected $_vector_icons;
 
+  /**
+   * @var array
+   */
   protected $_fontello_icons;
 
+  /**
+   * Icon Categories
+   * 
+   * @var array
+   */
   protected $_icon_types;
 
+  /**
+   * Vector Images Mappings
+   * 
+   * @var array
+   */
   protected $_sprite_mappings = [
     'basic' => 'sprite',
     'business' => 'business',
     'education' => 'education'
   ];
 
+  /**
+   * Regex
+   * 
+   * @var array
+   */
   protected $_regexes = [
     'font_awesome' => '/\.(fa-[-a-z0-9]+):before\s*\{\s*\n*[\r\n]*content\s*:\s*(\"[\\a-z0-9]+\")/',
   ];
 
+  /**
+   * @var Regex_Parser
+   */
   protected $_Regex_Parser;
 
+  /**
+   * @var string
+   */
   protected $_BASE_PATH;
 
   /**
@@ -37,23 +70,31 @@ class Icons {
    * 
    * @param Regex_Parser $regex_reader
    * 
-   * @Return void 
+   * @Return Icons 
    * */
   public function __construct( Regex_Parser $regex_reader ) {
-    $this->_BASE_PATH = dirname(dirname(__DIR__));
+    $this->_BASE_PATH = dirname( dirname( __DIR__ ) );
     $this->_Regex_Parser = $regex_reader;
     $this->_fa_icons = $this->fa_icons();
     $this->_vector_icons = $this->vector_icons();
     $this->_fontello_icons = $this->fontello_icons();
     $this->_icon_types = array_merge( ['Font Awesome' ], array_keys( $this->_fontello_icons ), array_keys( $this->_vector_icons ) );
-
   }
 
-  public static function get_instance(Regex_Parser $regex_reader){
-    if (static::$_instance) {
+  /**
+   * --------------------------------------------------------------------------
+   * Instantiator
+   * --------------------------------------------------------------------------
+   * 
+   * @param Regex_Parser $regex_reader
+   * 
+   * @Return Icons 
+   * */
+  public static function get_instance( Regex_Parser $regex_reader ) {
+    if ( static::$_instance ) {
       return static::$_instance;
     }
-    return static::$_instance = new static($regex_reader);
+    return static::$_instance = new static( $regex_reader );
   }
 
   /**
@@ -67,7 +108,7 @@ class Icons {
    * */
   public function html() {
     ?>
-    <ul class="bonzer-inputs-all-icons">
+    <ul class="bonzer-inputs-all-icons original">
       <li class='icons-search-form'>
         <input type='text' placeholder='Search Icons'>
       </li>
@@ -84,7 +125,7 @@ class Icons {
       // Font Awesome
       echo "<li class='icons-wrapper' data-target-id='font-awesome-type-icons'><span>Font Awesome</span><ul class='icons'>";
       foreach ( $this->_fa_icons as $icon_class => $css_code ) {
-        $title = str_replace('fa-', '', $icon_class);
+        $title = str_replace( 'fa-', '', $icon_class );
         echo "<li data-comes-under='font-awesome' title='{$title}'><a href='javascript:viod()' data-css-code='{$css_code}' data-icon-class='{$icon_class}'><i class='fa {$icon_class}'></i></a></li>";
       }
       echo '</ul></li>';
@@ -125,27 +166,36 @@ class Icons {
    * Font Awesome Icons
    * --------------------------------------------------------------------------
    * 
-   * @Return void 
+   * @Return array 
    * */
   public function fa_icons() {
 
-    $config = require $this->_BASE_PATH.'/config.php';
-
     $this->_Regex_Parser->set_filepath( "{$this->_BASE_PATH}/assets/css/font-awesome.min.css" );
-    
+
+    list($version) = $this->_Regex_Parser->read( '/Font\sAwesome\s([\d]\.[\d]\.[\d])\sby/' )->get( 1 );
     $icons_identifier = 'font_awesome_icons';
 
-    $icons = $this->_Regex_Parser->read( $this->_regexes[ 'font_awesome' ] )->associate()->get( 1 );
+    if ( !$this->_are_saved_icons_fresh( $icons_identifier, $version ) ) {
+      $icons = $this->_get_saved_icons( $icons_identifier );
+    } else {
+      $icons = $this->_Regex_Parser->read( $this->_regexes[ 'font_awesome' ] )->associate()->get( 1 );
+      $this->_save_icons( $icons_identifier, $icons, $version );
+    }
 
     if ( empty( $icons ) ) {
       $icons = $this->_default_fa_icons();
     }
-
     return $icons;
   }
 
+  /**
+   * --------------------------------------------------------------------------
+   * Vector Icons
+   * --------------------------------------------------------------------------
+   * 
+   * @Return array 
+   * */
   public function vector_icons() {
-
     $icons[ 'basic' ] = [
       'agenda' => [
         'agenda',
@@ -498,9 +548,16 @@ class Icons {
     return $icons;
   }
 
+  /**
+   * --------------------------------------------------------------------------
+   * Fontello Icons
+   * --------------------------------------------------------------------------
+   * 
+   * @Return array 
+   * */
   public function fontello_icons() {
 
-    return [];
+    return [ ];
 
     $icons[ 'Arrows' ] = [
       'arrow icon-arrows-double-up' => [
@@ -602,7 +659,7 @@ class Icons {
 
     return $icons;
   }
-  
+
   /**
    * --------------------------------------------------------------------------
    * Sprite Mappings
@@ -613,7 +670,7 @@ class Icons {
   public function get_mappings() {
     return $this->_sprite_mappings;
   }
-  
+
   /**
    * --------------------------------------------------------------------------
    * default Font Awesome Icons
@@ -1222,7 +1279,7 @@ class Icons {
    * @Return bool 
    * */
   protected function _icons_exists( $icons_identifier ) {
-    $saved_icons = get_option( $icons_identifier );
+    $saved_icons = isset($_SESSION[ $icons_identifier ]) ? $_SESSION[ $icons_identifier ] : false;
     return $saved_icons ? TRUE : FALSE;
   }
 
@@ -1240,7 +1297,7 @@ class Icons {
     if ( !$this->_icons_exists( $icons_identifier ) ) {
       return FALSE;
     }
-    $saved_icons = get_option( $icons_identifier );
+    $saved_icons = $_SESSION[ $icons_identifier ];
     return $saved_icons[ 'version' ] === $version ? FALSE : TRUE;
   }
 
@@ -1256,10 +1313,10 @@ class Icons {
    * @Return bool 
    * */
   protected function _save_icons( $icons_identifier, $icons, $version ) {
-    update_option( $icons_identifier, [
+    $_SESSION[$icons_identifier] = [
       'icons' => $icons,
       'version' => $version
-    ] );
+    ];
   }
 
   /**
@@ -1273,7 +1330,7 @@ class Icons {
    * */
   protected function _get_saved_icons( $icons_identifier ) {
     if ( $this->_icons_exists( $icons_identifier ) ) {
-      $icons_data = get_option( $icons_identifier );
+      $icons_data = $_SESSION[ $icons_identifier ];
       return $icons_data[ 'icons' ];
     }
     return FALSE;
