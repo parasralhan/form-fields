@@ -7,7 +7,7 @@ Form Fields included are
 * multi-text-calendar
 * textarea
 * select
-* multi-Select
+* multi-select
 * icon
 * color
 * calendar
