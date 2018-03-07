@@ -24,9 +24,11 @@ ul.bonzer-inputs-all-icons {
   margin: 0;
   max-width: 100%;
   position: absolute;
-  top: 63px;
   border: 1px solid #dddddd;
   left: 0;
+  top: 35px;
+  z-index: 11;
+  background: #ffffff;
 }
 ul.bonzer-inputs-all-icons li {
   width: 10%;
@@ -141,7 +143,9 @@ ul.bonzer-inputs-all-icons li a i.fa {
 Inputs
 =================================================*/
 .input-wrapper {
+  font-family: "Open Sans", Arial;
   padding: 2px;
+  font-size: 13px;
   background: #ffffff;
   margin: 4px 0 0;
   -o-box-shadow: 0 0 0 1px #dddddd inset;
@@ -150,7 +154,6 @@ Inputs
   -webkit-box-shadow: 0 0 0 1px #dddddd inset;
   box-shadow: 0 0 0 1px #dddddd inset;
   position: relative;
-  font-family: inherit;
 }
 .input-wrapper * {
   -webkit-box-sizing: border-box;
@@ -171,8 +174,8 @@ Inputs
   padding: 3px 5px;
 }
 .input-wrapper a.close-popup {
-  right: 27% !important;
-  top: 6px !important;
+  right: calc(15% + 50px) !important;
+  top: 9px !important;
   color: #f44336;
 }
 .input-wrapper label {
@@ -180,8 +183,9 @@ Inputs
   float: left;
   margin-right: 2px;
   font-weight: bold;
-  padding: 5px 15px;
+  padding: 0 15px;
   left: 0;
+  font-size: 13px;
   color: #333333;
   -o-box-shadow: 0 0 0 1px #dddddd inset;
   -ms-box-shadow: 0 0 0 1px #dddddd inset;
@@ -189,6 +193,8 @@ Inputs
   -webkit-box-shadow: 0 0 0 1px #dddddd inset;
   box-shadow: 0 0 0 1px #dddddd inset;
   background: #f4f4f4;
+  height: 28px;
+  line-height: 28px;
 }
 .input-wrapper input,
 .input-wrapper select,
@@ -211,7 +217,6 @@ Inputs
   float: none;
   margin: 0 0 0 0;
   display: inline-block;
-  float: left;
 }
 .input-wrapper.additional-options select {
   width: calc(75% - 60px);
@@ -249,7 +254,7 @@ Inputs
   padding: 0 5px;
 }
 .input-wrapper .chosen-container-multi {
-  width: 85% !important;
+  width: 75% !important;
 }
 .input-wrapper .chosen-container-multi .chosen-choices {
   border: 1px solid #dddddd;
@@ -302,8 +307,12 @@ Inputs
 }
 .input-wrapper.multi-text-input-wapper ul.values-entered.has-values {
   display: block;
+  background: #f4f4f4;
+  margin: 0 -2px;
+  width: calc(100% + 4px);
 }
 .input-wrapper.multi-text-input-wapper ul.values-entered li {
+  list-style: none;
   margin: 5px 2px;
   line-height: 1;
   max-height: 21px;
@@ -443,10 +452,10 @@ Inputs
 .input-wrapper button {
   cursor: pointer;
   line-height: 24px;
-  margin-left: 2px;
+  margin-left: 0;
   background: #f4f4f4;
   border: 1px solid #dddddd;
-  width: calc(15% - 2px);
+  width: calc(15%);
   -ms-border-radius: 0 !important;
   -o-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
@@ -460,13 +469,14 @@ Inputs
 }
 .input-wrapper.color-input-wapper input {
   display: block !important;
-  width: 51%;
+  width: calc(60% - 44px);
+  margin: 0 2px 0 0;
 }
 .input-wrapper.color-input-wapper .sp-replacer {
-  width: 9%;
+  width: 40px;
   float: left;
   height: 28px;
-  margin: 0 0 0 0;
+  margin: 0 2px 0 0;
   border: none;
   -o-box-shadow: 0 0 0 1px #dddddd inset;
   -ms-box-shadow: 0 0 0 1px #dddddd inset;
@@ -478,20 +488,31 @@ Inputs
 .input-wrapper.color-input-wapper .sp-replacer .sp-preview {
   height: 18px;
   border: 1px solid #ffffff;
-  width: 75%;
+  width: 20px;
+  margin: 0;
+  float: left;
+}
+.input-wrapper.color-input-wapper .sp-replacer .sp-dd {
+  width: 12px;
+  text-align: right;
 }
 .input-wrapper.textarea-input-wapper {
-  min-height: 65px;
+  min-height: 63px;
 }
 .input-wrapper.textarea-input-wapper label {
-  padding: 21px 15px;
+  min-height: 63px;
+  padding: 0 15px;
+  line-height: 63px;
 }
 .input-wrapper.textarea-input-wapper textarea {
-  min-height: 60px;
+  font-family: "Open Sans", Arial;
+  padding: 5px 10px;
+  font-size: 13px;
+  min-height: 63px;
 }
 .input-wrapper.textarea-input-wapper button {
   padding: 17px 5px;
-  min-height: 61px;
+  min-height: 63px;
 }
 .input-wrapper.heading-input-wapper {
   background: #f4f4f4;
@@ -594,23 +615,23 @@ Inputs
   float: left;
 }
 .input-wrapper.icon-input-wapper .input {
-  width: 49.5% !important;
-  margin-right: 0.5%;
+  width: calc(60% - 34px) !important;
+  margin-right: 2px;
 }
 .input-wrapper.icon-input-wapper .icon-holder {
-  width: 9.5%;
-  margin-right: 0.5%;
+  width: 30px;
+  margin-right: 2px;
   float: left;
   text-align: center;
   line-height: 25px;
   background: #ffffff;
   border: 1px solid #dddddd;
   color: #3949ab;
-  height: 27px;
-  padding: 2px 0;
+  height: 28px;
+  padding: 7px 0;
 }
 .input-wrapper.icon-input-wapper .icon-holder img {
-  max-height: 22px;
+  max-height: 18px;
   width: auto;
 }
 .input-wrapper.icon-input-wapper .icon-holder i {

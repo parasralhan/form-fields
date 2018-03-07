@@ -5,12 +5,13 @@
 Inputs
 =================================================*/
 .input-wrapper{
+  font-family: @base-font;
   padding:2px;  
+  font-size: 13px;
   background: lighten(@light-gray-color, 5%);
   margin: 4px 0 0;
   .box-shadow(0 0 0 1px @light-border inset);
   position:relative;
-  font-family: inherit;
   *{
     .box-sizing(border-box);
   }
@@ -32,7 +33,7 @@ Inputs
   a{
     &.close-popup{
       right: calc(~"15% + 50px") !important;
-      top: 7px !important;
+      top: 9px !important;
       color: @danger-500;
     }
   }
@@ -41,11 +42,14 @@ Inputs
     float: left;
     margin-right: 2px;
     font-weight: bold;
-    padding: 5px 15px;
+    padding: 0 15px;
     left: 0;
+    font-size: 13px;
     color: @dark-color;
     .box-shadow(0 0 0 1px @light-border inset);
     background: @light-gray-color;
+    height: 28px;
+    line-height: 28px;
   }
   input, select, textarea{
     width:60%;
@@ -62,7 +66,6 @@ Inputs
     float: none;
     margin: 0 0 0 0;
     display: inline-block;
-    float:left;
   }
   &.additional-options{
     select{
@@ -100,7 +103,7 @@ Inputs
     }
   }
   .chosen-container-multi{
-    width:85% !important;
+    width:75% !important;
     .chosen-choices{
       border: 1px solid @light-border;
       .box-shadow(none);
@@ -148,8 +151,12 @@ Inputs
         display:none;
         &.has-values{
           display: block;
+          background: @light-gray-color;
+          margin: 0 -2px;
+          width: calc(~"100% + 4px");
         }
         li{
+          list-style: none;
           margin: 5px 2px;
           line-height: 1;
           max-height: 21px;
@@ -282,34 +289,46 @@ Inputs
   &.color-input-wapper{
     input{
       display: block !important;
-      width: 51%;
+      width: calc(~"60% - 44px");
+      margin: 0 2px 0 0;
     }
     .sp-replacer{
-      width: 9%;
+      width: 40px;
       float: left;
       height: 28px;
-      margin: 0 0 0 0;
+      margin: 0 2px 0 0;
       border: none;
       .box-shadow(0 0 0 1px @light-border inset);
       background: @light-gray-color;
       .sp-preview{
         height: 18px;
         border: 1px solid @white;
-        width: 75%;
+        width: 20px;
+        margin: 0;
+        float: left;
+      }
+      .sp-dd{
+        width: 12px;
+        text-align: right;
       }
     }
   }
   &.textarea-input-wapper{
-    min-height: 65px;
+    min-height: 63px;
     label{
-      padding: 21px 15px;
+      min-height: 63px;
+      padding: 0 15px;
+      line-height: 63px;
     }
     textarea{
-      min-height: 60px;
+      font-family: @base-font;
+      padding: 5px 10px;
+      font-size: 13px;
+      min-height: 63px;
     }
     button{
       padding: 17px 5px;
-      min-height: 61px;
+      min-height: 63px;
     }
   }
   &.heading-input-wapper{
@@ -408,7 +427,7 @@ Inputs
       border: 1px solid @light-border;
       color: @indigo-600;
       height: 28px;
-      padding: 4px 0;
+      padding: 7px 0;
       img{
         max-height: 18px;
         width: auto;

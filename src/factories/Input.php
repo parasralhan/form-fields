@@ -85,8 +85,8 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
    * Create the Input field
    * --------------------------------------------------------------------------
    * 
-   * @param string $type
-   * @param array $args
+   * @param string $type | input type ('calendar', 'checkbox', 'color', 'heading', 'icon', 'multi-select', 'multi-text', 'multi-text-calendar', 'radio', 'select', 'text', 'textarea',)
+   * @param array $args 
    * 
    * @Return string 
    * */

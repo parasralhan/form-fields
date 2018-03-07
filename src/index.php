@@ -1,30 +1,61 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use Bonzer\Inputs\factories\Input;
-Bonzer\Inputs\Bonzer_Inputs::get_instance([
-  'env' => 'development'
+\Bonzer\Inputs\config\Configurer::get_instance([
+  'load_assets_automatically' => true,
+  'css_excluded' => [ ],
+  'js_excluded' => [ ],
+  'env' => 'production', // development | production
+  'is_admin' => false
 ]);
 
-$input = new Input();
-echo $input->create('icon', [
-  'id' => 'my_input',
-  'value' => '',
-  'show_if' => [
-    [
-      'id' => 'dep',
-      'value' => 'paras'
-    ]
-  ]
-]);
+$input = Bonzer\Inputs\factories\Input::get_instance();
 echo $input->create('text', [
-  'id' => 'my_input_hello',
-  'placeholder' => 'My Hello',
+  'id' => 'text',
+  'placeholder' => 'Hello',
   'value' => '',
-  'show_if' => [
-    [
-      'id' => 'dep',
-      'value' => 'paras'
-    ]
-  ]
+]);
+echo $input->create('icon', [
+  'id' => 'icon',
+  'placeholder' => 'select icon',
+  'value' => '',
+]);
+echo $input->create('multi-text', [
+  'id' => 'multi-text',
+  'placeholder' => 'Hello',
+  'value' => '',
+]);
+echo $input->create('calendar', [
+  'id' => 'calendar',
+  'placeholder' => 'Calendar',
+  'value' => '',
+]);
+echo $input->create('multi-text-calendar', [
+  'id' => 'multi-text-calendar',
+  'placeholder' => 'Multi Text Calendar',
+  'value' => '',
+]);
+echo $input->create('textarea', [
+  'id' => 'textarea',
+  'placeholder' => 'Textarea',
+  'value' => '',
+]);
+echo $input->create('select', [
+  'id' => 'select',
+  'options' => [
+    'hello' => 'Hello',
+    'world' => 'World',
+  ],
+]);
+echo $input->create('multi-select', [
+  'id' => 'multi-select',
+  'options' => [
+    'hello' => 'Hello',
+    'world' => 'World',
+  ],
+]);
+echo $input->create('color', [
+  'id' => 'color',
+  'placeholder' => 'Hello',
+  'value' => '',
 ]);
