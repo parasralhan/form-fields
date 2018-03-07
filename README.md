@@ -31,8 +31,8 @@ composer require bonzer/inputs
 ```
 Bonzer\Inputs\config\Configurer::get_instance([
   'load_assets_automatically' => true, // recommended option is false, I have made it true so that library does not break if you don't configure
-  'css_excluded' => [ ], // keys for js files you don't want the library to load, You should be responsible for loading theme for library
-  'js_excluded' => [ ],  // keys for js files you don't want the library to load, You should be responsible for loading theme for library
+  'css_excluded' => [ ], // keys for js files you don't want the library to load, You should be responsible for loading them for library
+  'js_excluded' => [ ],  // keys for js files you don't want the library to load, You should be responsible for loading them for library
   'env' => 'production', // development | production
   'is_admin' => false // flag you can set to tell library when the fields are opened in ADMIN mode, helpful for Exception handling
 ]);
