@@ -7,6 +7,7 @@ return [
         'jquery-ui' => 'http://bonzercode.com/cdn/packages/form-fields/jquery-ui/jquery-ui.min.js',
         'chosen' => 'http://bonzercode.com/cdn/packages/form-fields/chosen/chosen.jquery.min.js',
         'spectrum' => 'http://bonzercode.com/cdn/packages/form-fields/spectrum/spectrum.js',
+        'jquery.ui.touch-punch' => 'http://bonzercode.com/cdn/packages/form-fields/jquery.ui.touch-punch.min.js'
       ],
     ],
     'css' => [
