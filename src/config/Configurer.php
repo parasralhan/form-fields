@@ -41,7 +41,8 @@ class Configurer {
       'css_excluded' => [ ],
       'js_excluded' => [ ],
       'env' => 'production', // development | production
-      'is_admin' => false
+      'is_admin' => false,
+      'style' => '1' // 1|2|3
     ];
     $this->_config = array_merge( $defaults, $config );
     Exceptions_Configurer::get_instance( [

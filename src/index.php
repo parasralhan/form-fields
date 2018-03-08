@@ -6,7 +6,8 @@ require dirname(__DIR__) . '/vendor/autoload.php';
   'css_excluded' => [ ],
   'js_excluded' => [ ],
   'env' => 'development', // development | production
-  'is_admin' => false
+  'is_admin' => false,
+  'style' => '1'
 ]);
 
 $input = Bonzer\Inputs\factories\Input::get_instance();

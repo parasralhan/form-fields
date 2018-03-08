@@ -123,7 +123,10 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_loader
     }
     ?>
     <script>
-    <?php echo file_get_contents( "{$this->_assets_dir}/js/main.js" ); ?>
+      var bonzer_inputs = {};
+      bonzer_inputs.style_type = 'style-<?php echo $this->_Configurer->style;?>';
+    <?php     
+    echo file_get_contents( "{$this->_assets_dir}/js/main.js" ); ?>
     </script>
     <?php
     $this->_fragments_loaded[ 'body' ] = true;

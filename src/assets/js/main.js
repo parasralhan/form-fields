@@ -1,9 +1,9 @@
 
-var bonzer_inputs;
+var inputs;
 
 jQuery(function ($) {
   "use strict";
-  bonzer_inputs = {
+  var inputs = {
     remove_text: (function ( $ ) {
       var instance,
           remove_text = function(){
@@ -574,18 +574,18 @@ jQuery(function ($) {
     }
   };
   
-  bonzer_inputs.remove_text();
-  bonzer_inputs.color();
-  bonzer_inputs.icons_toggle();
-  bonzer_inputs.search_icon();
-  bonzer_inputs.calendar.text();
-  bonzer_inputs.calendar.multi_text();
-  bonzer_inputs.handle_input_fields.init();
-  bonzer_inputs.chosen().activate();
+  inputs.remove_text();
+  inputs.color();
+  inputs.icons_toggle();
+  inputs.search_icon();
+  inputs.calendar.text();
+  inputs.calendar.multi_text();
+  inputs.handle_input_fields.init();
+  inputs.chosen().activate();
   
   $( document.body ).on( 'mouseenter', '.multi-select-input-wapper', function ( e ) {
     var $this = $(e.currentTarget);
-    bonzer_inputs.chosen($this).activate();
+    inputs.chosen($this).activate();
     e.preventDefault();
     e.stopPropagation();
   } );
@@ -595,4 +595,12 @@ jQuery(function ($) {
     e.preventDefault();
     e.stopPropagation();
   } );
+  
+  (function add_style_type(){
+    $(".input-wrapper").each(function () {
+      $(this).addClass(bonzer_inputs.style_type);
+    });
+  }());
+  
+  $.extend(bonzer_inputs, inputs);
 });

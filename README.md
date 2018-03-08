@@ -60,6 +60,7 @@ Bonzer\Inputs\config\Configurer::get_instance([
   'js_excluded' => [ ],  // keys for js files you don't want the library to load, You should be responsible for loading them for library
   'env' => 'production', // development | production
   'is_admin' => false // flag you can set to tell library when the fields are opened in ADMIN mode, helpful for Exception handling
+  'style' => '1', // 1,2,3
 ]);
 ```
 The above code must come before any code related to this Library.<br>

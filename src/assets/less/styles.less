@@ -10,6 +10,7 @@ Inputs
 =================================================*/
 .input-wrapper{
   clear: both;
+  .box-sizing(border-box);
   font-family: @base-font;
   padding:2px;  
   font-size: 13px;
@@ -456,5 +457,282 @@ Inputs
         }
       }
     }
+  }
+  &.style-2, &.style-3{
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 2px 10px 10px;
+    box-shadow: none;
+    border-bottom: 2px solid @light-border;
+    background: @light-gray-color;
+    > label{
+      padding: 0;
+      background: @light-gray-color;
+      border-width: 0;
+      width: 100%;
+      margin: 0;
+      .box-shadow(none);
+    }
+    input, select, textarea{
+      width: 100%;
+    }
+    button{
+      bottom: 10px;
+      right: 10px;
+      width: 10%;
+      position: absolute;
+    }
+    &.textarea-input-wapper{
+      label{
+        min-height: 16px;
+        line-height: 28px;
+      }
+    }
+    &.icon-input-wapper{
+      .input{
+        width: calc(~"90% - 36px") !important;
+      }
+      ul.bonzer-inputs-all-icons{
+        top: 100%;
+      }
+      a.close-popup{
+        right: calc(~"10% + 56px") !important;
+        top: auto !important;
+        bottom: 18px;
+      }
+    }
+    .chosen-container-multi{
+      width: 100% !important;
+      background: @white;
+    }
+    &.color-input-wapper{
+      input{
+        width: calc(~"90% - 46px");
+      }
+    }
+    &.checkbox-input-wapper{
+      padding: 2px 10px;
+      label{
+        width: 100%;
+        padding-left: 25px;
+        &:before, &:after{
+          left: 0;
+          top: 7px;
+        }
+      }
+    }
+    &.radio-input-wapper{
+      .options{
+        width: 100%;
+        margin-left: 0;
+        label{
+          width: auto;
+        }
+      }
+    }
+  }
+  &.style-3{
+    background: @white;
+    margin-bottom: 15px;
+    .roundedcorners(5px);
+    border: 1px solid @light-border;
+    border-bottom-width: 2px;
+    padding: 15px 10px 10px;
+    > button{
+      &.remove{
+        border-color: lighten(@danger-300, 15%);
+        background: lighten(@danger-50, 5%);
+        color: @danger-700;
+      }
+      &.add{
+        border-color: lighten(@success-300, 15%);
+        background: lighten(@success-50, 5%);
+        color: @success-700;
+      }
+       
+    }
+    > label{
+      position: absolute;
+      width: auto;
+      top: -6px;
+      left: 8px;
+      line-height: 1;
+      height: auto;
+      background: @white;
+      padding: 0 5px;
+    }
+    input, select, textarea, .chosen-container-multi{
+      border-width: 0 0 1px 0;
+      padding: 5px 0;
+      &:focus{
+        outline: none;
+        border-bottom-color: @slate-700;
+      }
+    }
+    &.textarea-input-wapper{
+      label{
+        line-height: 1;
+      }
+    }
+    &.icon-input-wapper{
+      .icon-holder{
+        margin-top: 2px;
+        padding: 3px;
+        border-width: 0 0 1px;
+        i{
+          font-size: 22px;
+        }
+        img{
+          max-height: 23px;
+        }
+      }
+    }
+    &.color-input-wapper{
+      .sp-replacer{
+        margin-top: 2px;
+      }
+    }
+    &.checkbox-input-wapper{
+      min-height: 38px;
+      label{
+        width: auto;
+        padding-left: 5px;
+        &:before, &:after{
+          left: 4px;
+          top: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 767px){
+  .input-wrapper{
+    &.style-1, &.style-2, &.style-3{
+      min-height: 32px;
+      > button{
+        position: absolute;
+        top: 8px;
+        width: auto;
+        bottom: auto;
+        background: @white;
+        line-height: 19px;       
+      }
+
+    }
+    &.style-1{
+      float: left;
+      width: 100%;
+      > button{
+        line-height: 24px;
+        top: 2px;
+        min-width: 100px;
+        right: 2px;
+      }
+      > label{
+        margin-bottom: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: inline-block;
+        padding-right: 2px;
+      }
+      &.color-input-wapper{
+        > button{
+          right: 44px;
+        }
+        .sp-replacer{
+          margin-right: 0;
+          .box-shadow(none);
+        }
+        input{
+          margin-right: 0;
+          width: calc(~"75% - 40px");
+        }
+      }
+      &.icon-input-wapper{
+        > button{
+          right: 35px;
+        }
+        .input{
+          width: calc(~"76% - 36px") !important;
+        }
+        .icon-holder{
+          margin-right: 0;
+        }
+        a.close-popup{
+          right: 150px;
+        }
+      }
+      &.checkbox-input-wapper{
+        > label{
+          overflow: visible;
+          width: calc(~"100% - 35px");
+        }
+      }
+      &.radio-input-wapper{
+        .options{
+          float: left;
+          margin-left: 0;
+        }
+      }
+    }
+    &.style-2{
+      &.icon-input-wapper{
+        .input{
+          width: calc(~"100% - 32px") !important;
+        }
+        .icon-holder{
+          margin-right: 0;
+        }
+      }
+      &.color-input-wapper{
+        .input{
+          width: calc(~"100% - 42px") !important;
+        }
+        .sp-replacer{
+          margin-right: 0;
+        }
+      }
+      &.textarea-input-wapper{
+        > button{
+          top: auto;
+          bottom: 10px;
+        }
+      }
+    }
+    &.style-3{
+      &.color-input-wapper{
+        > button{
+          right: 53px;
+          top: 18px;
+        }
+        .sp-replacer{
+          margin-right: 0;
+          .box-shadow(none);
+        }
+        input{
+          margin-right: 0;
+          width: calc(~"100% - 40px");
+        }
+      }
+      &.icon-input-wapper{
+        > button{
+          right: 48px;
+          top: 18px;
+        }
+        .input{
+          width: calc(~"100% - 38px") !important;
+        }
+        .icon-holder{
+          margin-right: 0;
+        }
+        a.close-popup{
+          right: 150px !important;
+          bottom: 16px;
+        }
+      }
+    }
+    
   }
 }
