@@ -215,6 +215,7 @@ Inputs
 .input-wrapper select {
   width: 75%;
   float: none;
+  padding: 0 5px;
   margin: 0 0 0 0;
   display: inline-block;
 }

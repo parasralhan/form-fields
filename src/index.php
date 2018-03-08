@@ -5,7 +5,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
   'load_assets_automatically' => true,
   'css_excluded' => [ ],
   'js_excluded' => [ ],
-  'env' => 'production', // development | production
+  'env' => 'development', // development | production
   'is_admin' => false
 ]);
 
