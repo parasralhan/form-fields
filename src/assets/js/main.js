@@ -1,6 +1,9 @@
+
+var bonzer_inputs;
+
 jQuery(function ($) {
   "use strict";
-  var general = {
+  bonzer_inputs = {
     remove_text: (function ( $ ) {
       var instance,
           remove_text = function(){
@@ -497,8 +500,13 @@ jQuery(function ($) {
       return Inputs;
     }( )),
     chosen: function ( $wrapper ) {
+      var $input_wrapper;
       $wrapper = $wrapper || $( 'body' );
-      var $input_wrapper = $wrapper.find( '.multi-select-input-wapper' );
+      if ($wrapper.is('.multi-select-input-wapper')) {
+        $input_wrapper = $wrapper;
+      } else{
+        $input_wrapper = $wrapper.find( '.multi-select-input-wapper' );
+      }
       return {
         activate: function () {
           if (!$input_wrapper.is( ':hidden' )) {
@@ -566,12 +574,25 @@ jQuery(function ($) {
     }
   };
   
-  general.remove_text();
-  general.color();
-  general.icons_toggle();
-  general.search_icon();
-  general.calendar.text();
-  general.calendar.multi_text();
-  general.handle_input_fields.init();
-  general.chosen().activate();
+  bonzer_inputs.remove_text();
+  bonzer_inputs.color();
+  bonzer_inputs.icons_toggle();
+  bonzer_inputs.search_icon();
+  bonzer_inputs.calendar.text();
+  bonzer_inputs.calendar.multi_text();
+  bonzer_inputs.handle_input_fields.init();
+  bonzer_inputs.chosen().activate();
+  
+  $( document.body ).on( 'mouseenter', '.multi-select-input-wapper', function ( e ) {
+    var $this = $(e.currentTarget);
+    bonzer_inputs.chosen($this).activate();
+    e.preventDefault();
+    e.stopPropagation();
+  } );
+  $( document.body ).on( 'mouseleave', '.multi-select-input-wapper', function ( e ) {
+    var $this = $( e.currentTarget );
+    // bonzer_inputs.chosen( $this ).deactivate();
+    e.preventDefault();
+    e.stopPropagation();
+  } );
 });

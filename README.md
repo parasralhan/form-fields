@@ -15,6 +15,9 @@ Form Fields included are
 * radio
 * checkbox
 
+## Demo
+<a target="_blank" href="http://bonzercode.com/packages/demos/inputs/">HTML Form Fields DEMO</a>
+
 ## Getting Started
 
 ### Prerequisites
