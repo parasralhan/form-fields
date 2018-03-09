@@ -1,6 +1,4 @@
 
-var inputs;
-
 jQuery(function ($) {
   "use strict";
   var inputs = {
@@ -571,9 +569,26 @@ jQuery(function ($) {
         e.preventDefault();
         e.stopPropagation();
       } );
+    },
+    tooltip: function(){
+      $.widget.bridge('uitooltip', $.ui.tooltip);
+      $( '.input-wrapper .button.remove, .input-wrapper .button.add' ).uitooltip({
+        position: {
+          my: "center bottom-0",
+          at: "center top",
+          using: function( position, feedback ) {
+            $( this ).css( position );
+            $( "<div>" )
+              .addClass( "arrow" )
+              .addClass( feedback.vertical )
+              .addClass( feedback.horizontal )
+              .appendTo( this );
+          }
+        }
+      });
     }
   };
-  
+  inputs.tooltip();
   inputs.remove_text();
   inputs.color();
   inputs.icons_toggle();

@@ -7,7 +7,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
   'js_excluded' => [ ],
   'env' => 'development', // development | production
   'is_admin' => false,
-  'style' => '1'
+  'style' => '3'
 ]);
 
 $input = Bonzer\Inputs\factories\Input::get_instance();
@@ -59,4 +59,15 @@ echo $input->create('color', [
   'id' => 'color',
   'placeholder' => 'Hello',
   'value' => '',
+]);
+echo $input->create('checkbox', [
+  'id' => 'checkbox-input',
+  'value' => '',
+]);
+echo $input->create('radio', [
+  'id' => 'radio-input',
+  'options' => [
+    'hello' => 'Hello',
+    'world' => 'World',
+  ],
 ]);

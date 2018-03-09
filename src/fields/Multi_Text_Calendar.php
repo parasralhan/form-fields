@@ -26,7 +26,7 @@ class Multi_Text_Calendar extends Input_Abstract {
       <label for="<?php echo $this->_id; ?>"><?php echo $this->_label; ?></label>
       <input type="hidden" id="<?php echo $this->_id; ?>_hidden" name="<?php echo $this->_name; ?>" class="input all-values" value="<?php echo $this->_value; ?>">
       <input type="text" id="<?php echo $this->_id; ?>" class="input text calendar-input" placeholder="<?php echo $this->_placeholder; ?>" <?php echo $this->_additional_attrs; ?>>
-      <button class="add button" type="button"><i class="fa fa-plus-circle"></i> Add</button>
+      <button class="add button" title="Add" type="button"><i class="fa fa-plus-circle"></i> <span class="text">Add</span></button>
       <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
       <ul class="values-entered">
         <?php

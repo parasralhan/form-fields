@@ -31,8 +31,8 @@ class Icon extends Input_Abstract {
       <span class="icon-holder">
         <i class="fa"></i>
       </span>
-      <button class="remove button">
-        <i class="fa fa-times-circle"></i> Remove
+      <button class="remove button" title="Remove">
+        <i class="fa fa-times-circle"></i> <span class="text">Remove</span>
       </button>
       <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
       <a class="close-popup" style="position:absolute;top:6px;right:6px;cursor:pointer;"><i class="fa fa-times"></i></a>
