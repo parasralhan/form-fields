@@ -23,8 +23,13 @@ Form Fields included are
 ### Prerequisites
 <ul>
   <li>
-    <b>PHP</b> - The only prerequisite for this library is the PHP version, minimum version required is PHP 5.4
-  </li>
+    <b>PHP</b> - the following PHP dependencies are required for complete working of form fields
+    <ul>
+      <li>PHP >= 5.4</li>
+      <li>"bonzer/exceptions" : "dev-master"</li>
+      <li>"oyejorge/less.php" : "v1.7.0.14"</li>
+    </ul>
+</li>
   <li>
     <b>Javascript</b> - the following javacsript dependencies are required for complete working of form fields
     <ul>
@@ -163,6 +168,10 @@ echo $input->create('color', [
 ## Support
 If you are having issues, please let me know.<br>
 You can contact me at ralhan.paras@gmail.com
+
+## Credits
+* Font Awesome
+* Vector Icons -- <a href="http://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha" class="dark-grey">Pixel Buddha</a> from <a href="http://www.flaticon.com" title="Flaticon" class="dark-grey">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" class="dark-grey">CC 3.0 BY
 
 ## License
 The project is licensed under the MIT license.
