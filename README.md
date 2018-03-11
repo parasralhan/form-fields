@@ -165,6 +165,7 @@ echo $input->create('color', [
   'value' => '',
 ]);
 ```
+
 ## Support
 If you are having issues, please let me know.<br>
 You can contact me at ralhan.paras@gmail.com

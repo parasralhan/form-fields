@@ -310,14 +310,15 @@ Inputs
   padding: 2px;
   font-size: 13px;
   background: #ffffff;
-  margin: 4px 0 0;
-  -o-box-shadow: 0 0 0 1px #dddddd inset;
-  -ms-box-shadow: 0 0 0 1px #dddddd inset;
-  -moz-box-shadow: 0 0 0 1px #dddddd inset;
-  -webkit-box-shadow: 0 0 0 1px #dddddd inset;
-  box-shadow: 0 0 0 1px #dddddd inset;
+  margin: 0 0 15px;
+  -o-box-shadow: 0 2px 3px 0 #f4f4f4;
+  -ms-box-shadow: 0 2px 3px 0 #f4f4f4;
+  -moz-box-shadow: 0 2px 3px 0 #f4f4f4;
+  -webkit-box-shadow: 0 2px 3px 0 #f4f4f4;
+  box-shadow: 0 2px 3px 0 #f4f4f4;
+  border: 1px solid #dddddd;
   position: relative;
-  min-height: 32px;
+  min-height: 34px;
 }
 .input-wrapper * {
   -webkit-box-sizing: border-box;
@@ -332,10 +333,13 @@ Inputs
   padding: 10px;
 }
 .input-wrapper p.desc {
-  margin: 2px 0 0;
-  background: #546e7a;
-  color: #ffffff;
-  padding: 3px 5px;
+  margin: 0;
+  background: #fafafa;
+  color: #888888;
+  border-top: 1px solid #dddddd;
+  clear: both;
+  font-size: 11px;
+  padding: 2px 5px;
 }
 .input-wrapper a.close-popup {
   right: 90px !important;
@@ -345,7 +349,7 @@ Inputs
 .input-wrapper label {
   width: calc(25% - 2px);
   float: left;
-  margin-right: 2px;
+  margin: 0 2px 2px 0;
   font-weight: bold;
   padding: 0 15px;
   left: 0;
@@ -382,6 +386,45 @@ Inputs
   padding: 0 5px;
   margin: 0 0 0 0;
   display: inline-block;
+}
+.input-wrapper button {
+  cursor: pointer;
+  margin-left: 0;
+  background: #f4f4f4;
+  border: 0 solid #dddddd;
+  width: 40px;
+  position: absolute;
+  right: 1px;
+  top: 0px;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+  -o-box-shadow: none !important;
+  -ms-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  line-height: 32px;
+  height: 32px;
+  border-left-width: 1px;
+  background: #ffffff;
+}
+.input-wrapper button span.text {
+  display: none;
+}
+.input-wrapper button i {
+  font-size: 15px;
+}
+.input-wrapper button.remove i {
+  color: #e57373;
+}
+.input-wrapper button.add i {
+  color: #4caf50;
+}
+.input-wrapper button:focus {
+  outline: none;
 }
 .input-wrapper.additional-options select {
   width: calc(75% - 60px);
@@ -458,10 +501,8 @@ Inputs
   color: #ffffff;
 }
 .input-wrapper.checkbox-input-wapper label {
-  margin: 0;
   height: 28px;
   float: left;
-  padding: 0 15px !important;
 }
 .input-wrapper.multi-select-input-wapper .remove {
   display: none;
@@ -614,53 +655,13 @@ Inputs
 }
 .input-wrapper .options input:checked + label {
   border: 1px solid #607d8b !important;
-  background: #90a4ae !important;
+  background: #607d8b !important;
   -o-box-shadow: 0 0 0 1px #eceff1 inset;
   -ms-box-shadow: 0 0 0 1px #eceff1 inset;
   -moz-box-shadow: 0 0 0 1px #eceff1 inset;
   -webkit-box-shadow: 0 0 0 1px #eceff1 inset;
   box-shadow: 0 0 0 1px #eceff1 inset;
   color: #ffffff !important;
-}
-.input-wrapper button {
-  cursor: pointer;
-  line-height: 24px;
-  margin-left: 0;
-  background: #f4f4f4;
-  border: 0 solid #dddddd;
-  width: 40px;
-  position: absolute;
-  right: 1px;
-  top: 1px;
-  -ms-border-radius: 0 !important;
-  -o-border-radius: 0 !important;
-  -webkit-border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  border-radius: 0 !important;
-  -o-box-shadow: none !important;
-  -ms-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  line-height: 30px;
-  height: 30px;
-  border-left-width: 1px;
-  background: #ffffff;
-}
-.input-wrapper button span.text {
-  display: none;
-}
-.input-wrapper button i {
-  font-size: 15px;
-}
-.input-wrapper button.remove i {
-  color: #e57373;
-}
-.input-wrapper button.add i {
-  color: #4caf50;
-}
-.input-wrapper button:focus {
-  outline: none;
 }
 .input-wrapper.color-input-wapper input {
   display: block !important;
@@ -692,7 +693,7 @@ Inputs
   text-align: right;
 }
 .input-wrapper.textarea-input-wapper {
-  min-height: 67px;
+  min-height: 69px;
 }
 .input-wrapper.textarea-input-wapper label {
   min-height: 63px;
@@ -707,8 +708,8 @@ Inputs
 }
 .input-wrapper.textarea-input-wapper button {
   padding: 17px 5px;
-  min-height: 65px;
-  top: 1px;
+  min-height: 67px;
+  top: 0;
   right: 2px;
 }
 .input-wrapper.heading-input-wapper {
@@ -841,6 +842,12 @@ Inputs
 .input-wrapper.icon-input-wapper.heading-input-wapper {
   padding: 0;
 }
+.input-wrapper.style-1 p.desc {
+  margin: 0 -2px;
+}
+.input-wrapper.style-1.checkbox-input-wapper > label {
+  padding-left: 15px;
+}
 .input-wrapper.style-2,
 .input-wrapper.style-3 {
   float: left;
@@ -878,12 +885,20 @@ Inputs
 }
 .input-wrapper.style-2 button,
 .input-wrapper.style-3 button {
-  top: auto;
-  bottom: 10px;
+  top: 30px;
   right: 10px;
   position: absolute;
   height: 28px;
   border: 1px solid #dddddd;
+}
+.input-wrapper.style-2 p.desc,
+.input-wrapper.style-3 p.desc {
+  padding: 4px 6px 6px;
+  background: #e8e8e8;
+  color: #666666;
+  line-height: 1;
+  position: relative;
+  top: 1px;
 }
 .input-wrapper.style-2.textarea-input-wapper label,
 .input-wrapper.style-3.textarea-input-wapper label {
@@ -946,9 +961,15 @@ Inputs
 .input-wrapper.style-3.heading-input-wapper {
   padding: 0;
 }
+.input-wrapper.style-2.checkbox-input-wapper {
+  padding-bottom: 0;
+}
+.input-wrapper.style-2.checkbox-input-wapper p.desc {
+  margin: 0 -10px;
+}
 .input-wrapper.style-3 {
   background: #ffffff;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -961,6 +982,9 @@ Inputs
   -webkit-box-shadow: 0 2px 1px #efefef;
   box-shadow: 0 2px 1px #efefef;
   padding: 15px 10px 10px;
+}
+.input-wrapper.style-3 > button {
+  top: 15px;
 }
 .input-wrapper.style-3 > button.remove {
   border-color: #f1b4b4;
@@ -982,6 +1006,14 @@ Inputs
   background: #ffffff;
   padding: 0 5px;
 }
+.input-wrapper.style-3 p.desc {
+  border-width: 0;
+  margin: 0;
+  padding: 3px 6px 6px;
+  background: #f4f4f4;
+  color: #777777;
+  line-height: 1;
+}
 .input-wrapper.style-3 input,
 .input-wrapper.style-3 select,
 .input-wrapper.style-3 textarea,
@@ -1001,6 +1033,10 @@ Inputs
   padding-left: 0;
   border-width: 0 0 1px 0;
 }
+.input-wrapper.style-3.heading-input-wapper p.desc {
+  padding: 6px;
+  border-top: 1px solid #dddddd;
+}
 .input-wrapper.style-3.textarea-input-wapper label {
   line-height: 1;
 }
@@ -1018,6 +1054,7 @@ Inputs
   min-height: 38px;
 }
 .input-wrapper.style-3.checkbox-input-wapper label {
+  position: absolute;
   width: auto;
   padding-left: 5px;
 }
@@ -1025,6 +1062,17 @@ Inputs
 .input-wrapper.style-3.checkbox-input-wapper label:after {
   left: 4px;
   top: 18px;
+}
+.input-wrapper.style-3.checkbox-input-wapper p.desc {
+  line-height: 1;
+  margin: 34px -10px 0;
+  position: relative;
+  top: 2px;
+  -ms-border-radius: 0 0 5px;
+  -o-border-radius: 0 0 5px;
+  -webkit-border-radius: 0 0 5px;
+  -moz-border-radius: 0 0 5px;
+  border-radius: 0 0 5px;
 }
 @media (max-width: 767px) {
   .input-wrapper.checkbox-input-wapper label {

@@ -2,6 +2,91 @@
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Bonzer\IOC_Container\facades\Container;
+use Bonzer\Events\Event;
+
+$Event = Event::get_instance();
+$Event->listen('inputs_css_end', function(){
+  ?>
+  body{
+    background: #fff;
+  }
+<?php
+});
+
+$inputs = [
+  'text' => [
+    'id' => 'text',
+    'placeholder' => 'Hello',
+   // 'desc' => 'Description Here'
+  ],
+  'textarea' => [
+    'id' => 'textarea',
+    'placeholder' => 'Write Something',
+    // 'desc' => 'Description Here'
+  ],
+  'multi-text' => [
+    'id' => 'multi-text-input',
+    'placeholder' => 'Write something & hit enter',
+    // 'desc' => 'Description Here'
+  ],
+  'select' => [
+    'id' => 'select-input',
+    'placeholder' => 'Select Options',
+    'options' => [
+      'hello' => 'Hello',
+      'world' => 'World',
+    ],
+    // 'desc' => 'Description Here'
+  ],
+  'multi-select' => [
+    'id' => 'multi-select-input',
+    'placeholder' => 'Select Options',
+    'options' => [
+      'hello' => 'Hello',
+      'world' => 'World',
+    ],
+    // 'desc' => 'Description Here'
+  ],
+  'radio' => [
+    'id' => 'radio-input',
+    'value' => 'hello',
+    'options' => [
+      'hello' => 'Hello',
+      'world' => 'World',
+    ],
+    // 'desc' => 'Description Here'
+  ],
+  'checkbox' => [
+    'id' => 'checkbox-input',
+    // 'desc' => 'Description Here'
+  ],
+  'calendar' => [
+    'id' => 'calendar',
+    'placeholder' => '23-Mar-2018',
+    // 'desc' => 'Description Here'
+  ],
+  'multi-text-calendar' => [
+    'id' => 'multiple-dates',
+    'placeholder' => 'Select Date',
+    // 'desc' => 'Description Here'
+  ],
+  'color' => [
+    'id' => 'color-input',
+    'placeholder' => '#dddddd',
+    // 'desc' => 'Description Here'
+  ],
+  'icon' => [
+    'id' => 'icon-input',
+    'placeholder' => 'Select icon',
+    // 'desc' => 'Description Here'
+  ],
+  'heading' => [
+    'id' => 'heading-input',
+    'value' => 'Section Heading',
+    // 'desc' => 'Description Here'
+  ],
+];
+
 
 \Bonzer\Inputs\config\Configurer::get_instance([
   'load_assets_automatically' => true,
@@ -9,71 +94,11 @@ use Bonzer\IOC_Container\facades\Container;
   'js_excluded' => [ ],
   'env' => 'development', // development | production
   'is_admin' => false,
-  'style' => '1'
+  'style' => '3'
 ]);
 
 $input = Container::make('Bonzer\Inputs\factories\Input');
-echo $input->create('heading', [
-  'id' => 'heading',
-  'value' => 'Heading'
-]);
-echo $input->create('text', [
-  'id' => 'text',
-  'placeholder' => 'Hello',
-  'value' => '',
-]);
-echo $input->create('icon', [
-  'id' => 'icon',
-  'placeholder' => 'select icon',
-  'value' => '',
-]);
-echo $input->create('multi-text', [
-  'id' => 'multi-text',
-  'placeholder' => 'Hello',
-  'value' => '',
-]);
-echo $input->create('calendar', [
-  'id' => 'calendar',
-  'placeholder' => 'Calendar',
-  'value' => '',
-]);
-echo $input->create('multi-text-calendar', [
-  'id' => 'multi-text-calendar',
-  'placeholder' => 'Multi Text Calendar',
-  'value' => '',
-]);
-echo $input->create('textarea', [
-  'id' => 'textarea',
-  'placeholder' => 'Textarea',
-  'value' => '',
-]);
-echo $input->create('select', [
-  'id' => 'select',
-  'options' => [
-    'hello' => 'Hello',
-    'world' => 'World',
-  ],
-]);
-echo $input->create('multi-select', [
-  'id' => 'multi-select',
-  'options' => [
-    'hello' => 'Hello',
-    'world' => 'World',
-  ],
-]);
-echo $input->create('color', [
-  'id' => 'color',
-  'placeholder' => 'Hello',
-  'value' => '',
-]);
-echo $input->create('checkbox', [
-  'id' => 'checkbox-input',
-  'value' => '',
-]);
-echo $input->create('radio', [
-  'id' => 'radio-input',
-  'options' => [
-    'hello' => 'Hello',
-    'world' => 'World',
-  ],
-]);
+
+foreach ($inputs as $key => $args){
+  echo $input->create( $key, $args );
+}

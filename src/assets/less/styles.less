@@ -16,10 +16,11 @@ Inputs
   padding:2px;  
   font-size: 13px;
   background: lighten(@light-gray-color, 5%);
-  margin: 4px 0 0;
-  .box-shadow(0 0 0 1px @light-border inset);
+  margin: 0 0 15px;
+  .box-shadow(0 2px 3px 0 @light-gray-color);
+  border: 1px solid @light-border;
   position:relative;
-  min-height: 32px;
+  min-height: 34px;
   *{
     .box-sizing(border-box);
   }
@@ -32,10 +33,13 @@ Inputs
   }
   p{
     &.desc{
-      margin: 2px 0 0;
-      background: @slate-600;
-      color: @white;
-      padding: 3px 5px;
+      margin: 0;
+      background: @grey-50;
+      color: @grey-400;
+      border-top: 1px solid @light-border;
+      clear: both;
+      font-size: 11px;
+      padding: 2px 5px;
     }
   }
   a{
@@ -48,7 +52,7 @@ Inputs
   label{
     width: calc(~"25% - 2px");
     float: left;
-    margin-right: 2px;
+    margin: 0 2px 2px 0;
     font-weight: bold;
     padding: 0 15px;
     left: 0;
@@ -75,6 +79,43 @@ Inputs
     padding: 0 5px;
     margin: 0 0 0 0;
     display: inline-block;
+  }
+  button{
+    cursor: pointer;
+    margin-left: 0;
+    background: @light-gray-color;
+    border: 0 solid @light-border;
+    width: 40px;
+    position: absolute;
+    right: 1px;
+    top: 0px;
+    .roundedcorners(0) !important;
+    .box-shadow(none) !important;
+    line-height: 32px;
+    height: 32px;
+    border-left-width: 1px;
+    background: @white;
+    span{
+      &.text{
+        display: none;
+      }
+    }
+    i{
+      font-size: 15px;
+    }
+    &.remove{
+      i{
+        color: @danger-300;
+      }
+    }
+    &.add{
+      i{
+        color: @success-500;
+      }
+    }
+    &:focus{
+      outline: none;
+    }
   }
   &.additional-options{
     select{
@@ -144,10 +185,8 @@ Inputs
   }
   &.checkbox-input-wapper{
     label{
-      margin: 0;
       height: 28px;
       float: left;
-      padding: 0 15px !important;
     }
   }
   &.multi-select-input-wapper{
@@ -289,50 +328,12 @@ Inputs
       display:none;
       &:checked + label{
         border: 1px solid @slate-500 !important;
-        background: @slate-300 !important;
+        background: @slate-500 !important;
         .box-shadow(0 0 0 1px @slate-50 inset);
         color: @white !important;
       }
     }
-  }
-  button{
-    cursor: pointer;
-    line-height: 24px;
-    margin-left: 0;
-    background: @light-gray-color;
-    border: 0 solid @light-border;
-    width: 40px;
-    position: absolute;
-    right: 1px;
-    top: 1px;
-    .roundedcorners(0) !important;
-    .box-shadow(none) !important;
-    line-height: 30px;
-    height: 30px;
-    border-left-width: 1px;
-    background: @white;
-    span{
-      &.text{
-        display: none;
-      }
-    }
-    i{
-      font-size: 15px;
-    }
-    &.remove{
-      i{
-        color: @danger-300;
-      }
-    }
-    &.add{
-      i{
-        color: @success-500;
-      }
-    }
-    &:focus{
-      outline: none;
-    }
-  }
+  }  
   &.color-input-wapper{
     input{
       display: block !important;
@@ -361,7 +362,7 @@ Inputs
     }
   }
   &.textarea-input-wapper{
-    min-height: 67px;
+    min-height: 69px;
     label{
       min-height: 63px;
       padding: 0 15px;
@@ -375,8 +376,8 @@ Inputs
     }
     button{
       padding: 17px 5px;
-      min-height: 65px;
-      top: 1px;
+      min-height: 67px;
+      top: 0;
       right: 2px;
     }
   }
@@ -495,6 +496,18 @@ Inputs
       padding: 0;
     }
   }
+  &.style-1{
+    p{
+      &.desc{
+        margin: 0 -2px;
+      }
+    }
+    &.checkbox-input-wapper{
+      > label{
+        padding-left: 15px;
+      }
+    }
+  }
   &.style-2, &.style-3{
     float: left;
     width: 100%;
@@ -518,12 +531,21 @@ Inputs
       width: 100% !important;
     }
     button{
-      top: auto;
-      bottom: 10px;
+      top: 30px;
       right: 10px;
       position: absolute;
       height: 28px;
       border: 1px solid @light-border;
+    }
+    p{
+      &.desc{
+        padding: 4px 6px 6px;
+        background: darken(@grey-50, 7%);
+        color: @grey-600;
+        line-height: 1;
+        position: relative;
+        top: 1px;
+      }
     }
     &.textarea-input-wapper{
       label{
@@ -580,14 +602,25 @@ Inputs
       padding: 0;
     }
   }
+  &.style-2{
+    &.checkbox-input-wapper{
+      padding-bottom: 0;
+      p{
+        &.desc{
+          margin: 0 -10px;
+        }
+      }
+    }
+  }
   &.style-3{
     background: @white;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     .roundedcorners(5px);
     border: 1px solid @light-border;
     .box-shadow(0 2px 1px darken(@light-gray-color, 2%));
     padding: 15px 10px 10px;
     > button{
+      top: 15px;
       &.remove{
         border-color: lighten(@danger-300, 15%);
         background: lighten(@danger-50, 5%);
@@ -598,7 +631,7 @@ Inputs
         background: lighten(@success-50, 5%);
         color: @success-700;
       }
-       
+
     }
     > label{
       position: absolute;
@@ -609,6 +642,16 @@ Inputs
       height: auto;
       background: @white;
       padding: 0 5px;
+    }
+    p{
+      &.desc{
+        border-width: 0;
+        margin: 0;
+        padding: 3px 6px 6px;
+        background: @light-gray-color;
+        color: @grey-500;
+        line-height: 1;
+      }
     }
     input, select, textarea, .chosen-container-multi{
       border-width: 0 0 1px 0;
@@ -623,6 +666,14 @@ Inputs
       .chosen-choices{
         padding-left: 0;
         border-width: 0 0 1px 0;
+      }
+    }
+    &.heading-input-wapper{
+      p{
+        &.desc{
+          padding: 6px;
+          border-top: 1px solid @light-border;
+        }
       }
     }
     &.textarea-input-wapper{
@@ -649,11 +700,21 @@ Inputs
     &.checkbox-input-wapper{
       min-height: 38px;
       label{
+        position: absolute;
         width: auto;
         padding-left: 5px;
         &:before, &:after{
           left: 4px;
           top: 18px;
+        }
+      }
+      p{
+        &.desc{
+          line-height: 1;
+          margin: 34px -10px 0;
+          position: relative;
+          top: 2px;
+          .roundedcorners( 0 0 5px);
         }
       }
     }
