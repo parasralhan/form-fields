@@ -459,7 +459,9 @@ Inputs
 }
 .input-wrapper.checkbox-input-wapper label {
   margin: 0;
-  float: none;
+  height: 28px;
+  float: left;
+  padding: 0 15px !important;
 }
 .input-wrapper.multi-select-input-wapper .remove {
   display: none;
@@ -836,6 +838,9 @@ Inputs
 .input-wrapper.icon-input-wapper .icon-holder i.arrow:after {
   display: none;
 }
+.input-wrapper.icon-input-wapper.heading-input-wapper {
+  padding: 0;
+}
 .input-wrapper.style-2,
 .input-wrapper.style-3 {
   float: left;
@@ -936,6 +941,10 @@ Inputs
 .input-wrapper.style-2.radio-input-wapper .options label,
 .input-wrapper.style-3.radio-input-wapper .options label {
   width: auto;
+}
+.input-wrapper.style-2.heading-input-wapper,
+.input-wrapper.style-3.heading-input-wapper {
+  padding: 0;
 }
 .input-wrapper.style-3 {
   background: #ffffff;

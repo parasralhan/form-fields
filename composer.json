@@ -13,11 +13,14 @@
     "require": {
         "php": ">=5.4.0",
         "oyejorge/less.php": "v1.7.0.14",
-        "bonzer/exceptions": "dev-master"
+        "bonzer/exceptions": "dev-master",
+        "bonzer/ioc-container": "dev-master",
+        "bonzer/events": "dev-master"
     },
     "autoload": {
+        "files": ["src/bootstrap.php"],
         "psr-4": {
             "Bonzer\\Inputs\\": "src/"
-        }
+        }        
     }
 }

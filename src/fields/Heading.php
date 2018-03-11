@@ -2,7 +2,7 @@
 
 namespace Bonzer\Inputs\fields;
 
-use Bonzer\Inputs\contracts\Input_Abstract as Abstract_Input;
+use Bonzer\Inputs\contracts\Input_Abstract;
 
 class Heading extends Input_Abstract {
 

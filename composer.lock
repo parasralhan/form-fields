@@ -4,9 +4,46 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "726b351bc58f2f7ce0c3dc7f2fa797a7",
-    "content-hash": "3364ce8eb9f65890cf104b4e0dda1ea8",
+    "hash": "ff40e83f22d4f9aeb0277b4b5518626d",
+    "content-hash": "284b5fdbad0b5f56eb1fa7c78e22298a",
     "packages": [
+        {
+            "name": "bonzer/events",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/parasralhan/events.git",
+                "reference": "0d4a3e085c80b8f20c65c2c238e1c4208a812374"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/parasralhan/events/zipball/0d4a3e085c80b8f20c65c2c238e1c4208a812374",
+                "reference": "0d4a3e085c80b8f20c65c2c238e1c4208a812374",
+                "shasum": ""
+            },
+            "require": {
+                "bonzer/exceptions": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bonzer\\Events\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paras Ralhan",
+                    "email": "ralhan.paras@gmail.com"
+                }
+            ],
+            "description": "Responsible for implementing Event System in your application",
+            "time": "2018-03-11 07:20:56"
+        },
         {
             "name": "bonzer/exceptions",
             "version": "dev-master",
@@ -42,6 +79,43 @@
             ],
             "description": "Simple PHP Exception Utilities",
             "time": "2018-03-04 16:48:03"
+        },
+        {
+            "name": "bonzer/ioc-container",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/parasralhan/ioc-container.git",
+                "reference": "b83993719442679fd7b8895481d902f963f8f6c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/parasralhan/ioc-container/zipball/b83993719442679fd7b8895481d902f963f8f6c8",
+                "reference": "b83993719442679fd7b8895481d902f963f8f6c8",
+                "shasum": ""
+            },
+            "require": {
+                "bonzer/exceptions": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bonzer\\IOC_Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paras Ralhan",
+                    "email": "ralhan.paras@gmail.com"
+                }
+            ],
+            "description": "Inversion of Control Container - facilitating Interface Oriented Design",
+            "time": "2018-03-10 14:28:30"
         },
         {
             "name": "oyejorge/less.php",
@@ -110,7 +184,9 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "bonzer/exceptions": 20
+        "bonzer/exceptions": 20,
+        "bonzer/ioc-container": 20,
+        "bonzer/events": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -7,7 +7,7 @@ namespace Bonzer\Inputs\config;
 
 use Bonzer\Exceptions\config\Configurer as Exceptions_Configurer;
 
-class Configurer {
+class Configurer implements \Bonzer\Inputs\contracts\interfaces\Configurer {
 
   /**
    * @var Configurer
@@ -23,7 +23,6 @@ class Configurer {
    * @var array
    */
   protected $_get_mappings = [
-    'should_jquery_loaded' => 'load_jquery',
   ];
 
   /**
@@ -46,8 +45,8 @@ class Configurer {
     ];
     $this->_config = array_merge( $defaults, $config );
     Exceptions_Configurer::get_instance( [
-      'env' => $this->_config['env'],
-      'is_admin' => $this->_config['is_admin']
+      'env' => $this->_config[ 'env' ],
+      'is_admin' => $this->_config[ 'is_admin' ]
     ] );
   }
 
@@ -94,6 +93,48 @@ class Configurer {
    * */
   public function get_config() {
     return $this->_config;
+  }
+
+  /**
+   * @Return bool 
+   * */
+  public function get_load_assets_automatically() {
+    return $this->load_assets_automatically;
+  }
+
+  /**
+   * @Return bool 
+   * */
+  public function get_is_admin() {
+    return $this->is_admin;
+  }
+
+  /**
+   * @Return array 
+   * */
+  public function get_css_excluded() {
+    return $this->css_excluded;
+  }
+
+  /**
+   * @Return array 
+   * */
+  public function get_js_excluded() {
+    return $this->js_excluded;
+  }
+
+  /**
+   * @Return string 
+   * */
+  public function get_env() {
+    return $this->env;
+  }
+
+  /**
+   * @Return string 
+   * */
+  public function get_style() {
+    return $this->style;
   }
 
 }

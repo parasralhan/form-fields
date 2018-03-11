@@ -3,6 +3,7 @@
 namespace Bonzer\Inputs\fields\utils;
 
 use Bonzer\Inputs\fields\utils\Regex as Regex_Parser;
+use Bonzer\Inputs\contracts\interfaces\Regex as Regex_Parser_Interface;
 
 class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
 
@@ -72,9 +73,9 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * 
    * @Return Icons 
    * */
-  public function __construct( Regex_Parser $regex_reader ) {
+  public function __construct( Regex_Parser_Interface $regex_reader ) {
     $this->_BASE_PATH = dirname( dirname( __DIR__ ) );
-    $this->_Regex_Parser = $regex_reader;
+    $this->_Regex_Parser = $regex_reader ?: new Regex_Parser();
     $this->_fa_icons = $this->fa_icons();
     $this->_vector_icons = $this->vector_icons();
     $this->_fontello_icons = $this->fontello_icons();

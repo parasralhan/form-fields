@@ -8,10 +8,10 @@ interface Inputs_Factory {
    * Create the Input field
    * --------------------------------------------------------------------------
    * 
-   * @param string $type
+   * @param string $type | input type ('calendar', 'checkbox', 'color', 'heading', 'icon', 'multi-select', 'multi-text', 'multi-text-calendar', 'radio', 'select', 'text', 'textarea')
    * @param array $args
    * 
-   * @Return string 
+   * @Return string
    * */
   public function create( $type, $args );
 

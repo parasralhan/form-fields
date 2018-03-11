@@ -18,7 +18,7 @@ class Auth implements \Bonzer\Inputs\contracts\interfaces\Auth{
    * @Return bool 
    * */
   public static function is_admin(){
-    $is_admin = Configurer::get_instance()->is_admin;
+    $is_admin = Configurer::get_instance()->get_is_admin();
     return $is_admin ?: false;
   }
 }

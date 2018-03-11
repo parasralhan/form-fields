@@ -1,16 +1,22 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+use Bonzer\IOC_Container\facades\Container;
+
 \Bonzer\Inputs\config\Configurer::get_instance([
   'load_assets_automatically' => true,
   'css_excluded' => [ ],
   'js_excluded' => [ ],
   'env' => 'development', // development | production
   'is_admin' => false,
-  'style' => '3'
+  'style' => '1'
 ]);
 
-$input = Bonzer\Inputs\factories\Input::get_instance();
+$input = Container::make('Bonzer\Inputs\factories\Input');
+echo $input->create('heading', [
+  'id' => 'heading',
+  'value' => 'Heading'
+]);
 echo $input->create('text', [
   'id' => 'text',
   'placeholder' => 'Hello',

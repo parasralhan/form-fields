@@ -3,8 +3,7 @@
 namespace Bonzer\Inputs\fields;
 
 use Bonzer\Inputs\contracts\Input_Abstract,
-    Bonzer\Inputs\fields\utils\Icons,
-    Bonzer\Inputs\fields\utils\Regex as Regex_Reader;
+    Bonzer\IOC_Container\facades\Container as IOC_Container;
 
 class Icon extends Input_Abstract {
 
@@ -57,7 +56,7 @@ class Icon extends Input_Abstract {
    * @Return void 
    * */
   protected function _build_icons_html() {
-    $Icons = Icons::get_instance( new Regex_Reader() );
+    $Icons = IOC_Container::make('Bonzer\Inputs\contracts\interfaces\Icons');
     $Icons->html();
   }
 

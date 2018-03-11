@@ -5,8 +5,9 @@ namespace Bonzer\Inputs\factories;
 use Bonzer\Exceptions\Invalid_Param_Exception;
 use Bonzer\Inputs\Assets_Loader,
     Bonzer\Inputs\config\Configurer as Inputs_Configurer;
+use Bonzer\Inputs\contracts\interfaces\Assets_loader as Assets_loader_Interface,
+    \Bonzer\Inputs\contracts\interfaces\Configurer as Configurer_Interface;
 
-require_once dirname( __DIR__ ) . '/bootstrap.php';
 class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
 
   /**
@@ -61,23 +62,31 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
    * Class Constructor
    * --------------------------------------------------------------------------
    * 
+   * @param Assets_loader_Interface $assets_loader
+   * @param Configurer_Interface $configurer
    * 
    * @Return Input 
    * */
-  public function __construct() {
-    $this->_Configurer = Inputs_Configurer::get_instance();
-    $this->_Assets_Loader = Assets_Loader::get_instance();
+  protected function __construct( Assets_loader_Interface $assets_loader = NULL, Configurer_Interface $configurer = NULL ) {
+    $this->_Configurer = $configurer ? : Inputs_Configurer::get_instance();
+    $this->_Assets_Loader = $assets_loader ? : Assets_Loader::get_instance();
   }
 
   /**
+   * --------------------------------------------------------------------------
+   * Class Constructor
+   * --------------------------------------------------------------------------
+   * 
+   * @param Assets_loader_Interface $assets_loader
+   * @param Configurer_Interface $configurer
    * 
    * @Return Input 
    * */
-  public static function get_instance() {
+  public static function get_instance( Assets_loader_Interface $assets_loader = NULL, Configurer_Interface $configurer = NULL ) {
     if ( static::$_instance ) {
       return static::$_instance;
     }
-    return static::$_instance = new static();
+    return static::$_instance = new static( $assets_loader, $configurer );
   }
 
   /**
@@ -85,7 +94,7 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
    * Create the Input field
    * --------------------------------------------------------------------------
    * 
-   * @param string $type | input type ('calendar', 'checkbox', 'color', 'heading', 'icon', 'multi-select', 'multi-text', 'multi-text-calendar', 'radio', 'select', 'text', 'textarea',)
+   * @param string $type | input type ('calendar', 'checkbox', 'color', 'heading', 'icon', 'multi-select', 'multi-text', 'multi-text-calendar', 'radio', 'select', 'text', 'textarea')
    * @param array $args 
    * 
    * @Return string 
@@ -157,7 +166,7 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
 
   /**
    * --------------------------------------------------------------------------
-   * 
+   * Automatic Assets Loading
    * --------------------------------------------------------------------------
    * 
    * @param string $name
