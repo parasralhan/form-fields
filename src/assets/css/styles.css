@@ -978,7 +978,8 @@ Inputs
 .input-wrapper.style-3 textarea,
 .input-wrapper.style-3 .chosen-container-multi {
   border-width: 0 0 1px 0;
-  padding: 5px 0;
+  padding: 0;
+  line-height: 26px;
 }
 .input-wrapper.style-3 input:focus,
 .input-wrapper.style-3 select:focus,
@@ -995,7 +996,6 @@ Inputs
   line-height: 1;
 }
 .input-wrapper.style-3.icon-input-wapper .icon-holder {
-  margin-top: 2px;
   padding: 3px;
   border-width: 0 0 1px;
 }
@@ -1004,9 +1004,6 @@ Inputs
 }
 .input-wrapper.style-3.icon-input-wapper .icon-holder img {
   max-height: 23px;
-}
-.input-wrapper.style-3.color-input-wapper .sp-replacer {
-  margin-top: 2px;
 }
 .input-wrapper.style-3.checkbox-input-wapper {
   min-height: 38px;
