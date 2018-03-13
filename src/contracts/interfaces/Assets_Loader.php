@@ -1,11 +1,11 @@
 <?php
+namespace Bonzer\Inputs\contracts\interfaces;
 /**
  * @package bonzer/inputs    
  * @author  Paras Ralhan <ralhan.paras@gmail.com>
-   */
-namespace Bonzer\Inputs\contracts\interfaces;
+ */
 
-interface Assets_loader {
+interface Assets_Loader {
   
   /**
    * --------------------------------------------------------------------------

@@ -80,7 +80,7 @@ Inputs
     margin: 0 0 0 0;
     display: inline-block;
   }
-  button{
+  > .button{
     cursor: pointer;
     margin-left: 0;
     background: @light-gray-color;
@@ -264,27 +264,7 @@ Inputs
         }
       }
     }
-  }
-  &.editor-input-wrapper{
-    label{
-      background: #446677;
-      color: @white;
-      border-color: #446677;
-      width: 100%;
-      margin-bottom: 3px;
-    }
-    button{
-      width: auto;
-    }
-    input, textarea{
-      float: none !important;
-      width: auto !important;
-    }
-    textarea{
-      width: 100% !important;
-      border-color: @light-border;
-    }
-  }
+  }  
   input{
     &.radio-input, &.checkbox-input{
       width: auto;
@@ -383,85 +363,7 @@ Inputs
   }
   &.heading-input-wapper{
     background: @light-gray-color;
-  }
-  &.upload-input-wapper, &.multi-upload-input-wapper{
-    .images-wrapper{
-      clear: both;
-      background: #f0f0ee;      
-      width: 100%;
-      margin-top: 2px;
-      text-align: center;           
-      width: 100%;
-      .image-wrapper{
-        display: inline-block;
-        position:relative;        
-        margin: 10px 10px 0;
-        padding: 1px;
-        float: left;
-        .roundedcorners(25px);
-        img{              
-          width: 50px;
-          height: 50px;
-          .roundedcorners(25px);
-          .box-shadow(~"0 0 0px 2px #fff, 0 0 2px 4px #ddd");
-        }
-        i.fa{
-          float: left;
-          position: absolute;
-          top: -4px;
-          background: rgba(45, 45, 45, 0.21);
-          width: 100%;
-          height: 100%;
-          border-radius: 50px;
-          padding: 14px 3px;
-          color: #FDFDFD;
-          font-size: 18px;
-          cursor: pointer;
-          left: 0;
-          top: 0;
-          text-align: center;
-          opacity:0;
-          .transition(all, 0.25s , ease-out);
-          &.move-img{
-            top: -8px;
-            right: -43px;
-            padding: 0;
-            display: inline-block;
-            opacity: 1;
-            width: auto;
-            height: auto;
-            background: transparent;
-            color: @dark-color;
-            cursor: move;
-          }
-        }
-        &:hover{
-          i.fa{
-            opacity:1;
-          }
-        }
-
-      }
-      .sortable-placeholder{
-        background: @orange-300;
-        width: 60px;
-        height: 60px;
-        float: left;
-        padding: 1px;
-        display: inline-block;
-        .box-shadow(~"0 0 0px 2px #fff, 0 0 2px 4px #ddd");
-      }
-    }
-  }
-  &.multi-upload-input-wapper{
-    .images-wrapper{
-      border: 1px dashed @grey-300;
-      margin-top: 5px; 
-      padding: 2px 0 2px 22px;
-      position: relative;
-      float: left;
-    }
-  } 
+  }  
   &.icon-input-wapper{
     .input{
       width: calc(~"75% - 73px") !important;
@@ -530,7 +432,7 @@ Inputs
     select{
       width: 100% !important;
     }
-    button{
+    > .button{
       top: 30px;
       right: 10px;
       position: absolute;
@@ -619,7 +521,7 @@ Inputs
     border: 1px solid @light-border;
     .box-shadow(0 2px 1px darken(@light-gray-color, 2%));
     padding: 15px 10px 10px;
-    > button{
+    > .button{
       top: 15px;
       &.remove{
         border-color: lighten(@danger-300, 15%);

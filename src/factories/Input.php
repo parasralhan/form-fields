@@ -5,8 +5,8 @@ namespace Bonzer\Inputs\factories;
 use Bonzer\Exceptions\Invalid_Param_Exception;
 use Bonzer\Inputs\Assets_Loader,
     Bonzer\Inputs\config\Configurer as Inputs_Configurer;
-use Bonzer\Inputs\contracts\interfaces\Assets_loader as Assets_loader_Interface,
-    \Bonzer\Inputs\contracts\interfaces\Configurer as Configurer_Interface;
+use Bonzer\Inputs\contracts\interfaces\Assets_Loader as Assets_loader_Interface,
+    Bonzer\Inputs\contracts\interfaces\Configurer as Configurer_Interface;
 
 class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
 
@@ -161,7 +161,7 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
    * @Return string 
    * */
   protected function _classname( $type ) {
-    return $this->_namespace . str_replace( ' ', '_', ucwords( str_replace( '-', ' ', $type ) ) );
+    return $this->_get_namespace( $type ) . str_replace( ' ', '_', ucwords( str_replace( '-', ' ', $type ) ) );
   }
 
   /**
@@ -182,6 +182,19 @@ class Input implements \Bonzer\Inputs\contracts\interfaces\Inputs_Factory {
       $this->_Assets_Loader->load_before_body_close_fragment();
     }
     static::$_assets_loaded = true;
+  }
+
+  /**
+   * --------------------------------------------------------------------------
+   * Input field Namespace
+   * --------------------------------------------------------------------------
+   * 
+   * @param string $type
+   * 
+   * @Return string 
+   * */
+  protected function _get_namespace( $type = NULL ) {
+    return $this->_namespace;
   }
 
 }

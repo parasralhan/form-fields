@@ -4,8 +4,6 @@ namespace Bonzer\Inputs\contracts;
 
 use Bonzer\Exceptions\Invalid_Param_Exception;
 
-require_once dirname(__DIR__) . '/bootstrap.php';
-
 abstract class Input_Abstract {
 
   use \Bonzer\Inputs\traits\Attr;

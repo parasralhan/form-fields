@@ -1,4 +1,7 @@
 <?php
+
+namespace Bonzer\Inputs;
+
 /**
  * Library Assets Loader
  * 
@@ -6,16 +9,13 @@
  * @package bonzer/inputs    
  * @author  Paras Ralhan <ralhan.paras@gmail.com>
  */
-
-namespace Bonzer\Inputs;
-
 use Bonzer\Inputs\config\Configurer as Inputs_Configurer,
     Bonzer\Events\Event,
     Less_Parser;
 use Bonzer\Inputs\contracts\interfaces\Configurer as Configurer_Interface,
     Bonzer\Events\contracts\interfaces\Event as Event_Interface;
 
-class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_loader {
+class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader {
 
   /**
    * @var Assets_Loader
@@ -44,7 +44,7 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_loader
     'head' => false,
     'body' => false,
   ];
-  
+
   /**
    * Event_Interface
    *
@@ -62,13 +62,13 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_loader
    * 
    * @Return Assets_Loader 
    * */
-  private function __construct(Configurer_Interface $configurer = NULL, Event_Interface $event = NULL) {
+  protected function __construct( Configurer_Interface $configurer = NULL, Event_Interface $event = NULL ) {
     $this->_config = require 'config.php';
     $this->_assets_dir = __DIR__ . '/assets';
-    $this->_Configurer = $configurer ?: Inputs_Configurer::get_instance();
-    $this->_Event = $event ?: Event::get_instance();
+    $this->_Configurer = $configurer ? : Inputs_Configurer::get_instance();
+    $this->_Event = $event ? : Event::get_instance();
     if ( $this->_Configurer->get_env() == 'development' ) {
-      $this->_complie_less();
+      $this->_complie_less( $this->_assets_dir . '/less/styles.less', $this->_assets_dir . '/css/styles.css' );
     }
   }
 
@@ -82,11 +82,11 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_loader
    * 
    * @Return Assets_Loader 
    * */
-  public static function get_instance(Configurer_Interface $configurer = NULL,Event_Interface $event = NULL) {
+  public static function get_instance( Configurer_Interface $configurer = NULL, Event_Interface $event = NULL ) {
     if ( static::$_instance ) {
       return static::$_instance;
     }
-    return static::$_instance = new static($configurer, $event);
+    return static::$_instance = new static( $configurer, $event );
   }
 
   /**
@@ -112,10 +112,10 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_loader
     }
     ?>
     <style type="text/css">
-    <?php 
-    $this->_Event->fire('inputs_css_start');
-    echo file_get_contents( "{$this->_assets_dir}/css/styles.css" ); 
-    $this->_Event->fire('inputs_css_end');
+    <?php
+    $this->_Event->fire( 'inputs_css_start' );
+    echo file_get_contents( "{$this->_assets_dir}/css/styles.css" );
+    $this->_Event->fire( 'inputs_css_end' );
     ?>
     </style>
     <?php
@@ -147,11 +147,11 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_loader
     ?>
     <script>
       var bonzer_inputs = {};
-      bonzer_inputs.style_type = 'style-<?php echo $this->_Configurer->get_style();?>';
-    <?php     
-    $this->_Event->fire('inputs_js_start');
-    echo file_get_contents( "{$this->_assets_dir}/js/main.js" ); 
-    $this->_Event->fire('inputs_js_end');
+      bonzer_inputs.style_type = 'style-<?php echo $this->_Configurer->get_style(); ?>';
+    <?php
+    $this->_Event->fire( 'inputs_js_start' );
+    echo file_get_contents( "{$this->_assets_dir}/js/main.js" );
+    $this->_Event->fire( 'inputs_js_end' );
     ?>
     </script>
     <?php
@@ -182,13 +182,16 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_loader
    * Compile Less to Css
    * --------------------------------------------------------------------------
    * 
+   * @param string $from
+   * @param string $to
+   * 
    * @Return void 
    * */
-  protected function _complie_less() {
+  protected function _complie_less( $from, $to ) {
     $parser = new Less_Parser();
-    $parser->parseFile( $this->_assets_dir . '/less/styles.less' );
+    $parser->parseFile( $from );
     $css = $parser->getCss();
-    file_put_contents( $this->_assets_dir . '/css/styles.css', $css );
+    file_put_contents( $to, $css );
   }
 
   /**

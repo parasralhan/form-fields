@@ -17,7 +17,7 @@ class Configurer implements \Bonzer\Inputs\contracts\interfaces\Configurer {
   /**
    * @var array
    */
-  protected static $_config;
+  protected $_config;
 
   /**
    * @var array
