@@ -72,6 +72,9 @@ Inputs
     display: block;
     float: left;
     .box-shadow(none);
+    &:focus{
+      .box-shadow(none);
+    }
   }  
   select{
     width:75%;    
@@ -208,8 +211,9 @@ Inputs
         &.has-values{
           display: block;
           background: @light-gray-color;
-          margin: 0 -2px;
+          margin: 3px -2px 15px;
           width: calc(~"100% + 4px");
+          border: 1px dashed @light-border;
         }
         li{
           list-style: none;
@@ -437,6 +441,7 @@ Inputs
       right: 10px;
       position: absolute;
       height: 28px;
+      line-height: 27px;
       border: 1px solid @light-border;
     }
     p{
@@ -516,7 +521,7 @@ Inputs
   }
   &.style-3{
     background: @white;
-    margin-bottom: 25px;
+    margin-top: 25px;
     .roundedcorners(5px);
     border: 1px solid @light-border;
     .box-shadow(0 2px 1px darken(@light-gray-color, 2%));
@@ -533,17 +538,17 @@ Inputs
         background: lighten(@success-50, 5%);
         color: @success-700;
       }
-
     }
     > label{
       position: absolute;
       width: auto;
-      top: -6px;
+      top: -9px;
       left: 8px;
       line-height: 1;
       height: auto;
       background: @white;
-      padding: 0 5px;
+      padding: 3px 8px;
+      .roundedcorners(20px);
     }
     p{
       &.desc{
@@ -571,9 +576,11 @@ Inputs
       }
     }
     &.heading-input-wapper{
+      padding: 0 0 1px;
       p{
         &.desc{
           padding: 6px;
+          .roundedcorners(0 0 5px 5px);
           border-top: 1px solid @light-border;
         }
       }

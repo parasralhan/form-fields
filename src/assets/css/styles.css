@@ -380,6 +380,15 @@ Inputs
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.input-wrapper input:focus,
+.input-wrapper select:focus,
+.input-wrapper textarea:focus {
+  -o-box-shadow: none;
+  -ms-box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .input-wrapper select {
   width: 75%;
   float: none;
@@ -387,7 +396,7 @@ Inputs
   margin: 0 0 0 0;
   display: inline-block;
 }
-.input-wrapper button {
+.input-wrapper > .button {
   cursor: pointer;
   margin-left: 0;
   background: #f4f4f4;
@@ -411,19 +420,19 @@ Inputs
   border-left-width: 1px;
   background: #ffffff;
 }
-.input-wrapper button span.text {
+.input-wrapper > .button span.text {
   display: none;
 }
-.input-wrapper button i {
+.input-wrapper > .button i {
   font-size: 15px;
 }
-.input-wrapper button.remove i {
+.input-wrapper > .button.remove i {
   color: #e57373;
 }
-.input-wrapper button.add i {
+.input-wrapper > .button.add i {
   color: #4caf50;
 }
-.input-wrapper button:focus {
+.input-wrapper > .button:focus {
   outline: none;
 }
 .input-wrapper.additional-options select {
@@ -520,8 +529,9 @@ Inputs
 .input-wrapper.multi-text-input-wapper ul.values-entered.has-values {
   display: block;
   background: #f4f4f4;
-  margin: 0 -2px;
+  margin: 3px -2px 15px;
   width: calc(100% + 4px);
+  border: 1px dashed #dddddd;
 }
 .input-wrapper.multi-text-input-wapper ul.values-entered li {
   list-style: none;
@@ -591,25 +601,6 @@ Inputs
   -webkit-border-radius: 21px 0 0 21px;
   -moz-border-radius: 21px 0 0 21px;
   border-radius: 21px 0 0 21px;
-}
-.input-wrapper.editor-input-wrapper label {
-  background: #446677;
-  color: #ffffff;
-  border-color: #446677;
-  width: 100%;
-  margin-bottom: 3px;
-}
-.input-wrapper.editor-input-wrapper button {
-  width: auto;
-}
-.input-wrapper.editor-input-wrapper input,
-.input-wrapper.editor-input-wrapper textarea {
-  float: none !important;
-  width: auto !important;
-}
-.input-wrapper.editor-input-wrapper textarea {
-  width: 100% !important;
-  border-color: #dddddd;
 }
 .input-wrapper input.radio-input,
 .input-wrapper input.checkbox-input {
@@ -786,12 +777,13 @@ Inputs
 .input-wrapper.style-3 select {
   width: 100% !important;
 }
-.input-wrapper.style-2 button,
-.input-wrapper.style-3 button {
+.input-wrapper.style-2 > .button,
+.input-wrapper.style-3 > .button {
   top: 30px;
   right: 10px;
   position: absolute;
   height: 28px;
+  line-height: 27px;
   border: 1px solid #dddddd;
 }
 .input-wrapper.style-2 p.desc,
@@ -872,7 +864,7 @@ Inputs
 }
 .input-wrapper.style-3 {
   background: #ffffff;
-  margin-bottom: 25px;
+  margin-top: 25px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -886,15 +878,15 @@ Inputs
   box-shadow: 0 2px 1px #efefef;
   padding: 15px 10px 10px;
 }
-.input-wrapper.style-3 > button {
+.input-wrapper.style-3 > .button {
   top: 15px;
 }
-.input-wrapper.style-3 > button.remove {
+.input-wrapper.style-3 > .button.remove {
   border-color: #f1b4b4;
   background: #ffffff;
   color: #d32f2f;
 }
-.input-wrapper.style-3 > button.add {
+.input-wrapper.style-3 > .button.add {
   border-color: #b6dfb8;
   background: #fafdfa;
   color: #388e3c;
@@ -902,12 +894,17 @@ Inputs
 .input-wrapper.style-3 > label {
   position: absolute;
   width: auto;
-  top: -6px;
+  top: -9px;
   left: 8px;
   line-height: 1;
   height: auto;
   background: #ffffff;
-  padding: 0 5px;
+  padding: 3px 8px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
 }
 .input-wrapper.style-3 p.desc {
   border-width: 0;
@@ -936,8 +933,16 @@ Inputs
   padding-left: 0;
   border-width: 0 0 1px 0;
 }
+.input-wrapper.style-3.heading-input-wapper {
+  padding: 0 0 1px;
+}
 .input-wrapper.style-3.heading-input-wapper p.desc {
   padding: 6px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
   border-top: 1px solid #dddddd;
 }
 .input-wrapper.style-3.textarea-input-wapper label {

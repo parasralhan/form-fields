@@ -37,7 +37,6 @@ class Select extends Input_Abstract {
         }
         ?>
       </select> 
-      <div class="clear"></div>
     <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
     </div>
 

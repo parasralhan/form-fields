@@ -498,7 +498,8 @@ jQuery(function ($) {
       return Inputs;
     }( )),
     chosen: function ( $wrapper ) {
-      var $input_wrapper;
+      var $input_wrapper,
+          is_wrapper = $wrapper ? true : false;
       $wrapper = $wrapper || $( 'body' );
       if ($wrapper.is('.multi-select-input-wapper')) {
         $input_wrapper = $wrapper;
@@ -507,9 +508,19 @@ jQuery(function ($) {
       }
       return {
         activate: function () {
-          if (!$input_wrapper.is( ':hidden' )) {
-            $input_wrapper.find( 'select' ).chosen();
-          };
+          if (!is_wrapper) {
+            $input_wrapper.each(function () {
+              var $this = $(this);
+              if (!$this.is( ':hidden' )) {
+                $this.find( 'select' ).chosen();
+              }
+            });
+          } else {
+            if (!$input_wrapper.is( ':hidden' )) {
+              $input_wrapper.find( 'select' ).chosen();
+            }
+          }
+          
         },
         deactivate: function () {
           $input_wrapper.find( '.chosen-container' ).remove();
@@ -595,7 +606,7 @@ jQuery(function ($) {
   inputs.search_icon();
   inputs.calendar.text();
   inputs.calendar.multi_text();
-  inputs.handle_input_fields.init();
+  inputs.handle_input_fields.init();  
   inputs.chosen().activate();
   
   $( document.body ).on( 'mouseenter', '.multi-select-input-wapper', function ( e ) {

@@ -31,7 +31,6 @@ class Multi_Text extends Input_Abstract {
       <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
       <ul class="values-entered">
       </ul>
-      <div class="clear"></div>
     </div>
 
     <?php
