@@ -17,17 +17,17 @@ $inputs = [
   'text' => [
     'id' => 'text',
     'placeholder' => 'Hello',
-   // 'desc' => 'Description Here'
+   'desc' => 'Description Here'
   ],
   'textarea' => [
     'id' => 'textarea',
     'placeholder' => 'Write Something',
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
   'multi-text' => [
     'id' => 'multi-text-input',
     'placeholder' => 'Write something & hit enter',
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
   'select' => [
     'id' => 'select-input',
@@ -36,7 +36,7 @@ $inputs = [
       'hello' => 'Hello',
       'world' => 'World',
     ],
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
   'multi-select' => [
     'id' => 'multi-select-input',
@@ -45,7 +45,7 @@ $inputs = [
       'hello' => 'Hello',
       'world' => 'World',
     ],
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
   'radio' => [
     'id' => 'radio-input',
@@ -54,11 +54,11 @@ $inputs = [
       'hello' => 'Hello',
       'world' => 'World',
     ],
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
   'checkbox' => [
     'id' => 'checkbox-input',
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
   'calendar' => [
     'id' => 'calendar',
@@ -68,22 +68,22 @@ $inputs = [
   'multi-text-calendar' => [
     'id' => 'multiple-dates',
     'placeholder' => 'Select Date',
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
   'color' => [
     'id' => 'color-input',
     'placeholder' => '#dddddd',
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
   'icon' => [
     'id' => 'icon-input',
     'placeholder' => 'Select icon',
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
   'heading' => [
     'id' => 'heading-input',
     'value' => 'Section Heading',
-    // 'desc' => 'Description Here'
+    'desc' => 'Description Here'
   ],
 ];
 

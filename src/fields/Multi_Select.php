@@ -15,7 +15,7 @@ class Multi_Select extends Input_Abstract {
     ob_start();
     ?>
 
-    <div class="input-wrapper multi-select-input-wapper" data-showif='<?php echo $this->_conditional_data(); ?>'>
+    <div class="bonzer-inputs input-wrapper multi-select-input-wapper" data-showif='<?php echo $this->_conditional_data(); ?>'>
 
       <label for="<?php echo $this->_id; ?>"><?php echo $this->_label; ?></label>
       <select name="<?php echo $this->_name; ?>" id="<?php echo $this->_id; ?>" class="multiselect" data-select="multiple" multiple data-placeholder="Choose..." <?php echo $this->_additional_attrs; ?> data-inputtype="select">
@@ -37,6 +37,7 @@ class Multi_Select extends Input_Abstract {
     <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
       <input type="hidden" name="<?php echo $this->_name; ?>" id="<?php echo $this->_id; ?>" class="input" value="<?php echo $this->_value; ?>" data-inputtype="select">
       <button class="remove button"><i class="fa fa-times-circle"></i> Remove</button>
+      <div class="clear"></div>
     </div>
 
     <?php

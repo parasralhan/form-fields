@@ -48,6 +48,8 @@ ul.bonzer-inputs-all-icons li.icons-search-form input {
   -moz-border-radius: 40px;
   border-radius: 40px;
   height: 40px;
+  padding: 0 15px !important;
+  border-width: 1px !important;
   max-width: 95% !important;
   width: 500px !important;
   display: inline-block;
@@ -301,7 +303,7 @@ Tooltips
 /*===============================================
 Inputs
 =================================================*/
-.input-wrapper {
+.input-wrapper.bonzer-inputs {
   clear: both;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -320,19 +322,23 @@ Inputs
   position: relative;
   min-height: 34px;
 }
-.input-wrapper * {
+.input-wrapper.bonzer-inputs * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.input-wrapper.hidden {
+.input-wrapper.bonzer-inputs .clear {
+  clear: both;
+  display: block;
+}
+.input-wrapper.bonzer-inputs.hidden {
   display: none !important;
 }
-.input-wrapper h3 {
+.input-wrapper.bonzer-inputs h3 {
   margin: 0;
   padding: 10px;
 }
-.input-wrapper p.desc {
+.input-wrapper.bonzer-inputs p.desc {
   margin: 0;
   background: #fafafa;
   color: #888888;
@@ -340,16 +346,18 @@ Inputs
   clear: both;
   font-size: 11px;
   padding: 2px 5px;
+  float: left;
+  width: calc(100% + 4px);
 }
-.input-wrapper a.close-popup {
+.input-wrapper.bonzer-inputs a.close-popup {
   right: 90px !important;
-  top: 9px !important;
+  top: 6px !important;
   color: #f44336 !important;
 }
-.input-wrapper label {
+.input-wrapper.bonzer-inputs label {
   width: calc(25% - 2px);
   float: left;
-  margin: 0 2px 2px 0;
+  margin: 0 2px 0 0;
   font-weight: bold;
   padding: 0 15px;
   left: 0;
@@ -364,9 +372,9 @@ Inputs
   height: 28px;
   line-height: 28px;
 }
-.input-wrapper input,
-.input-wrapper select,
-.input-wrapper textarea {
+.input-wrapper.bonzer-inputs input,
+.input-wrapper.bonzer-inputs select,
+.input-wrapper.bonzer-inputs textarea {
   width: calc(75% - 41px);
   margin: 0;
   padding: 0 10px;
@@ -380,23 +388,23 @@ Inputs
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.input-wrapper input:focus,
-.input-wrapper select:focus,
-.input-wrapper textarea:focus {
+.input-wrapper.bonzer-inputs input:focus,
+.input-wrapper.bonzer-inputs select:focus,
+.input-wrapper.bonzer-inputs textarea:focus {
   -o-box-shadow: none;
   -ms-box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.input-wrapper select {
+.input-wrapper.bonzer-inputs select {
   width: 75%;
   float: none;
   padding: 0 5px;
   margin: 0 0 0 0;
   display: inline-block;
 }
-.input-wrapper > .button {
+.input-wrapper.bonzer-inputs > .button {
   cursor: pointer;
   margin-left: 0;
   background: #f4f4f4;
@@ -420,26 +428,26 @@ Inputs
   border-left-width: 1px;
   background: #ffffff;
 }
-.input-wrapper > .button span.text {
+.input-wrapper.bonzer-inputs > .button span.text {
   display: none;
 }
-.input-wrapper > .button i {
+.input-wrapper.bonzer-inputs > .button i {
   font-size: 15px;
 }
-.input-wrapper > .button.remove i {
+.input-wrapper.bonzer-inputs > .button.remove i {
   color: #e57373;
 }
-.input-wrapper > .button.add i {
+.input-wrapper.bonzer-inputs > .button.add i {
   color: #4caf50;
 }
-.input-wrapper > .button:focus {
+.input-wrapper.bonzer-inputs > .button:focus {
   outline: none;
 }
-.input-wrapper.additional-options select {
+.input-wrapper.bonzer-inputs.additional-options select {
   width: calc(75% - 60px);
 }
-.input-wrapper.additional-options .add-option,
-.input-wrapper.additional-options .remove-options {
+.input-wrapper.bonzer-inputs.additional-options .add-option,
+.input-wrapper.bonzer-inputs.additional-options .remove-options {
   width: 28px;
   height: 28px;
   border: 1px solid #4caf50;
@@ -451,15 +459,15 @@ Inputs
   float: left;
   cursor: pointer;
 }
-.input-wrapper.additional-options .add-option i,
-.input-wrapper.additional-options .remove-options i {
+.input-wrapper.bonzer-inputs.additional-options .add-option i,
+.input-wrapper.bonzer-inputs.additional-options .remove-options i {
   color: #ffffff;
 }
-.input-wrapper.additional-options .remove-options {
+.input-wrapper.bonzer-inputs.additional-options .remove-options {
   background: #ff8a65;
   border-color: #ff5722;
 }
-.input-wrapper.additional-options .response {
+.input-wrapper.bonzer-inputs.additional-options .response {
   position: absolute;
   right: 72px;
   top: 0;
@@ -470,10 +478,10 @@ Inputs
   display: none;
   padding: 0 5px;
 }
-.input-wrapper .chosen-container-multi {
+.input-wrapper.bonzer-inputs .chosen-container-multi {
   width: 75% !important;
 }
-.input-wrapper .chosen-container-multi .chosen-choices {
+.input-wrapper.bonzer-inputs .chosen-container-multi .chosen-choices {
   border: 1px solid #dddddd;
   -o-box-shadow: none;
   -ms-box-shadow: none;
@@ -482,11 +490,11 @@ Inputs
   box-shadow: none;
   background: transparent;
 }
-.input-wrapper .chosen-container-multi .chosen-choices li.search-field input[type=text] {
+.input-wrapper.bonzer-inputs .chosen-container-multi .chosen-choices li.search-field input[type=text] {
   height: 24px;
   min-height: 24px;
 }
-.input-wrapper .chosen-container-multi .chosen-choices li.search-choice {
+.input-wrapper.bonzer-inputs .chosen-container-multi .chosen-choices li.search-choice {
   background: #607d8b;
   color: #ffffff;
   border: none;
@@ -501,22 +509,22 @@ Inputs
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.input-wrapper .chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+.input-wrapper.bonzer-inputs .chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
   background: transparent;
 }
-.input-wrapper .chosen-container-multi .chosen-choices li.search-choice .search-choice-close:before {
+.input-wrapper.bonzer-inputs .chosen-container-multi .chosen-choices li.search-choice .search-choice-close:before {
   content: "\f00d";
   font: normal normal normal 12px/1 FontAwesome;
   color: #ffffff;
 }
-.input-wrapper.checkbox-input-wapper label {
+.input-wrapper.bonzer-inputs.checkbox-input-wapper label {
   height: 28px;
   float: left;
 }
-.input-wrapper.multi-select-input-wapper .remove {
+.input-wrapper.bonzer-inputs.multi-select-input-wapper .remove {
   display: none;
 }
-.input-wrapper.multi-text-input-wapper ul.values-entered {
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered {
   padding: 10px 0;
   margin: 0;
   position: relative;
@@ -526,26 +534,26 @@ Inputs
   width: 100%;
   display: none;
 }
-.input-wrapper.multi-text-input-wapper ul.values-entered.has-values {
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered.has-values {
   display: block;
   background: #f4f4f4;
-  margin: 3px -2px 15px;
+  margin: 3px -2px 0;
   width: calc(100% + 4px);
   border: 1px dashed #dddddd;
 }
-.input-wrapper.multi-text-input-wapper ul.values-entered li {
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered li {
   list-style: none;
   margin: 5px 2px;
   line-height: 1;
   max-height: 21px;
   float: left;
 }
-.input-wrapper.multi-text-input-wapper ul.values-entered li.sortable-placeholder {
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered li.sortable-placeholder {
   background: yellow;
   min-width: 150px;
   height: 21px;
 }
-.input-wrapper.multi-text-input-wapper ul.values-entered li p {
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered li p {
   padding: 1px 53px 1px 28px;
   background: #546e7a;
   -ms-border-radius: 21px;
@@ -559,14 +567,14 @@ Inputs
   margin: 0;
   line-height: 19px;
 }
-.input-wrapper.multi-text-input-wapper ul.values-entered li p i {
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered li p i {
   cursor: pointer;
   color: #ffffff;
   margin-right: 3px;
 }
-.input-wrapper.multi-text-input-wapper ul.values-entered li p i.move-item,
-.input-wrapper.multi-text-input-wapper ul.values-entered li p i.item-index,
-.input-wrapper.multi-text-input-wapper ul.values-entered li p i.remove-item {
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered li p i.move-item,
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered li p i.item-index,
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered li p i.remove-item {
   background: #78909c;
   padding: 0;
   position: absolute;
@@ -583,7 +591,7 @@ Inputs
   text-align: center;
   margin: 0;
 }
-.input-wrapper.multi-text-input-wapper ul.values-entered li p i.item-index {
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered li p i.item-index {
   right: auto;
   left: 0px;
   font-style: normal;
@@ -593,7 +601,7 @@ Inputs
   -moz-border-radius: 21px 0 0 21px;
   border-radius: 21px 0 0 21px;
 }
-.input-wrapper.multi-text-input-wapper ul.values-entered li p i.remove-item {
+.input-wrapper.bonzer-inputs.multi-text-input-wapper ul.values-entered li p i.remove-item {
   right: 22px;
   cursor: pointer;
   -ms-border-radius: 21px 0 0 21px;
@@ -602,13 +610,13 @@ Inputs
   -moz-border-radius: 21px 0 0 21px;
   border-radius: 21px 0 0 21px;
 }
-.input-wrapper input.radio-input,
-.input-wrapper input.checkbox-input {
+.input-wrapper.bonzer-inputs input.radio-input,
+.input-wrapper.bonzer-inputs input.checkbox-input {
   width: auto;
   float: none;
   display: none !important;
 }
-.input-wrapper input.radio-input {
+.input-wrapper.bonzer-inputs input.radio-input {
   width: 0;
   height: 0;
   min-height: 0;
@@ -619,47 +627,48 @@ Inputs
   opacity: 0;
   position: absolute;
 }
-.input-wrapper input.checkbox-input {
+.input-wrapper.bonzer-inputs input.checkbox-input {
   display: inline-block !important;
   margin: 5px 15px 7px;
   min-height: 15px;
 }
-.input-wrapper .options {
+.input-wrapper.bonzer-inputs .options {
   width: 73%;
-  margin-left: 5px;
+  margin-left: 0;
+  float: left;
   display: block;
 }
-.input-wrapper .options label {
+.input-wrapper.bonzer-inputs .options label {
   background: #ffffff !important;
-  color: #607d8b !important;
-  border: 1px solid #cbd4d9;
-  padding: 0 10px;
-  margin: 0 0 !important;
+  color: #777777 !important;
+  border: 1px solid #cccccc;
+  -o-box-shadow: none;
+  -ms-box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 0 8px;
+  margin: 0 !important;
   min-width: 100px;
   float: none;
   display: inline-block;
   width: auto;
   cursor: pointer;
 }
-.input-wrapper .options input {
+.input-wrapper.bonzer-inputs .options input {
   display: none;
 }
-.input-wrapper .options input:checked + label {
-  border: 1px solid #607d8b !important;
-  background: #607d8b !important;
-  -o-box-shadow: 0 0 0 1px #eceff1 inset;
-  -ms-box-shadow: 0 0 0 1px #eceff1 inset;
-  -moz-box-shadow: 0 0 0 1px #eceff1 inset;
-  -webkit-box-shadow: 0 0 0 1px #eceff1 inset;
-  box-shadow: 0 0 0 1px #eceff1 inset;
+.input-wrapper.bonzer-inputs .options input:checked + label {
+  border: 1px solid #777777 !important;
+  background: #777777 !important;
   color: #ffffff !important;
 }
-.input-wrapper.color-input-wapper input {
+.input-wrapper.bonzer-inputs.color-input-wapper input {
   display: block !important;
   width: calc(75% - 83px);
   margin: 0 2px 0 0;
 }
-.input-wrapper.color-input-wapper .sp-replacer {
+.input-wrapper.bonzer-inputs.color-input-wapper .sp-replacer {
   width: 40px;
   float: left;
   height: 28px;
@@ -672,79 +681,78 @@ Inputs
   box-shadow: 0 0 0 1px #dddddd inset;
   background: #ffffff;
 }
-.input-wrapper.color-input-wapper .sp-replacer .sp-preview {
+.input-wrapper.bonzer-inputs.color-input-wapper .sp-replacer .sp-preview {
   height: 18px;
   border: 1px solid #ffffff;
   width: 20px;
   margin: 0;
   float: left;
 }
-.input-wrapper.color-input-wapper .sp-replacer .sp-dd {
+.input-wrapper.bonzer-inputs.color-input-wapper .sp-replacer .sp-dd {
   width: 12px;
   text-align: right;
 }
-.input-wrapper.textarea-input-wapper {
+.input-wrapper.bonzer-inputs.textarea-input-wapper {
   min-height: 69px;
 }
-.input-wrapper.textarea-input-wapper label {
+.input-wrapper.bonzer-inputs.textarea-input-wapper label {
   min-height: 63px;
   padding: 0 15px;
   line-height: 63px;
 }
-.input-wrapper.textarea-input-wapper textarea {
+.input-wrapper.bonzer-inputs.textarea-input-wapper textarea {
   font-family: "Open Sans", Arial;
   padding: 5px 10px;
   font-size: 13px;
   min-height: 63px;
 }
-.input-wrapper.textarea-input-wapper button {
+.input-wrapper.bonzer-inputs.textarea-input-wapper button {
   padding: 17px 5px;
   min-height: 67px;
   top: 0;
   right: 2px;
 }
-.input-wrapper.heading-input-wapper {
+.input-wrapper.bonzer-inputs.heading-input-wapper {
   background: #f4f4f4;
 }
-.input-wrapper.icon-input-wapper .input {
-  width: calc(75% - 73px) !important;
+.input-wrapper.bonzer-inputs.icon-input-wapper .input {
+  width: calc(75% - 73px);
   margin-right: 2px;
 }
-.input-wrapper.icon-input-wapper .icon-holder {
+.input-wrapper.bonzer-inputs.icon-input-wapper .icon-holder {
   width: 30px;
   margin-right: 2px;
   float: left;
   text-align: center;
-  line-height: 25px;
+  line-height: 28px;
   background: #ffffff;
   border: 1px solid #dddddd;
   color: #3949ab;
   height: 28px;
-  padding: 7px 0;
+  padding: 0;
 }
-.input-wrapper.icon-input-wapper .icon-holder img {
+.input-wrapper.bonzer-inputs.icon-input-wapper .icon-holder img {
   max-height: 18px;
   width: auto;
 }
-.input-wrapper.icon-input-wapper .icon-holder i {
+.input-wrapper.bonzer-inputs.icon-input-wapper .icon-holder i {
   position: static;
   margin: 0;
 }
-.input-wrapper.icon-input-wapper .icon-holder i.arrow:after {
+.input-wrapper.bonzer-inputs.icon-input-wapper .icon-holder i.arrow:after {
   display: none;
 }
-.input-wrapper.icon-input-wapper.heading-input-wapper {
+.input-wrapper.bonzer-inputs.icon-input-wapper.heading-input-wapper {
   padding: 0;
 }
-.input-wrapper.style-1 p.desc {
-  margin: 0 -2px;
+.input-wrapper.bonzer-inputs.style-1 p.desc {
+  margin: 2px -2px 0;
 }
-.input-wrapper.style-1.checkbox-input-wapper > label {
+.input-wrapper.bonzer-inputs.style-1.checkbox-input-wapper > label {
   padding-left: 15px;
 }
-.input-wrapper.style-2,
-.input-wrapper.style-3 {
-  float: left;
+.input-wrapper.bonzer-inputs.style-2,
+.input-wrapper.bonzer-inputs.style-3 {
   width: 100%;
   margin-bottom: 5px;
   padding: 2px 10px 10px;
@@ -752,8 +760,8 @@ Inputs
   border-bottom: 2px solid #dddddd;
   background: #f4f4f4;
 }
-.input-wrapper.style-2 > label,
-.input-wrapper.style-3 > label {
+.input-wrapper.bonzer-inputs.style-2 > label,
+.input-wrapper.bonzer-inputs.style-3 > label {
   padding: 0;
   background: #f4f4f4;
   border-width: 0;
@@ -765,20 +773,20 @@ Inputs
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.input-wrapper.style-2 input,
-.input-wrapper.style-3 input,
-.input-wrapper.style-2 select,
-.input-wrapper.style-3 select,
-.input-wrapper.style-2 textarea,
-.input-wrapper.style-3 textarea {
+.input-wrapper.bonzer-inputs.style-2 input,
+.input-wrapper.bonzer-inputs.style-3 input,
+.input-wrapper.bonzer-inputs.style-2 select,
+.input-wrapper.bonzer-inputs.style-3 select,
+.input-wrapper.bonzer-inputs.style-2 textarea,
+.input-wrapper.bonzer-inputs.style-3 textarea {
   width: 100%;
 }
-.input-wrapper.style-2 select,
-.input-wrapper.style-3 select {
+.input-wrapper.bonzer-inputs.style-2 select,
+.input-wrapper.bonzer-inputs.style-3 select {
   width: 100% !important;
 }
-.input-wrapper.style-2 > .button,
-.input-wrapper.style-3 > .button {
+.input-wrapper.bonzer-inputs.style-2 > .button,
+.input-wrapper.bonzer-inputs.style-3 > .button {
   top: 30px;
   right: 10px;
   position: absolute;
@@ -786,83 +794,85 @@ Inputs
   line-height: 27px;
   border: 1px solid #dddddd;
 }
-.input-wrapper.style-2 p.desc,
-.input-wrapper.style-3 p.desc {
+.input-wrapper.bonzer-inputs.style-2 p.desc,
+.input-wrapper.bonzer-inputs.style-3 p.desc {
   padding: 4px 6px 6px;
   background: #e8e8e8;
   color: #666666;
   line-height: 1;
+  width: 100%;
   position: relative;
   top: 1px;
 }
-.input-wrapper.style-2.textarea-input-wapper label,
-.input-wrapper.style-3.textarea-input-wapper label {
+.input-wrapper.bonzer-inputs.style-2.textarea-input-wapper label,
+.input-wrapper.bonzer-inputs.style-3.textarea-input-wapper label {
   min-height: 16px;
   line-height: 28px;
 }
-.input-wrapper.style-2.textarea-input-wapper > button,
-.input-wrapper.style-3.textarea-input-wapper > button {
+.input-wrapper.bonzer-inputs.style-2.textarea-input-wapper > button,
+.input-wrapper.bonzer-inputs.style-3.textarea-input-wapper > button {
   min-height: 63px;
 }
-.input-wrapper.style-2.icon-input-wapper .input,
-.input-wrapper.style-3.icon-input-wapper .input {
+.input-wrapper.bonzer-inputs.style-2.icon-input-wapper .input,
+.input-wrapper.bonzer-inputs.style-3.icon-input-wapper .input {
   width: calc(100% - 74px) !important;
 }
-.input-wrapper.style-2.icon-input-wapper ul.bonzer-inputs-all-icons,
-.input-wrapper.style-3.icon-input-wapper ul.bonzer-inputs-all-icons {
+.input-wrapper.bonzer-inputs.style-2.icon-input-wapper ul.bonzer-inputs-all-icons,
+.input-wrapper.bonzer-inputs.style-3.icon-input-wapper ul.bonzer-inputs-all-icons {
   top: 100%;
 }
-.input-wrapper.style-2.icon-input-wapper a.close-popup,
-.input-wrapper.style-3.icon-input-wapper a.close-popup {
+.input-wrapper.bonzer-inputs.style-2.icon-input-wapper a.close-popup,
+.input-wrapper.bonzer-inputs.style-3.icon-input-wapper a.close-popup {
   right: 95px !important;
-  top: auto !important;
-  bottom: 18px;
+  top: 34px !important;
+  bottom: auto;
 }
-.input-wrapper.style-2 .chosen-container-multi,
-.input-wrapper.style-3 .chosen-container-multi {
+.input-wrapper.bonzer-inputs.style-2 .chosen-container-multi,
+.input-wrapper.bonzer-inputs.style-3 .chosen-container-multi {
   width: 100% !important;
   background: #ffffff;
 }
-.input-wrapper.style-2.color-input-wapper input,
-.input-wrapper.style-3.color-input-wapper input {
+.input-wrapper.bonzer-inputs.style-2.color-input-wapper input,
+.input-wrapper.bonzer-inputs.style-3.color-input-wapper input {
   width: calc(100% - 84px);
 }
-.input-wrapper.style-2.checkbox-input-wapper,
-.input-wrapper.style-3.checkbox-input-wapper {
+.input-wrapper.bonzer-inputs.style-2.checkbox-input-wapper,
+.input-wrapper.bonzer-inputs.style-3.checkbox-input-wapper {
   padding: 2px 10px;
 }
-.input-wrapper.style-2.checkbox-input-wapper label,
-.input-wrapper.style-3.checkbox-input-wapper label {
+.input-wrapper.bonzer-inputs.style-2.checkbox-input-wapper label,
+.input-wrapper.bonzer-inputs.style-3.checkbox-input-wapper label {
   width: 100%;
   padding-left: 25px;
 }
-.input-wrapper.style-2.checkbox-input-wapper label:before,
-.input-wrapper.style-3.checkbox-input-wapper label:before,
-.input-wrapper.style-2.checkbox-input-wapper label:after,
-.input-wrapper.style-3.checkbox-input-wapper label:after {
+.input-wrapper.bonzer-inputs.style-2.checkbox-input-wapper label:before,
+.input-wrapper.bonzer-inputs.style-3.checkbox-input-wapper label:before,
+.input-wrapper.bonzer-inputs.style-2.checkbox-input-wapper label:after,
+.input-wrapper.bonzer-inputs.style-3.checkbox-input-wapper label:after {
   left: 0;
   top: 6px;
 }
-.input-wrapper.style-2.radio-input-wapper .options,
-.input-wrapper.style-3.radio-input-wapper .options {
+.input-wrapper.bonzer-inputs.style-2.radio-input-wapper .options,
+.input-wrapper.bonzer-inputs.style-3.radio-input-wapper .options {
   width: 100%;
   margin-left: 0;
 }
-.input-wrapper.style-2.radio-input-wapper .options label,
-.input-wrapper.style-3.radio-input-wapper .options label {
+.input-wrapper.bonzer-inputs.style-2.radio-input-wapper .options label,
+.input-wrapper.bonzer-inputs.style-3.radio-input-wapper .options label {
   width: auto;
+  margin-bottom: 2px !important;
 }
-.input-wrapper.style-2.heading-input-wapper,
-.input-wrapper.style-3.heading-input-wapper {
+.input-wrapper.bonzer-inputs.style-2.heading-input-wapper,
+.input-wrapper.bonzer-inputs.style-3.heading-input-wapper {
   padding: 0;
 }
-.input-wrapper.style-2.checkbox-input-wapper {
+.input-wrapper.bonzer-inputs.style-2.checkbox-input-wapper {
   padding-bottom: 0;
 }
-.input-wrapper.style-2.checkbox-input-wapper p.desc {
+.input-wrapper.bonzer-inputs.style-2.checkbox-input-wapper p.desc {
   margin: 0 -10px;
 }
-.input-wrapper.style-3 {
+.input-wrapper.bonzer-inputs.style-3 {
   background: #ffffff;
   margin-top: 25px;
   -ms-border-radius: 5px;
@@ -878,26 +888,27 @@ Inputs
   box-shadow: 0 2px 1px #efefef;
   padding: 15px 10px 10px;
 }
-.input-wrapper.style-3 > .button {
+.input-wrapper.bonzer-inputs.style-3 > .button {
   top: 15px;
 }
-.input-wrapper.style-3 > .button.remove {
+.input-wrapper.bonzer-inputs.style-3 > .button.remove {
   border-color: #f1b4b4;
   background: #ffffff;
   color: #d32f2f;
 }
-.input-wrapper.style-3 > .button.add {
+.input-wrapper.bonzer-inputs.style-3 > .button.add {
   border-color: #b6dfb8;
   background: #fafdfa;
   color: #388e3c;
 }
-.input-wrapper.style-3 > label {
+.input-wrapper.bonzer-inputs.style-3 > label {
   position: absolute;
   width: auto;
   top: -9px;
   left: 8px;
   line-height: 1;
   height: auto;
+  color: #455a64;
   background: #ffffff;
   padding: 3px 8px;
   -ms-border-radius: 20px;
@@ -906,7 +917,7 @@ Inputs
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
-.input-wrapper.style-3 p.desc {
+.input-wrapper.bonzer-inputs.style-3 p.desc {
   border-width: 0;
   margin: 0;
   padding: 3px 6px 6px;
@@ -914,29 +925,29 @@ Inputs
   color: #777777;
   line-height: 1;
 }
-.input-wrapper.style-3 input,
-.input-wrapper.style-3 select,
-.input-wrapper.style-3 textarea,
-.input-wrapper.style-3 .chosen-container-multi {
+.input-wrapper.bonzer-inputs.style-3 input,
+.input-wrapper.bonzer-inputs.style-3 select,
+.input-wrapper.bonzer-inputs.style-3 textarea,
+.input-wrapper.bonzer-inputs.style-3 .chosen-container-multi {
   border-width: 0 0 1px 0;
   padding: 0;
   line-height: 26px;
 }
-.input-wrapper.style-3 input:focus,
-.input-wrapper.style-3 select:focus,
-.input-wrapper.style-3 textarea:focus,
-.input-wrapper.style-3 .chosen-container-multi:focus {
+.input-wrapper.bonzer-inputs.style-3 input:focus,
+.input-wrapper.bonzer-inputs.style-3 select:focus,
+.input-wrapper.bonzer-inputs.style-3 textarea:focus,
+.input-wrapper.bonzer-inputs.style-3 .chosen-container-multi:focus {
   outline: none;
   border-bottom-color: #455a64;
 }
-.input-wrapper.style-3 .chosen-container-multi .chosen-choices {
+.input-wrapper.bonzer-inputs.style-3 .chosen-container-multi .chosen-choices {
   padding-left: 0;
   border-width: 0 0 1px 0;
 }
-.input-wrapper.style-3.heading-input-wapper {
+.input-wrapper.bonzer-inputs.style-3.heading-input-wapper {
   padding: 0 0 1px;
 }
-.input-wrapper.style-3.heading-input-wapper p.desc {
+.input-wrapper.bonzer-inputs.style-3.heading-input-wapper p.desc {
   padding: 6px;
   -ms-border-radius: 0 0 5px 5px;
   -o-border-radius: 0 0 5px 5px;
@@ -945,35 +956,39 @@ Inputs
   border-radius: 0 0 5px 5px;
   border-top: 1px solid #dddddd;
 }
-.input-wrapper.style-3.textarea-input-wapper label {
+.input-wrapper.bonzer-inputs.style-3.textarea-input-wapper label {
   line-height: 1;
 }
-.input-wrapper.style-3.icon-input-wapper .icon-holder {
+.input-wrapper.bonzer-inputs.style-3.icon-input-wapper .icon-holder {
   padding: 3px;
   border-width: 0 0 1px;
 }
-.input-wrapper.style-3.icon-input-wapper .icon-holder i {
+.input-wrapper.bonzer-inputs.style-3.icon-input-wapper .icon-holder i {
   font-size: 22px;
 }
-.input-wrapper.style-3.icon-input-wapper .icon-holder img {
+.input-wrapper.bonzer-inputs.style-3.icon-input-wapper .icon-holder img {
   max-height: 23px;
 }
-.input-wrapper.style-3.checkbox-input-wapper {
+.input-wrapper.bonzer-inputs.style-3.icon-input-wapper a.close-popup {
+  top: 18px !important;
+}
+.input-wrapper.bonzer-inputs.style-3.checkbox-input-wapper {
   min-height: 38px;
 }
-.input-wrapper.style-3.checkbox-input-wapper label {
+.input-wrapper.bonzer-inputs.style-3.checkbox-input-wapper label {
   position: absolute;
   width: auto;
   padding-left: 5px;
 }
-.input-wrapper.style-3.checkbox-input-wapper label:before,
-.input-wrapper.style-3.checkbox-input-wapper label:after {
+.input-wrapper.bonzer-inputs.style-3.checkbox-input-wapper label:before,
+.input-wrapper.bonzer-inputs.style-3.checkbox-input-wapper label:after {
   left: 4px;
   top: 18px;
 }
-.input-wrapper.style-3.checkbox-input-wapper p.desc {
+.input-wrapper.bonzer-inputs.style-3.checkbox-input-wapper p.desc {
   line-height: 1;
   margin: 34px -10px 0;
+  width: calc(100% + 20px);
   position: relative;
   top: 2px;
   -ms-border-radius: 0 0 5px;

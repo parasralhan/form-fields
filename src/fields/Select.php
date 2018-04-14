@@ -23,7 +23,7 @@ class Select extends Input_Abstract {
     ob_start();
     ?>
 
-    <div class="input-wrapper select-input-wapper" data-inbuilt-options="<?php echo count($this->_options); ?>" data-showif='<?php echo $this->_conditional_data(); ?>'>
+    <div class="bonzer-inputs input-wrapper select-input-wapper" data-inbuilt-options="<?php echo count($this->_options); ?>" data-showif='<?php echo $this->_conditional_data(); ?>'>
 
       <label for="<?php echo $this->_id; ?>"><?php echo $this->_label; ?></label>
       <select id="<?php echo $this->_id; ?>" name="<?php echo $this->_name; ?>" class="input" data-inputtype="select" <?php echo $this->_additional_attrs; ?>>
@@ -38,6 +38,7 @@ class Select extends Input_Abstract {
         ?>
       </select> 
     <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
+    <div class="clear"></div>
     </div>
 
     <?php    

@@ -5,8 +5,8 @@ jQuery(function ($) {
     remove_text: (function ( $ ) {
       var instance,
           remove_text = function(){
-            $(document.body).on('click', '.input-wrapper button.remove', function ( e ) {
-              $( this ).parents( '.input-wrapper' ).find( '.input, input' ).val( '' ).change();
+            $(document.body).on('click', '.bonzer-inputs.input-wrapper button.remove', function ( e ) {
+              $( this ).parents( '.bonzer-inputs.input-wrapper' ).find( '.input, input' ).val( '' ).change();
               e.preventDefault();
               e.stopPropagation();
             });
@@ -200,7 +200,7 @@ jQuery(function ($) {
                 changeYear: true,
                 "dateFormat": 'dd-M-yy',
                 onSelect: function () {
-                  $( this ).parents( '.input-wrapper' ).find( '.add' ).trigger( 'click' );
+                  $( this ).parents( '.bonzer-inputs.input-wrapper' ).find( '.add' ).trigger( 'click' );
                 }
               } );
             } );
@@ -337,7 +337,6 @@ jQuery(function ($) {
                   $input.val( '' );
                 }, 10 );
               }
-              ;
               e.preventDefault();
               e.stopPropagation();
             },
@@ -347,13 +346,12 @@ jQuery(function ($) {
                       index = $li.index(),
                       id = $wrapper.find( '.input.all-values' ).attr( 'name' );
               this.items[id].splice( index, 1 );
-              $wrapper.find( '.input.all-values' ).val( this.items[id].join( '|||' ) ).change();
+              $wrapper.find( '.input.all-values' ).val( this.items[id].join( '|' ) ).change();
               $li.remove();
               this._reindex_items( $wrapper );
               if (this.items[id].length === 0) {
                 $wrapper.find( '.values-entered' ).removeClass( 'has-values' );
               }
-              ;
               e.preventDefault();
               e.stopPropagation();
             },
@@ -369,8 +367,8 @@ jQuery(function ($) {
                   this_obj.items[id] = $item.parent( 'ul' ).find( 'li' ).map( function ( index, li ) {
                     return $( li ).data( 'value' );
                   } ).toArray();
-                  $item.parents( '.input-wrapper' ).find( '.input.all-values' ).val( this_obj.items[id].join( '|||' ) ).change();
-                  this_obj._reindex_items( $item.parents( '.input-wrapper' ) );
+                  $item.parents( '.bonzer-inputs.input-wrapper' ).find( '.input.all-values' ).val( this_obj.items[id].join( '|||' ) ).change();
+                  this_obj._reindex_items( $item.parents( '.bonzer-inputs.input-wrapper' ) );
                 }
               } );
             },
@@ -465,7 +463,7 @@ jQuery(function ($) {
          * @return {void}
          */
         conditional: function () {
-          var $input_wrapper = $( ".input-wrapper" );
+          var $input_wrapper = $( ".bonzer-inputs.input-wrapper" );
           $input_wrapper.each( function () {
             var $this = $( this );
             /*==========================================================
@@ -583,7 +581,7 @@ jQuery(function ($) {
     },
     tooltip: function(){
       $.widget.bridge('uitooltip', $.ui.tooltip);
-      $( '.input-wrapper .button.remove, .input-wrapper .button.add' ).uitooltip({
+      $( '.bonzer-inputs.input-wrapper .button.remove, .bonzer-inputs.input-wrapper .button.add' ).uitooltip({
         position: {
           my: "center bottom-0",
           at: "center top",
@@ -623,7 +621,7 @@ jQuery(function ($) {
   } );
   
   (function add_style_type(){
-    $(".input-wrapper").each(function () {
+    $(".bonzer-inputs.bonzer-inputs.input-wrapper").each(function () {
       $(this).addClass(bonzer_inputs.style_type);
     });
   }());

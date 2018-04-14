@@ -22,7 +22,7 @@ class Multi_Text_Calendar extends Input_Abstract {
   protected function _build_input() {
     ob_start();
     ?>
-    <div class="input-wrapper multi-text-input-wapper multi-text-calendar-input-wapper" data-showif='<?php echo $this->_conditional_data(); ?>'>
+    <div class="bonzer-inputs input-wrapper multi-text-input-wapper multi-text-calendar-input-wapper" data-showif='<?php echo $this->_conditional_data(); ?>'>
       <label for="<?php echo $this->_id; ?>"><?php echo $this->_label; ?></label>
       <input type="hidden" id="<?php echo $this->_id; ?>_hidden" name="<?php echo $this->_name; ?>" class="input all-values" value="<?php echo $this->_value; ?>">
       <input type="text" id="<?php echo $this->_id; ?>" class="input text calendar-input" placeholder="<?php echo $this->_placeholder; ?>" <?php echo $this->_additional_attrs; ?>>
@@ -42,7 +42,7 @@ class Multi_Text_Calendar extends Input_Abstract {
         }
         ?>
       </ul>
-      <div class="clearfix"></div>
+      <div class="clear"></div>
     </div>
 
     <?php

@@ -94,9 +94,11 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
    * Head Code Fragment
    * --------------------------------------------------------------------------
    * 
+   * @param array $replacements
+   * 
    * @Return Assets_Loader 
    * */
-  public function load_head_fragment() {
+  public function load_head_fragment( array $replacements = null) {
     if ( $this->_fragments_loaded[ 'head' ] ) {
       return $this;
     }
@@ -105,6 +107,9 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
     foreach ( $assets_css as $key => $src ) {
       if ( in_array( $key, $this->_Configurer->get_css_excluded() ) ) {
         continue;
+      }
+      if ($replacements && array_key_exists($key, $replacements)) {
+        $src = $replacements[$key];
       }
       ?>
       <link id="<?php echo $key; ?>" rel="stylesheet" href="<?php echo $src; ?>">
@@ -128,9 +133,11 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
    * Code fragment to be inserted just before the body tag closes
    * --------------------------------------------------------------------------
    * 
+   * @param array $replacements
+   * 
    * @Return Assets_Loader 
    * */
-  public function load_before_body_close_fragment() {
+  public function load_before_body_close_fragment(array $replacements = null) {
     if ( $this->_fragments_loaded[ 'body' ] ) {
       return $this;
     }
@@ -139,6 +146,9 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
     foreach ( $assets_js as $key => $src ) {
       if ( in_array( $key, $this->_Configurer->get_js_excluded() ) ) {
         continue;
+      }
+      if ($replacements && array_key_exists($key, $replacements)) {
+        $src = $replacements[$key];
       }
       ?>
       <script id="<?php echo $key; ?>" src="<?php echo $src; ?>"></script>

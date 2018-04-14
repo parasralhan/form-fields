@@ -24,7 +24,7 @@ class Icon extends Input_Abstract {
 
     ob_start();
     ?>
-    <div class="input-wrapper icon-input-wapper" data-showif='<?php echo $this->_conditional_data(); ?>'>
+    <div class="bonzer-inputs input-wrapper icon-input-wapper" data-showif='<?php echo $this->_conditional_data(); ?>'>
       <label for="<?php echo $this->_id; ?>"><?php echo $this->_label; ?></label>
       <input type="text" id="<?php echo $this->_id; ?>" name="<?php echo $this->_name; ?>" class="icon-picker input" value="<?php echo $this->_value; ?>" placeholder="<?php echo $this->_placeholder; ?>" <?php echo $this->_additional_attrs; ?>>
       <span class="icon-holder">
@@ -35,6 +35,7 @@ class Icon extends Input_Abstract {
       </button>
       <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
       <a class="close-popup" style="position:absolute;top:6px;right:6px;cursor:pointer;"><i class="fa fa-times"></i></a>
+      <div class="clear"></div>
     </div>
 
     <?php
