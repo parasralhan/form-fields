@@ -10,12 +10,13 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable" : true,
     "require": {
         "php": ">=5.4.0",
         "oyejorge/less.php": "v1.7.0.14",
-        "bonzer/exceptions": "dev-master",
-        "bonzer/ioc-container": "dev-master",
-        "bonzer/events": "dev-master"
+        "bonzer/exceptions": "v0.0.1",
+        "bonzer/ioc-container": "v0.0.1",
+        "bonzer/events": "v0.0.1"
     },
     "autoload": {
         "files": ["src/bootstrap.php"],
