@@ -648,9 +648,9 @@ Inputs
   -webkit-box-shadow: none;
   box-shadow: none;
   padding: 0 8px;
-  margin: 0 !important;
+  margin: 0 2px 4px !important;
   min-width: 100px;
-  float: none;
+  float: left;
   display: inline-block;
   width: auto;
   cursor: pointer;
@@ -750,6 +750,10 @@ Inputs
 }
 .input-wrapper.bonzer-inputs.style-1.checkbox-input-wapper > label {
   padding-left: 15px;
+}
+.input-wrapper.bonzer-inputs.style-1.multi-text-input-wapper ul.values-entered.has-values {
+  width: 100%;
+  margin: 3px 0 0;
 }
 .input-wrapper.bonzer-inputs.style-2,
 .input-wrapper.bonzer-inputs.style-3 {

@@ -309,9 +309,9 @@ Inputs
       border: 1px solid lighten(@grey-300, 20%);
       .box-shadow(none);
       padding: 0 8px;
-      margin: 0 !important;
+      margin: 0 2px 4px !important;
       min-width: 100px;
-      float: none;
+      float: left;
       display: inline-block;
       width: auto;
       cursor: pointer;
@@ -418,6 +418,16 @@ Inputs
     &.checkbox-input-wapper{
       > label{
         padding-left: 15px;
+      }
+    }
+    &.multi-text-input-wapper{
+      ul{
+        &.values-entered{
+          &.has-values{
+            width: 100%;
+            margin: 3px 0 0;
+          }
+        }
       }
     }
   }
