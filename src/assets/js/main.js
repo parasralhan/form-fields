@@ -331,8 +331,7 @@ jQuery(function ($) {
                 this._render_items( $wrapper );
                 if (!$ul.hasClass( 'has-values' )) {
                   $ul.addClass( 'has-values' );
-                }
-                ;
+                };
                 setTimeout( function () {
                   $input.val( '' );
                 }, 10 );
@@ -367,17 +366,10 @@ jQuery(function ($) {
                   this_obj.items[id] = $item.parent( 'ul' ).find( 'li' ).map( function ( index, li ) {
                     return $( li ).data( 'value' );
                   } ).toArray();
-                  $item.parents( '.bonzer-inputs.input-wrapper' ).find( '.input.all-values' ).val( this_obj.items[id].join( '|||' ) ).change();
+                  $item.parents( '.bonzer-inputs.input-wrapper' ).find( '.input.all-values' ).val( this_obj.items[id].join( '|' ) ).change();
                   this_obj._reindex_items( $item.parents( '.bonzer-inputs.input-wrapper' ) );
                 }
               } );
-            },
-            _append_item: function ( $wrapper, value ) {
-              var $items_holder = $wrapper.find( '.values-entered' ),
-                      item = new Item( value, this.items.length ),
-                      $item = item.html();
-              $wrapper.find( '.input.all-values' ).val( this.items.join( '|||' ) );
-              $items_holder.append( $item );
             },
             _reindex_items: function ( $wrapper ) {
               $wrapper.find( '.values-entered li' ).each( function ( index, li ) {
