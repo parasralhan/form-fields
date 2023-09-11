@@ -111,7 +111,7 @@ abstract class Input_Abstract {
 
     $this->_name = $this->_set_attr( $args[ 'name' ] );
     $this->_id = $this->_set_attr( $args[ 'id' ] );
-    $this->_label = $this->_set_attr( $args[ 'label' ] );
+    $this->_label = $args[ 'label' ];
     $this->_desc = isset( $args[ 'desc' ] ) ? $args[ 'desc' ] : '';
     $this->_value = isset( $args[ 'value' ] ) ? $args[ 'value' ] : '';
     $this->_placeholder = isset( $args[ 'placeholder' ] ) ? $args[ 'placeholder' ] : '';

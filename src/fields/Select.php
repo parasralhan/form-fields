@@ -25,20 +25,25 @@ class Select extends Input_Abstract {
 
     <div class="bonzer-inputs input-wrapper select-input-wapper" data-inbuilt-options="<?php echo count($this->_options); ?>" data-showif='<?php echo $this->_conditional_data(); ?>'>
 
-      <label for="<?php echo $this->_id; ?>"><?php echo $this->_label; ?></label>
-      <select id="<?php echo $this->_id; ?>" name="<?php echo $this->_name; ?>" class="input" data-inputtype="select" <?php echo $this->_additional_attrs; ?>>
-        <?php        
-        if ( !empty( array_keys( $this->_options )[ 0 ] ) ) {
-          echo '<option value="">'.__('Select...', 'charm').'</option>';
-        }     
-        foreach ( $this->_options as $option_Key => $option_val ) {
-          $selected = ($this->_value == $option_Key) ? 'selected="selected"' : '';
-          echo "<option value='{$option_Key}' {$selected}>{$option_val}</option>";
-        }
-        ?>
-      </select> 
-    <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
-    <div class="clear"></div>
+      <label for="<?php echo $this->_id; ?>">
+        <?php echo $this->_label; ?>
+        <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
+      </label>
+
+      <div>
+        <select id="<?php echo $this->_id; ?>" name="<?php echo $this->_name; ?>" class="input" data-inputtype="select" <?php echo $this->_additional_attrs; ?>>
+          <?php        
+          if ( !empty( array_keys( $this->_options )[ 0 ] ) ) {
+            echo '<option value="">'.__('Select...', 'charm').'</option>';
+          }     
+          foreach ( $this->_options as $option_Key => $option_val ) {
+            $selected = ($this->_value == $option_Key) ? 'selected="selected"' : '';
+            echo "<option value='{$option_Key}' {$selected}>{$option_val}</option>";
+          }
+          ?>
+        </select> 
+      </div>
+      
     </div>
 
     <?php    

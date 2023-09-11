@@ -12,23 +12,24 @@ Checkbox
   [type="checkbox"]:not(:checked) + label,
   [type="checkbox"]:checked + label{
     position: relative;
-    padding-left: 25px;
+    padding-left: 0;
     cursor: pointer;
   }
 
   /* checkbox aspect */
   [type="checkbox"]:not(:checked) + label:before,
   [type="checkbox"]:checked + label:before{
+    .roundedcorners(20px);
+    color: @grey-500;
     content: '';
     font: normal normal normal 18px/1 FontAwesome;
     position: absolute;
-    color: @slate-500;
     line-height: 1;
     top: 5px; 
-    right: -25px;
+    right: -15px;
     width: 15px; 
     height: 15px;
-    .roundedcorners(20px);
+    font-size: 22px;
   }
   [type="checkbox"]:checked + label:before{
     content: '\f096';
@@ -44,13 +45,14 @@ Checkbox
     content: "\f14a";
     position: absolute;
     top: 5px; 
-    right: -25px;
+    right: -15px;
     line-height: 1;
-    color: @slate-500;
+    color: @grey-500;
     display: inline-block;
     width: 15px; 
     height: 15px;
     .roundedcorners(20px);
+    font-size: 22px;
   }
   /* checked mark aspect changes */
   [type="checkbox"]:not(:checked) + label:after{

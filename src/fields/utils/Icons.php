@@ -131,19 +131,19 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
       }
       echo '</ul></li>';
 
-      // Vector
-      foreach ( $this->_vector_icons as $icon_type => $icons_set ) {
-        $label = ucfirst( $icon_type );
-        $classification = strtolower( str_replace( ' ', '-', $icon_type ) );
-        echo "<li class='icons-wrapper' data-target-id='{$classification}-type-icons'><span>{$label}</span>"
-        . "<ul class='icons'>";
-        foreach ( $icons_set as $icon_key => $synoniums ) {
-          $image_name = $this->_sprite_mappings[ $icon_type ];
-          echo "<li data-comes-under='{$classification}' title='{$icon_key}'><a href='javascript:viod()' data-target='{$classification}' data-icon-class='vector {$icon_key}' data-synoniums='" . json_encode( $synoniums ) . "'><img src='" . MY_CDN . "/vectors/{$image_name}.svg#{$icon_key}'></a></li>";
-        }
-        echo "</ul>"
-        . "</li>";
-      }
+      // // Vector
+      // foreach ( $this->_vector_icons as $icon_type => $icons_set ) {
+      //   $label = ucfirst( $icon_type );
+      //   $classification = strtolower( str_replace( ' ', '-', $icon_type ) );
+      //   echo "<li class='icons-wrapper' data-target-id='{$classification}-type-icons'><span>{$label}</span>"
+      //   . "<ul class='icons'>";
+      //   foreach ( $icons_set as $icon_key => $synoniums ) {
+      //     $image_name = $this->_sprite_mappings[ $icon_type ];
+      //     echo "<li data-comes-under='{$classification}' title='{$icon_key}'><a href='javascript:viod()' data-target='{$classification}' data-icon-class='vector {$icon_key}' data-synoniums='" . json_encode( $synoniums ) . "'><img src='" . MY_CDN . "/vectors/{$image_name}.svg#{$icon_key}'></a></li>";
+      //   }
+      //   echo "</ul>"
+      //   . "</li>";
+      // }
 
       // Fontello
       foreach ( $this->_fontello_icons as $icon_type => $icons_set ) {
@@ -197,6 +197,9 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * @Return array 
    * */
   public function vector_icons() {
+
+    return [];
+
     $icons[ 'basic' ] = [
       'agenda' => [
         'agenda',
@@ -557,8 +560,6 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * @Return array 
    * */
   public function fontello_icons() {
-
-    return [ ];
 
     $icons[ 'Arrows' ] = [
       'arrow icon-arrows-double-up' => [

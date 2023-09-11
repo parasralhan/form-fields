@@ -10,122 +10,125 @@
 Inputs
 =================================================*/
 .input-wrapper.bonzer-inputs{
-  clear: both;
+  .flex();
   .box-sizing(border-box);
   font-family: @base-font;
-  padding:2px;  
-  font-size: 13px;
   background: lighten(@light-gray-color, 5%);
-  margin: 0 0 15px;
-  .box-shadow(0 2px 3px 0 @light-gray-color);
-  border: 1px solid @light-border;
+  border-bottom: 1px solid @light-border;
+  font-size: 13px;
+  margin: 25px 0;
   position:relative;
-  min-height: 34px;
+  min-height: 38px;
+  padding-bottom: 25px;
+
+  > div {
+    .flex();
+    width: calc(~"100% - 250px");
+    min-width: calc(~"100% - 250px");
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    > button {
+      background: @light-gray-color;
+      border: 1px solid @light-border;
+      .roundedcorners(5px) !important;
+      .box-shadow(none) !important;
+      border: 1px solid @light-border !important;
+      background: @white;
+      cursor: pointer;
+      margin-left: 0;
+      width: 40px;
+      position: absolute;
+      right: 1px;
+      top: 0px;
+      line-height: 36px;
+      height: 38px;
+
+      span{
+        &.text{
+          display: none;
+        }
+      }
+      i{
+        font-size: 15px;
+      }
+      &.remove{
+        i{
+          color: @danger-300;
+        }
+      }
+      &.add{
+        i{
+          color: @success-500;
+        }
+      }
+      &:focus{
+        outline: none;
+      }
+    }
+  }
+
   *{
     .box-sizing(border-box);
   }
-  .clear{
-    clear: both;
-    display: block;
-  }
+
   &.hidden{
     display: none !important;
   }
+
   h3{
     margin: 0;
-    padding: 10px;
+    padding: 0;
+    min-width: 100%;
   }
-  p{
+
+  p {
     &.desc{
-      margin: 0;
-      background: @grey-50;
-      color: @grey-400;
-      border-top: 1px solid @light-border;
+      margin: 1px 0 0;
+      color: @grey-300;
+      font-weight: normal;
       clear: both;
-      font-size: 11px;
-      padding: 2px 5px;
-      float: left;
-      width: calc(~"100% + 4px");
+      font-size: 13px;
     }
   }
+
   a{
     &.close-popup{
       right: 90px !important;
-      top: 6px !important;
+      top: 9px !important;
       color: @danger-500 !important;
     }
   }
   label{
-    width: calc(~"25% - 2px");
-    float: left;
-    margin: 0 2px 0 0;
-    font-weight: bold;
-    padding: 0 15px;
-    left: 0;
-    font-size: 13px;
     color: @dark-color;
-    .box-shadow(0 0 0 1px @light-border inset);
-    background: @light-gray-color;
-    height: 28px;
-    line-height: 28px;
+    width: 250px;
+    min-width: 250px;
+    margin: 0 2px 2px 0;
+    font-weight: bold;
+    left: 0;
+    font-size: 15px;
   }
+
   input, select, textarea{
-    width:calc(~"75% - 41px");
+    width:calc(~"100% - 48px");
+    border: 1px solid @light-border;
+    background-color: @light-gray-color !important;
+    .box-shadow(none);
+    .roundedcorners(5px);
     margin: 0;
     padding: 0 10px;
-    border: 1px solid @light-border;
-    min-height: 28px;
+    min-height: 38px;
     display: block;
-    float: left;
-    .box-shadow(none);
-    &:focus{
-      .box-shadow(none);
-    }
   }  
   select{
-    width:75%;    
+    min-width: 100%;
+    width:100%;    
     float: none;
     padding: 0 5px;
     margin: 0 0 0 0;
     display: inline-block;
   }
-  > .button{
-    cursor: pointer;
-    margin-left: 0;
-    background: @light-gray-color;
-    border: 0 solid @light-border;
-    width: 40px;
-    position: absolute;
-    right: 1px;
-    top: 0px;
-    .roundedcorners(0) !important;
-    .box-shadow(none) !important;
-    line-height: 32px;
-    height: 32px;
-    border-left-width: 1px;
-    background: @white;
-    span{
-      &.text{
-        display: none;
-      }
-    }
-    i{
-      font-size: 15px;
-    }
-    &.remove{
-      i{
-        color: @danger-300;
-      }
-    }
-    &.add{
-      i{
-        color: @success-500;
-      }
-    }
-    &:focus{
-      outline: none;
-    }
-  }
+
   &.additional-options{
     select{
       width:calc(~"75% - 60px");
@@ -162,24 +165,29 @@ Inputs
     }
   }
   .chosen-container-multi{
-    width:75% !important;
+    width:100% !important;
+
     .chosen-choices{
+      .roundedcorners(5px);
+      background: @light-gray-color;
       border: 1px solid @light-border;
       .box-shadow(none);
-      background: transparent;
+      min-height: 38px;
       li{
         &.search-field{
           input[type=text]{
-            height: 24px;
-            min-height: 24px;
+            height: 38px;
+            min-height: 38px;
           }
         } 
+
         &.search-choice{
-          background: @slate-500;
+          background: @grey-500;
           color: @white;
           border: none;
           .box-shadow(none);
-          .roundedcorners(0);
+          .roundedcorners(5px);
+
           .search-choice-close{
             background: transparent;
             &:before{
@@ -190,12 +198,6 @@ Inputs
           }
         }
       }
-    }
-  }
-  &.checkbox-input-wapper{
-    label{
-      height: 28px;
-      float: left;
     }
   }
   &.multi-select-input-wapper{
@@ -214,39 +216,43 @@ Inputs
         min-height:100px;
         width: 100%;
         display:none;
+
         &.has-values{
           display: block;
           background: @light-gray-color;
-          margin: 3px -2px 0;
+          margin: 0 -2px;
           width: calc(~"100% + 4px");
-          border: 1px dashed @light-border;
         }
+
         li{
           list-style: none;
           margin: 5px 2px;
           line-height: 1;
           max-height: 21px;
           float: left;
+
           &.sortable-placeholder{
             background: yellow;
             min-width: 150px;
             height: 21px;
           }
+
           p{
             padding: 1px 53px 1px 28px;
-            background: @slate-600;
+            background: @grey-600;
             .roundedcorners(21px);
             color: @white;
             height: 21px;
             position: relative;
             margin: 0;
             line-height: 19px;
+
             i{
               cursor: pointer;
               color: @white;
               margin-right: 3px;
               &.move-item, &.item-index, &.remove-item{
-                background: @slate-400;
+                background: @grey-400;
                 padding: 0;
                 position: absolute;
                 .roundedcorners(0 21px 21px 0);
@@ -274,7 +280,27 @@ Inputs
         }
       }
     }
-  }  
+  }
+  &.editor-input-wrapper{
+    label{
+      background: transparent;
+      color: @white;
+      border-color: transparent;
+      width: 250px;
+      min-width: 250px;
+    }
+    button{
+      width: auto;
+    }
+    input, textarea{
+      float: none !important;
+      width: auto !important;
+    }
+    textarea{
+      width: 100% !important;
+      border-color: @light-border;
+    }
+  }
   input{
     &.radio-input, &.checkbox-input{
       width: auto;
@@ -299,48 +325,49 @@ Inputs
     }
   }
   .options{
-    width: 73%;
-    margin-left: 0;
-    float: left;
+    width: 100%;
     display: block;
-    label{
+
+    label {
+      .roundedcorners(5px);
       background: @white !important;
       color: @grey-500 !important;
       border: 1px solid lighten(@grey-300, 20%);
-      .box-shadow(none);
-      padding: 0 8px;
-      margin: 0 2px 4px !important;
+      padding: 6px 10px;
+      margin: 0 0 !important;
       min-width: 100px;
-      float: left;
+      float: none;
       display: inline-block;
       width: auto;
       cursor: pointer;
     }
     input{
-      display:none;
+
       &:checked + label{
         border: 1px solid @grey-500 !important;
         background: @grey-500 !important;
         color: @white !important;
       }
     }
-  }  
+  }
+
   &.color-input-wapper{
     input{
       display: block !important;
-      width: calc(~"75% - 83px");
+      width: calc(~"100% - 87px");
       margin: 0 2px 0 0;
     }
     .sp-replacer{
+      .roundedcorners(5px) !important;
+      .box-shadow(0 0 0 1px @light-border inset);
       width: 40px;
       float: left;
-      height: 28px;
+      height: 38px;
       margin: 0 2px 0 0;
       border: none;
-      .box-shadow(0 0 0 1px @light-border inset);
       background: @white;
       .sp-preview{
-        height: 18px;
+        height: 28px;
         border: 1px solid @white;
         width: 20px;
         margin: 0;
@@ -349,48 +376,128 @@ Inputs
       .sp-dd{
         width: 12px;
         text-align: right;
+        position: relative;
+        top: 5px;
       }
     }
   }
   &.textarea-input-wapper{
-    min-height: 69px;
-    label{
-      min-height: 63px;
-      padding: 0 15px;
-      line-height: 63px;
-    }
+    min-height: 67px;
+
     textarea{
       font-family: @base-font;
-      padding: 5px 10px;
-      font-size: 13px;
-      min-height: 63px;
+      font-size: 15px;
+      min-height: 100px;
+      padding: 10px;
+      
     }
     button{
       padding: 17px 5px;
-      min-height: 67px;
-      top: 0;
+      min-height: 65px;
+      top: 0px;
       right: 2px;
+      height: calc(~"100% - 25px");
     }
   }
   &.heading-input-wapper{
     background: @light-gray-color;
-  }  
+    padding: 15px;
+  }
+  &.upload-input-wapper, &.multi-upload-input-wapper{
+    .images-wrapper{
+      clear: both;
+      background: #f0f0ee;      
+      width: 100%;
+      margin-top: 2px;
+      text-align: center;           
+      width: 100%;
+      .image-wrapper{
+        display: inline-block;
+        position:relative;        
+        margin: 10px 10px 0;
+        padding: 1px;
+        float: left;
+        .roundedcorners(25px);
+        img{              
+          width: 50px;
+          height: 50px;
+          .roundedcorners(25px);
+          .box-shadow(~"0 0 0px 2px #fff, 0 0 2px 4px #ddd");
+        }
+        i.fa{
+          float: left;
+          position: absolute;
+          top: -4px;
+          background: rgba(45, 45, 45, 0.21);
+          width: 100%;
+          height: 100%;
+          border-radius: 50px;
+          padding: 14px 3px;
+          color: #FDFDFD;
+          font-size: 18px;
+          cursor: pointer;
+          left: 0;
+          top: 0;
+          text-align: center;
+          opacity:0;
+          .transition(all, 0.25s , ease-out);
+          &.move-img{
+            top: -8px;
+            right: -43px;
+            padding: 0;
+            display: inline-block;
+            opacity: 1;
+            width: auto;
+            height: auto;
+            background: transparent;
+            color: @dark-color;
+            cursor: move;
+          }
+        }
+        &:hover{
+          i.fa{
+            opacity:1;
+          }
+        }
+
+      }
+      .sortable-placeholder{
+        background: @orange-300;
+        width: 60px;
+        height: 60px;
+        float: left;
+        padding: 1px;
+        display: inline-block;
+        .box-shadow(~"0 0 0px 2px #fff, 0 0 2px 4px #ddd");
+      }
+    }
+  }
+  &.multi-upload-input-wapper{
+    .images-wrapper{
+      border: 1px dashed @grey-300;
+      margin-top: 5px; 
+      padding: 2px 0 2px 22px;
+      position: relative;
+      float: left;
+    }
+  } 
   &.icon-input-wapper{
     .input{
-      width: calc(~"75% - 73px");
+      width: calc(~"100% - 85px") !important;
       margin-right: 2px;
     }
     .icon-holder{
-      width: 30px;
+      .roundedcorners(5px);
+      width: 38px;
       margin-right: 2px;
       float: left;
       text-align: center;
-      line-height: 28px;
+      line-height: 25px;
       background: @white;
       border: 1px solid @light-border;
       color: @indigo-600;
-      height: 28px;
-      padding: 0;
+      height: 38px;
+      padding: 7px 0;
       img{
         max-height: 18px;
         width: auto;
@@ -410,28 +517,14 @@ Inputs
     }
   }
   &.style-1{
-    p{
-      &.desc{
-        margin: 2px -2px 0;
-      }
-    }
     &.checkbox-input-wapper{
       > label{
-        padding-left: 15px;
-      }
-    }
-    &.multi-text-input-wapper{
-      ul{
-        &.values-entered{
-          &.has-values{
-            width: 100%;
-            margin: 3px 0 0;
-          }
-        }
+        padding-left: 0;
       }
     }
   }
   &.style-2, &.style-3{
+    float: left;
     width: 100%;
     margin-bottom: 5px;
     padding: 2px 10px 10px;
@@ -452,12 +545,11 @@ Inputs
     select{
       width: 100% !important;
     }
-    > .button{
+    button{
       top: 30px;
       right: 10px;
       position: absolute;
       height: 28px;
-      line-height: 27px;
       border: 1px solid @light-border;
     }
     p{
@@ -466,7 +558,6 @@ Inputs
         background: darken(@grey-50, 7%);
         color: @grey-600;
         line-height: 1;
-        width: 100%;
         position: relative;
         top: 1px;
       }
@@ -489,8 +580,8 @@ Inputs
       }
       a.close-popup{
         right: 95px !important;
-        top: 34px !important;
-        bottom: auto;
+        top: auto !important;
+        bottom: 18px;
       }
     }
     .chosen-container-multi{
@@ -506,7 +597,6 @@ Inputs
       padding: 2px 10px;
       label{
         width: 100%;
-        padding-left: 25px;
         &:before, &:after{
           left: 0;
           top: 6px;
@@ -519,7 +609,6 @@ Inputs
         margin-left: 0;
         label{
           width: auto;
-          margin-bottom: 2px !important;
         }
       }
     }
@@ -527,7 +616,7 @@ Inputs
       padding: 0;
     }
   }
-  &.style-2{    
+  &.style-2{
     &.checkbox-input-wapper{
       padding-bottom: 0;
       p{
@@ -539,12 +628,12 @@ Inputs
   }
   &.style-3{
     background: @white;
-    margin-top: 25px;
+    margin-bottom: 15px;
     .roundedcorners(5px);
     border: 1px solid @light-border;
     .box-shadow(0 2px 1px darken(@light-gray-color, 2%));
     padding: 15px 10px 10px;
-    > .button{
+    > button{
       top: 15px;
       &.remove{
         border-color: lighten(@danger-300, 15%);
@@ -556,18 +645,17 @@ Inputs
         background: lighten(@success-50, 5%);
         color: @success-700;
       }
+
     }
     > label{
       position: absolute;
       width: auto;
-      top: -9px;
+      top: -6px;
       left: 8px;
       line-height: 1;
       height: auto;
-      color: @slate-700;
       background: @white;
-      padding: 3px 8px;
-      .roundedcorners(20px);
+      padding: 0 5px;
     }
     p{
       &.desc{
@@ -585,7 +673,7 @@ Inputs
       line-height: 26px;
       &:focus{
         outline: none;
-        border-bottom-color: @slate-700;
+        border-bottom-color: @grey-700;
       }
     }
     .chosen-container-multi{
@@ -595,11 +683,9 @@ Inputs
       }
     }
     &.heading-input-wapper{
-      padding: 0 0 1px;
       p{
         &.desc{
           padding: 6px;
-          .roundedcorners(0 0 5px 5px);
           border-top: 1px solid @light-border;
         }
       }
@@ -620,11 +706,6 @@ Inputs
           max-height: 23px;
         }
       }
-      a{
-        &.close-popup{
-          top: 18px !important;
-        }
-      }
     }
     &.color-input-wapper{
       .sp-replacer{
@@ -633,7 +714,6 @@ Inputs
     &.checkbox-input-wapper{
       min-height: 38px;
       label{
-        position: absolute;
         width: auto;
         padding-left: 5px;
         &:before, &:after{
@@ -645,7 +725,6 @@ Inputs
         &.desc{
           line-height: 1;
           margin: 34px -10px 0;
-          width: calc(~"100% + 20px");
           position: relative;
           top: 2px;
           .roundedcorners( 0 0 5px);
