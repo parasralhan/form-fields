@@ -1,27 +1,27 @@
 {
-    "name": "bonzer/inputs",
-    "description": "A form inputs library",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Paras Ralhan",
-            "email": "ralhan.paras@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable" : true,
-    "require": {
-        "php": ">=5.4.0",
-        "oyejorge/less.php": "v1.7.0.14",
-        "bonzer/exceptions": "v0.0.1",
-        "bonzer/ioc-container": "v0.0.1",
-        "bonzer/events": "v0.0.1"
+  "name": "bonzer/inputs",
+  "description": "A form inputs library",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Paras Ralhan",
+      "email": "ralhan.paras@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable" : true,
+  "require": {
+    "php": ">=5.4.0",
+    "oyejorge/less.php": "v1.7.0.14",
+    "bonzer/exceptions": "v0.0.1",
+    "bonzer/ioc-container": "v0.0.2",
+    "bonzer/events": "v0.0.1"
     },
     "autoload": {
-        "files": ["src/bootstrap.php"],
-        "psr-4": {
-            "Bonzer\\Inputs\\": "src/"
-        }        
+      "files": ["src/bootstrap.php"],
+      "psr-4": {
+        "Bonzer\\Inputs\\": "src/"
+      }        
     }
-}
+  }
