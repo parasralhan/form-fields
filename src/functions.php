@@ -22,7 +22,7 @@ if ( !function_exists( 'isset_not_empty' ) ) {
     if ( !isset( $content ) ) {
       return FALSE;
     }
-    return (!empty( $content )) ? TRUE : FALSE;
+    return ( ! empty( $content ) ) ? TRUE : FALSE;
   }
 
 }

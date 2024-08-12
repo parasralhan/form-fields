@@ -27,22 +27,34 @@ class Multi_Text extends Input_Abstract {
 
       <label for="<?php echo $this->_id; ?>">
         <?php echo $this->_label; ?>
-        <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
+        <?php echo !empty( $this->_desc ) ? "<p class='desc'>{ $this->_desc }</p>" : ''; ?>
       </label> 
 
       <div>
-        <input type="hidden" id="<?php echo $this->_id; ?>_hidden" name="<?php echo $this->_name; ?>" class="input all-values" value="<?php echo $this->_value; ?>">
-        <input type="text" id="<?php echo $this->_id; ?>" class="input text" placeholder="<?php echo $this->_placeholder; ?>" <?php echo $this->_additional_attrs; ?>>
-        <button class="add button" title="Add" type="button"><i class="fa fa-plus-circle"></i> <span class="text">Add</span></button>
-        <ul class="values-entered"></ul>
-      </div>
+        <input type="hidden" 
+               id="<?php echo $this->_id; ?>_hidden" 
+               name="<?php echo $this->_name; ?>" 
+               class="input all-values" 
+               value="<?php echo $this->_value; ?>">
 
+        <input type="text" 
+               id="<?php echo $this->_id; ?>" 
+               class="input text" 
+               placeholder="<?php echo $this->_placeholder; ?>" 
+               <?php echo $this->_additional_attrs; ?> />
+
+        <button class="add button" 
+                title="Add" type="button">
+                  <i class="fa fa-plus-circle"></i> <span class="text">Add</span>
+        </button>
+
+        <ul class="values-entered"></ul>
+
+      </div>
     </div>
 
     <?php
-    $contents = ob_get_contents();
-    ob_end_clean();
-    return $contents;
+    return ob_get_clean();
 
   }
 

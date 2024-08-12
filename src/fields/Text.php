@@ -27,12 +27,24 @@ class Text extends Input_Abstract {
       
       <label for="<?php echo $this->_id; ?>">
         <?php echo $this->_label; ?>
-        <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
+        <?php echo !empty( $this->_desc ) ? "<p class='desc'>{ $this->_desc }</p>" : ''; ?>
       </label>
       
       <div>
-        <input type="text" id="<?php echo $this->_id; ?>" class="input" name="<?php echo $this->_name; ?>" value="<?php echo $this->_value; ?>" placeholder="<?php echo $this->_placeholder; ?>" <?php echo $this->_additional_attrs; ?>>
-        <button class="remove button" title="Remove" type="button"><i class="fa fa-times-circle"></i> <span class="text">Remove</span></button>
+        <input type="text" 
+               id="<?php echo $this->_id; ?>" 
+               class="input" 
+               name="<?php echo $this->_name; ?>" 
+               value="<?php echo $this->_value; ?>" 
+               placeholder="<?php echo $this->_placeholder; ?>" 
+               <?php echo $this->_additional_attrs; ?> />
+               
+        <button class="remove button" 
+                title="Remove" 
+                type="button">
+                  <i class="fa fa-times-circle"></i> <span class="text">Remove</span>
+        </button>
+
       </div>
       
       
@@ -40,9 +52,7 @@ class Text extends Input_Abstract {
     </div>
 
     <?php
-    $contents = ob_get_contents();
-    ob_end_clean();
-    return $contents;
+    return ob_get_clean();
 
   }
 

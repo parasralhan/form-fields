@@ -28,11 +28,18 @@ class Icon extends Input_Abstract {
 
       <label for="<?php echo $this->_id; ?>">
         <?php echo $this->_label; ?>
-        <?php echo (isset_not_empty( $this->_desc )) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
+        <?php echo !empty( $this->_desc ) ? "<p class='desc'>{ $this->_desc }</p>" : ''; ?>
       </label> 
       
       <div>
-        <input type="text" id="<?php echo $this->_id; ?>" name="<?php echo $this->_name; ?>" class="icon-picker input" value="<?php echo $this->_value; ?>" placeholder="<?php echo $this->_placeholder; ?>" <?php echo $this->_additional_attrs; ?>>
+        <input type="text" 
+               id="<?php echo $this->_id; ?>" 
+               name="<?php echo $this->_name; ?>" 
+               class="icon-picker input" 
+               value="<?php echo $this->_value; ?>" 
+               placeholder="<?php echo $this->_placeholder; ?>" 
+               <?php echo $this->_additional_attrs; ?> />
+
         <span class="icon-holder">
           <i class="fa"></i>
         </span>
@@ -42,19 +49,20 @@ class Icon extends Input_Abstract {
         </button>
 
         <a class="close-popup" style="position:absolute;top:6px;right:6px;cursor:pointer;"><i class="fa fa-times"></i></a>
+
       </div>
 
     </div>
 
     <?php
     if ( !static::$_icons_loaded ) {
+
       $this->_build_icons_html();
       static::$_icons_loaded = true;
+      
     }
 
-    $contents = ob_get_contents();
-    ob_end_clean();
-    return $contents;
+    return ob_get_clean();
   }
 
   /**
