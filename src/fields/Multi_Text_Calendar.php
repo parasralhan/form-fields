@@ -55,7 +55,7 @@ class Multi_Text_Calendar extends Input_Abstract {
             array_walk( $values, function( $value ) {
               ?>
                 <li class="inline" data-value="<?php echo $value; ?>">
-                  <p class="value"><?php fa_icon( 'times-circle' ); ?><?php echo $value; ?></p>
+                  <p class="value"><i class="fa fa-times-circle"></i><?php echo $value; ?></p>
                 </li>
               <?php
             } );
