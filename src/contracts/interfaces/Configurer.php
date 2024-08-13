@@ -15,37 +15,37 @@ interface Configurer {
    * Library Config
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function get_config();
 
   /**
-   * @Return bool 
+   * @return bool 
    * */
   public function get_load_assets_automatically();
 
   /**
-   * @Return array 
+   * @return array 
    * */
   public function get_css_excluded();
 
   /**
-   * @Return array 
+   * @return array 
    * */
   public function get_js_excluded();
 
   /**
-   * @Return string 
+   * @return string 
    * */
   public function get_env();
 
   /**
-   * @Return string 
+   * @return string 
    * */
   public function get_style();
 
   /**
-   * @Return bool 
+   * @return bool 
    * */
   public function get_is_admin();
 

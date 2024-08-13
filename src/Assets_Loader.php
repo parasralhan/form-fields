@@ -1,5 +1,4 @@
 <?php
-
 namespace Bonzer\Inputs;
 
 /**
@@ -14,9 +13,10 @@ use Bonzer\Inputs\config\Configurer as Inputs_Configurer,
     Less_Parser;
 
 use Bonzer\Inputs\contracts\interfaces\Configurer as Configurer_Interface,
+    Bonzer\Inputs\contracts\interfaces\Assets_Loader as Assets_Loader_Interface,
     Bonzer\Events\contracts\interfaces\Event as Event_Interface;
 
-class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader {
+class Assets_Loader implements Assets_Loader_Interface {
 
   /**
    * @var Assets_Loader
@@ -61,7 +61,7 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
    * @param Configurer_Interface $configurer
    * @param Event_Interface $event
    * 
-   * @Return Assets_Loader 
+   * @return Assets_Loader 
    * */
   protected function __construct( Configurer_Interface $configurer = NULL, Event_Interface $event = NULL ) {
 
@@ -85,7 +85,7 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
    * @param Configurer_Interface $configurer
    * @param Event_Interface $event
    * 
-   * @Return Assets_Loader 
+   * @return Assets_Loader 
    * */
   public static function get_instance( Configurer_Interface $configurer = NULL, Event_Interface $event = NULL ) {
 
@@ -103,7 +103,7 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
    * 
    * @param array $replacements
    * 
-   * @Return Assets_Loader 
+   * @return Assets_Loader 
    * */
   public function load_head_fragment( array $replacements = null) {
 
@@ -152,7 +152,7 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
    * 
    * @param array $replacements
    * 
-   * @Return Assets_Loader 
+   * @return Assets_Loader 
    * */
   public function load_before_body_close_fragment(array $replacements = null) {
 
@@ -202,7 +202,7 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
    * Load all Assets
    * --------------------------------------------------------------------------
    * 
-   * @Return void 
+   * @return void 
    * */
   public function load_all_fragments() {
     if ( $this->_fragments_loaded[ 'head' ] && $this->_fragments_loaded[ 'body' ] ) {
@@ -227,7 +227,7 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
    * @param string $from
    * @param string $to
    * 
-   * @Return void 
+   * @return void 
    * */
   protected function _complie_less( $from, $to ) {
 
@@ -243,7 +243,7 @@ class Assets_Loader implements \Bonzer\Inputs\contracts\interfaces\Assets_Loader
    * Assets loading status
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function get_fragments_loading_status() {
     return $this->_fragments_loaded;

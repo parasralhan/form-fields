@@ -154,7 +154,8 @@ ul.bonzer-inputs-all-icons li a {
   text-decoration: none;
   text-shadow: none;
 }
-ul.bonzer-inputs-all-icons li a i.fa {
+ul.bonzer-inputs-all-icons li a i.fa,
+ul.bonzer-inputs-all-icons li a i.arrow {
   font-size: 14px;
   line-height: 44px;
 }

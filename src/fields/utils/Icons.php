@@ -71,15 +71,16 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * 
    * @param Regex_Parser $regex_reader
    * 
-   * @Return Icons 
+   * @return Icons 
    * */
   public function __construct( Regex_Parser_Interface $regex_reader ) {
-    $this->_BASE_PATH = dirname( dirname( __DIR__ ) );
-    $this->_Regex_Parser = $regex_reader ?: new Regex_Parser();
-    $this->_fa_icons = $this->fa_icons();
-    $this->_vector_icons = $this->vector_icons();
+
+    $this->_BASE_PATH      = dirname( dirname( __DIR__ ) );
+    $this->_Regex_Parser   = $regex_reader ?: new Regex_Parser();
+    $this->_fa_icons       = $this->fa_icons();
+    $this->_vector_icons   = $this->vector_icons();
     $this->_fontello_icons = $this->fontello_icons();
-    $this->_icon_types = array_merge( ['Font Awesome' ], array_keys( $this->_fontello_icons ), array_keys( $this->_vector_icons ) );
+    $this->_icon_types     = array_merge( ['Font Awesome' ], array_keys( $this->_fontello_icons ), array_keys( $this->_vector_icons ) );
   }
 
   /**
@@ -89,12 +90,14 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * 
    * @param Regex_Parser $regex_reader
    * 
-   * @Return Icons 
+   * @return Icons 
    * */
   public static function get_instance( Regex_Parser $regex_reader ) {
+
     if ( static::$_instance ) {
       return static::$_instance;
     }
+
     return static::$_instance = new static( $regex_reader );
   }
 
@@ -105,58 +108,102 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * 
    * @param string $name
    * 
-   * @Return void 
-   * */
+   * @return void 
+   */
   public function html() {
     ?>
     <ul class="bonzer-inputs-all-icons original">
-      <li class='icons-search-form'>
-        <input type='text' placeholder='Search Icons'>
+
+      <li class="icons-search-form">
+        <input type="text" placeholder="Search Icons">
       </li>
 
-      <?php
-      echo "<li class='icon-types-wrapper'><ul class='icon-types'>";
-      foreach ( $this->_icon_types as $icontype ) {
-        $classification = strtolower( str_replace( ' ', '-', $icontype ) );
-        $label = ucwords( $icontype );
-        echo "<li data-classification='{$classification}'><a href='#' data-target='{$classification}'>{$label}</a></li>";
-      }
-      echo '</ul></li>';
+      <li class="icon-types-wrapper">
+        <ul class="icon-types">
+          <?php 
 
-      // Font Awesome
-      echo "<li class='icons-wrapper' data-target-id='font-awesome-type-icons'><span>Font Awesome</span><ul class='icons'>";
-      foreach ( $this->_fa_icons as $icon_class => $css_code ) {
-        $title = str_replace( 'fa-', '', $icon_class );
-        echo "<li data-comes-under='font-awesome' title='{$title}'><a href='javascript:viod()' data-css-code='{$css_code}' data-icon-class='{$icon_class}'><i class='fa {$icon_class}'></i></a></li>";
-      }
-      echo '</ul></li>';
+          foreach ( $this->_icon_types as $icontype ) {
 
-      // // Vector
-      // foreach ( $this->_vector_icons as $icon_type => $icons_set ) {
-      //   $label = ucfirst( $icon_type );
-      //   $classification = strtolower( str_replace( ' ', '-', $icon_type ) );
-      //   echo "<li class='icons-wrapper' data-target-id='{$classification}-type-icons'><span>{$label}</span>"
-      //   . "<ul class='icons'>";
-      //   foreach ( $icons_set as $icon_key => $synoniums ) {
-      //     $image_name = $this->_sprite_mappings[ $icon_type ];
-      //     echo "<li data-comes-under='{$classification}' title='{$icon_key}'><a href='javascript:viod()' data-target='{$classification}' data-icon-class='vector {$icon_key}' data-synoniums='" . json_encode( $synoniums ) . "'><img src='" . MY_CDN . "/vectors/{$image_name}.svg#{$icon_key}'></a></li>";
-      //   }
-      //   echo "</ul>"
-      //   . "</li>";
-      // }
+            $classification = strtolower( str_replace( ' ', '-', $icontype ) );
+            $label          = ucwords( $icontype );
+            ?>
 
-      // Fontello
+            <li data-classification="<?php echo $classification; ?>">
+              <a href="#" data-target="<?php echo $classification; ?>">
+                <?php echo $label; ?>
+              </a>
+            </li>
+
+            <?php
+          } 
+
+          ?>
+        </ul>
+      </li>
+
+      <li class="icons-wrapper" data-target-id="font-awesome-type-icons">
+
+        <span>Font Awesome</span>
+
+        <ul class="icons">
+
+          <?php 
+          foreach ( $this->_fa_icons as $icon_class => $css_code ) {
+
+            $title = str_replace( 'fa-', '', $icon_class );
+            ?>
+
+            <li data-comes-under="font-awesome" title="<?php echo $title; ?>">
+              <a href="javascript:void()" data-css-code="<?php echo $css_code; ?>" data-icon-class="<?php echo $icon_class; ?>">
+                <i class="fa <?php echo $icon_class; ?>"></i>
+              </a>
+            </li>
+
+            <?php
+          } 
+          ?>
+
+        </ul>
+
+      </li>
+
+      <?php 
       foreach ( $this->_fontello_icons as $icon_type => $icons_set ) {
-        $label = ucfirst( $icon_type );
+
+        $label          = ucfirst( $icon_type );
         $classification = strtolower( str_replace( ' ', '-', $icon_type ) );
-        echo "<li class='icons-wrapper' data-target-id='{$classification}-type-icons'><span>{$label}</span>"
-        . "<ul class='icons'>";
-        foreach ( $icons_set as $icon_key => $synoniums ) {
-          echo "<li data-comes-under='{$classification}'><a href='javascript:viod()' data-target='{$classification}' data-icon-class='{$icon_key} fontello' data-synoniums='" . json_encode( $synoniums ) . "'><i class='{$icon_key} fontello'></i></a></li>";
-        }
-        echo "</ul>"
-        . "</li>";
-      }
+        ?>
+
+        <li class="icons-wrapper" data-target-id="<?php echo $classification; ?>-type-icons">
+
+          <span><?php echo $label; ?></span>
+
+          <ul class="icons">
+
+            <?php 
+            foreach ( $icons_set as $icon_key => $synoniums ) {
+              ?>
+
+              <li data-comes-under="<?php echo $classification; ?>">
+
+                <a href="javascript:void()" 
+                   data-target="<?php echo $classification; ?>" 
+                   data-icon-class="<?php echo $icon_key; ?> fontello" 
+                   data-synoniums="<?php echo json_encode( $synoniums ); ?>"
+                >
+                  <i class="<?php echo $icon_key; ?> fontello"></i>
+                </a>
+
+              </li>
+
+              <?php
+            } 
+            ?>
+
+          </ul>
+        </li>
+        <?php
+      } 
       ?>
     </ul>
     <?php
@@ -167,34 +214,46 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * Font Awesome Icons
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
-   * */
+   * @return array 
+   */
   public function fa_icons() {
 
-    $this->_Regex_Parser->set_filepath( "{$this->_BASE_PATH}/assets/css/font-awesome.min.css" );
+    $this->_Regex_Parser->set_filepath("{$this->_BASE_PATH}/assets/css/font-awesome.min.css");
 
-    list($version) = $this->_Regex_Parser->read( '/Font\sAwesome\s([\d]\.[\d]\.[\d])\sby/' )->get( 1 );
+    list( $version ) = $this->_Regex_Parser
+                        ->read( '/Font\sAwesome\s([\d]\.[\d]\.[\d])\sby/' )
+                        ->get( 1 );
+
     $icons_identifier = 'font_awesome_icons';
 
     if ( !$this->_are_saved_icons_fresh( $icons_identifier, $version ) ) {
+
       $icons = $this->_get_saved_icons( $icons_identifier );
+
     } else {
-      $icons = $this->_Regex_Parser->read( $this->_regexes[ 'font_awesome' ] )->associate()->get( 1 );
+
+      $icons = $this->_Regex_Parser
+                ->read( $this->_regexes[ 'font_awesome' ] )
+                ->associate()
+                ->get( 1 );
+
       $this->_save_icons( $icons_identifier, $icons, $version );
     }
 
     if ( empty( $icons ) ) {
       $icons = $this->_default_fa_icons();
     }
+
     return $icons;
   }
+
 
   /**
    * --------------------------------------------------------------------------
    * Vector Icons
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function vector_icons() {
 
@@ -557,7 +616,7 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * Fontello Icons
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function fontello_icons() {
 
@@ -667,7 +726,7 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * Sprite Mappings
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function get_mappings() {
     return $this->_sprite_mappings;
@@ -678,7 +737,7 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * default Font Awesome Icons
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   protected function _default_fa_icons() {
     $icons = array(
@@ -1278,7 +1337,7 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * 
    * @param string $icons_identifier
    * 
-   * @Return bool 
+   * @return bool 
    * */
   protected function _icons_exists( $icons_identifier ) {
     $saved_icons = isset($_SESSION[ $icons_identifier ]) ? $_SESSION[ $icons_identifier ] : false;
@@ -1293,7 +1352,7 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * @param string $icons_identifier
    * @param string $version
    * 
-   * @Return bool 
+   * @return bool 
    * */
   protected function _are_saved_icons_fresh( $icons_identifier, $version ) {
     if ( !$this->_icons_exists( $icons_identifier ) ) {
@@ -1312,7 +1371,7 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * @param array $icons
    * @param string $version
    * 
-   * @Return bool 
+   * @return bool 
    * */
   protected function _save_icons( $icons_identifier, $icons, $version ) {
     $_SESSION[$icons_identifier] = [
@@ -1328,7 +1387,7 @@ class Icons implements \Bonzer\Inputs\contracts\interfaces\Icons{
    * 
    * @param string $icons_identifier
    * 
-   * @Return array 
+   * @return array 
    * */
   protected function _get_saved_icons( $icons_identifier ) {
     if ( $this->_icons_exists( $icons_identifier ) ) {

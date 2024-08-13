@@ -15,7 +15,7 @@ class Auth implements \Bonzer\Inputs\contracts\interfaces\Auth{
    * Checks whether the current user is Administrator or not flaged by Config
    * --------------------------------------------------------------------------
    * 
-   * @Return bool 
+   * @return bool 
    * */
   public static function is_admin(){
     $is_admin = Configurer::get_instance()->get_is_admin();

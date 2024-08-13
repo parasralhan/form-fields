@@ -10,16 +10,22 @@ trait Attr {
    * 
    * @param array $attrs
    * 
-   * @Return string 
+   * @return string 
    * */
   protected static function attr_builder( $attrs ) {
+
     if ( !empty( $attrs ) && count( $attrs ) > 0 ) {
+
       foreach ( $attrs as $key => $value ) {
-        $attr_str .= "{$key}='".esc_attr($value)."'";
+        $attr_str .= "{$key}='". $value ."'";
       }
+
     } else {
+
       $attr_str = '';
+
     }
+    
     return $attr_str;
   }
 
@@ -31,7 +37,7 @@ trait Attr {
    * @param array $defaults
    * @param array $args
    * 
-   * @Return void 
+   * @return void 
    * */
   protected static function parse_attrs( $defaults, $args ) {
     $args_parsed = [ ];

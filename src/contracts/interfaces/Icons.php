@@ -15,7 +15,7 @@ interface Icons {
    * 
    * @param string $name
    * 
-   * @Return void 
+   * @return void 
    * */
   public function html();
 
@@ -24,7 +24,7 @@ interface Icons {
    * Font Awesome Icons
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function fa_icons();
 
@@ -33,7 +33,7 @@ interface Icons {
    * Vector Icons
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function vector_icons();
 
@@ -42,7 +42,7 @@ interface Icons {
    * Sprite Mappings
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function get_mappings();
 
@@ -51,7 +51,7 @@ interface Icons {
    * Fontello Icons
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function fontello_icons();
 

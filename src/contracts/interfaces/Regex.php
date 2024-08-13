@@ -14,7 +14,7 @@ interface Regex {
    * 
    * @param string $filepath
    * 
-   * @Return Regex 
+   * @return Regex 
    * */
   public function set_filepath( $filepath );
 
@@ -25,7 +25,7 @@ interface Regex {
    * 
    * @param string $regex
    * 
-   * @Return void 
+   * @return void 
    * */
   public function read( $regex );
 
@@ -36,7 +36,7 @@ interface Regex {
    * 
    * @param int $index
    * 
-   * @Return array 
+   * @return array 
    * */
   public function get( $index = NULL );
 
@@ -45,7 +45,7 @@ interface Regex {
    * Builds Associative Array of matches
    * --------------------------------------------------------------------------
    * 
-   * @Return Regex 
+   * @return Regex 
    * */
   public function associate();
 

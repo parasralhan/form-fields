@@ -777,36 +777,34 @@ jQuery( function ( $ ) {
         }
       }
     },
+
     color: function () {
 
       var wrapper = '.color-input-wapper',
           counter = 0;
 
-      function color_picker() {
+      function color_picker( ) {
+
         $( ".color-picker" ).spectrum( {
           color: $( this ).val(),
           showInput: true,
           className: "full-spectrum",
-          showInitial: true,
+          showInitial: false,
           showPalette: true,
-          showSelectionPalette: true,
-          maxSelectionSize: 10,
+          showSelectionPalette: false,
+          // maxSelectionSize: 10,
           preferredFormat: "hex",
-          localStorageKey: "spectrum.demo",
+          localStorageKey: "bonzer_spectrum.demo",
           showAlpha: true,
-          move: function ( color ) {
-          },
-          show: function () {
-          },
-          beforeShow: function () {
-          },
-          hide: function () {
-          },
-          change: function () {
-          },
           palette: [
-            ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)",
-              "rgb(204, 204, 204)", "rgb(217, 217, 217)", "rgb(255, 255, 255)"],
+            [
+              "rgb(0, 0, 0)", 
+              "rgb(67, 67, 67)", 
+              "rgb(102, 102, 102)",
+              "rgb(204, 204, 204)", 
+              "rgb(217, 217, 217)", 
+              "rgb(255, 255, 255)"
+            ],
             ["rgb(152, 0, 0)", "rgb(255, 0, 0)", "rgb(255, 153, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)",
               "rgb(0, 255, 255)", "rgb(74, 134, 232)", "rgb(0, 0, 255)", "rgb(153, 0, 255)", "rgb(255, 0, 255)"],
             ["rgb(230, 184, 175)", "rgb(244, 204, 204)", "rgb(252, 229, 205)", "rgb(255, 242, 204)", "rgb(217, 234, 211)",
@@ -824,17 +822,18 @@ jQuery( function ( $ ) {
       };
       color_picker();
 
-      $( document.body ).on( 'mouseenter', wrapper, function ( e ) {
+      // $( document.body ).on( 'mouseenter', wrapper, function ( e ) {
 
-        if ($( wrapper ).find( '.full-spectrum' ).length) {
-          $( wrapper ).find( ".full-spectrum" ).remove();
-        }   
+      //   if ( $( wrapper ).find( '.full-spectrum' ).length ) {
+      //     $( wrapper ).find( '.full-spectrum' ).spectrum("destroy");
+      //     // $( wrapper ).find( ".full-spectrum" ).remove();
+      //   }   
 
-        color_picker();
+      //   color_picker();
 
-        e.preventDefault();
-        e.stopPropagation();
-      } );
+      //   e.preventDefault();
+      //   e.stopPropagation();
+      // } );
 
     },
 

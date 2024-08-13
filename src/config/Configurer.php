@@ -32,7 +32,7 @@ class Configurer implements \Bonzer\Inputs\contracts\interfaces\Configurer {
    * 
    * @param array $config
    * 
-   * @Return void 
+   * @return void 
    * */
   private function __construct( array $config = [ ] ) {
     $defaults = [
@@ -57,7 +57,7 @@ class Configurer implements \Bonzer\Inputs\contracts\interfaces\Configurer {
    * 
    * @param string $key
    * 
-   * @Return string|bool 
+   * @return string|bool 
    * */
   public function __get( $key ) {
     if ( array_key_exists( $key, $this->_get_mappings ) ) {
@@ -75,7 +75,7 @@ class Configurer implements \Bonzer\Inputs\contracts\interfaces\Configurer {
    * 
    * @param array $config
    * 
-   * @Return Configurer 
+   * @return Configurer 
    * */
   public static function get_instance( array $config = [ ] ) {
     if ( static::$_instance ) {
@@ -89,49 +89,49 @@ class Configurer implements \Bonzer\Inputs\contracts\interfaces\Configurer {
    * Library Config
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function get_config() {
     return $this->_config;
   }
 
   /**
-   * @Return bool 
+   * @return bool 
    * */
   public function get_load_assets_automatically() {
     return $this->load_assets_automatically;
   }
 
   /**
-   * @Return bool 
+   * @return bool 
    * */
   public function get_is_admin() {
     return $this->is_admin;
   }
 
   /**
-   * @Return array 
+   * @return array 
    * */
   public function get_css_excluded() {
     return $this->css_excluded;
   }
 
   /**
-   * @Return array 
+   * @return array 
    * */
   public function get_js_excluded() {
     return $this->js_excluded;
   }
 
   /**
-   * @Return string 
+   * @return string 
    * */
   public function get_env() {
     return $this->env;
   }
 
   /**
-   * @Return string 
+   * @return string 
    * */
   public function get_style() {
     return $this->style;

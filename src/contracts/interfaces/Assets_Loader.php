@@ -12,7 +12,7 @@ interface Assets_Loader {
    * Head Code Fragment
    * --------------------------------------------------------------------------
    * 
-   * @Return void 
+   * @return void 
    * */
   public function load_head_fragment();
   
@@ -21,7 +21,7 @@ interface Assets_Loader {
    * Code fragment to be inserted just before the body tag closes
    * --------------------------------------------------------------------------
    * 
-   * @Return Assets_Loader 
+   * @return Assets_Loader 
    * */
   public function load_before_body_close_fragment();
   
@@ -30,7 +30,7 @@ interface Assets_Loader {
    * Load all Assets
    * --------------------------------------------------------------------------
    * 
-   * @Return void 
+   * @return void 
    * */
   public function load_all_fragments();
   
@@ -39,7 +39,7 @@ interface Assets_Loader {
    * Assets loading status
    * --------------------------------------------------------------------------
    * 
-   * @Return array 
+   * @return array 
    * */
   public function get_fragments_loading_status();
 

@@ -15,24 +15,27 @@ class Multi_Select extends Input_Abstract {
     ob_start();
     ?>
 
-    <div class="bonzer-inputs input-wrapper multi-select-input-wapper" data-showif='<?php echo $this->_conditional_data(); ?>'>
+    <div 
+      class="bonzer-inputs input-wrapper multi-select-input-wapper" 
+      data-showif='<?php echo $this->_conditional_data(); ?>'
+    >
 
-      <label for="<?php echo $this->_id; ?>">
-        <?php echo $this->_label; ?>
-        <?php echo !empty( $this->_desc ) ? "<p class='desc'>{ $this->_desc }</p>" : ''; ?>
-      </label> 
+      <?php $this->_label(); ?>
 
       <div>
-        <select name="<?php echo $this->_name; ?>" 
-                id="<?php echo $this->_id; ?>" 
-                class="multiselect" 
-                data-select="multiple" multiple 
-                data-placeholder="Choose..." 
-                <?php echo $this->_additional_attrs; ?> 
-                data-inputtype="select">
+        <select 
+          name="<?php echo $this->_name; ?>" 
+          id="<?php echo $this->_id; ?>" 
+          class="multiselect" 
+          data-select="multiple" multiple 
+          data-placeholder="Choose..." 
+          <?php echo $this->_additional_attrs; ?> 
+          data-inputtype="select"
+        >
           <?php
-          $all_values = $this->_value ? explode( ',', $this->_value ): [];
-          
+
+          $all_values = $this->_value ? explode( ',', $this->_value ): [];    
+
           foreach ( $this->_options as $option_Key => $option_val ) {   
 
             $selected[ $option_Key ] = '';
@@ -40,7 +43,7 @@ class Multi_Select extends Input_Abstract {
             if ( is_array( $all_values ) ) {
 
               foreach ( $all_values as $value ) {
-                $selected[ $value ] = ($value == $option_Key) ? 'selected="selected"' : '';
+                $selected[ $value ] = ( $value == $option_Key ) ? 'selected="selected"' : '';
               }
 
             }
@@ -53,16 +56,16 @@ class Multi_Select extends Input_Abstract {
           ?>
         </select>
 
-        <input type="hidden" 
-               name="<?php echo $this->_name; ?>" 
-               id="<?php echo $this->_id; ?>" 
-               class="input" 
-               value="<?php echo $this->_value; ?>" 
-               data-inputtype="select">
+        <input 
+          type="hidden" 
+          name="<?php echo $this->_name; ?>" 
+          id="<?php echo $this->_id; ?>" 
+          class="input" 
+          value="<?php echo $this->_value; ?>" 
+          data-inputtype="select"
+        />
 
-        <button class="remove button">
-          <i class="fa fa-times-circle"></i> Remove
-        </button>
+        <?php $this->_remove_btn(); ?>
         
       </div>
     </div>

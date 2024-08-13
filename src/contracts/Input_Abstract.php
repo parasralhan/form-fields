@@ -76,7 +76,7 @@ abstract class Input_Abstract {
    *
    * @var array
    */
-  protected $_show_if;
+  protected $_show_if = [];
 
   /**
    * Conditional
@@ -92,37 +92,40 @@ abstract class Input_Abstract {
    * 
    * @param array $args
    * 
-   * format is 
+   * Format is 
    * 
    * $args = [
-   *   'name' => $field_name,    string
-   *   'id' => $field_id,        string
-   *   'label' => $field_label,  string
-   *   'placeholder' => $field_placeholder,  string
-   *   'value' => $value,        string
-   *   'desc' => $description,   string
-   *   'options' => $options,    array
-   *   'attrs' => $attrs,        array
+   *   'name'        => $field_name,        string
+   *   'id'          => $field_id,          string
+   *   'label'       => $field_label,       string
+   *   'placeholder' => $field_placeholder, string
+   *   'value'       => $value,             string
+   *   'desc'        => $description,       string
+   *   'options'     => $options,           array
+   *   'attrs'       => $attrs,             array
    * ];
    * 
-   * @Return object | Input Constructor
-   * */
+   * @return object | Input Constructor
+   */
   public function __construct( $args ) {
 
-    $this->_name = $this->_set_attr( $args[ 'name' ] );
-    $this->_id = $this->_set_attr( $args[ 'id' ] );
-    $this->_label = $args[ 'label' ];
-    $this->_desc = isset( $args[ 'desc' ] ) ? $args[ 'desc' ] : '';
-    $this->_value = isset( $args[ 'value' ] ) ? $args[ 'value' ] : '';
-    $this->_placeholder = isset( $args[ 'placeholder' ] ) ? $args[ 'placeholder' ] : '';
-    if ( isset( $args[ 'options' ] ) && is_array( $args[ 'options' ] ) ) {
-      $this->_options = $args[ 'options' ];
+    $this->_name        = $this->_set_attr( $args['name'] );
+    $this->_id          = $this->_set_attr( $args['id'] );
+    $this->_label       = $args['label'];
+    $this->_desc        = isset( $args['desc'] ) ? $args['desc'] : '';
+    $this->_value       = isset( $args['value'] ) ? $args['value'] : '';
+    $this->_placeholder = isset( $args['placeholder'] ) ? $args['placeholder'] : '';
+
+    if ( isset( $args['options'] ) && is_array( $args['options'] ) ) {
+      $this->_options = $args['options'];
     }
-    if ( isset( $args[ 'show_if' ] ) && is_array( $args[ 'show_if' ] ) ) {
-      $this->_show_if = $args[ 'show_if' ];
+
+    if ( isset( $args['show_if'] ) && is_array( $args['show_if'] ) ) {
+      $this->_show_if = $args['show_if'];
     }
-    if ( isset( $args[ 'attrs' ] ) && is_array( $args[ 'attrs' ] ) ) {
-      $this->_additional_attrs = static::attr_builder( $args[ 'attrs' ] );
+
+    if ( isset( $args['attrs'] ) && is_array( $args['attrs'] ) ) {
+      $this->_additional_attrs = static::attr_builder( $args['attrs'] );
     }
   }
 
@@ -132,7 +135,7 @@ abstract class Input_Abstract {
    * constructor
    * --------------------------------------------------------------------------
    * 
-   * @Return html 
+   * @return html 
    * */
   public function input_field() {
 
@@ -148,15 +151,20 @@ abstract class Input_Abstract {
    * 
    * @param string $param
    * 
-   * @Return string OR throws an Exception if invalid @param supplied 
+   * @return string OR throws an Exception if invalid @param supplied 
    * */
   protected function _set_attr( $param ) {
 
     if ( preg_match( $this->_valid_regex, $param ) ) {
+
       return $param;
+
     } else {
+
       throw new Invalid_Param_Exception( "Invalid parameter '{$param}' Supplied" );
+
     }
+
   }
 
   /**
@@ -168,13 +176,15 @@ abstract class Input_Abstract {
    * @param string $value
    * 
    * 
-   * @Return Input_Abstract 
+   * @return Input_Abstract 
    * */
   public function show_if( $id, $value ) {
+
     $this->_show_if[] = [
       'id' => $id,
       'value' => $value
     ];
+
     return $this;
   }
 
@@ -184,14 +194,56 @@ abstract class Input_Abstract {
    * --------------------------------------------------------------------------
    * 
    * 
-   * @Return string 
+   * @return string 
    * */
   protected function _conditional_data() {
 
     if ( !$this->_show_if ) {
       return FALSE;
     }
+
     return json_encode( $this->_show_if );
+  }
+
+  /**
+   * --------------------------------------------------------------------------
+   * Builds label
+   * --------------------------------------------------------------------------
+   * 
+   * @return void 
+   * */
+  protected function _label() {
+
+    ?>
+      <label for="<?php echo $this->_id; ?>">
+
+        <span class="label-text">
+          <?php echo $this->_label; ?>
+        </span>
+
+        <?php echo !empty( $this->_desc ) ? "<p class='desc'>{$this->_desc}</p>" : ''; ?>
+      </label> 
+    <?php
+  }
+
+  /**
+   * --------------------------------------------------------------------------
+   * Builds Remove Button
+   * --------------------------------------------------------------------------
+   * 
+   * @return void 
+   * */
+  protected function _remove_btn() {
+
+    ?>
+      <button 
+        class="remove button" 
+        title="Remove" type="button"
+      >
+        <i class="fa fa-times-circle"></i>&nbsp;
+        <span class="text">Remove</span>
+      </button>
+    <?php
   }
 
   /**
@@ -199,7 +251,7 @@ abstract class Input_Abstract {
    * Builds input field of specific type
    * --------------------------------------------------------------------------
    * 
-   * @Return html 
+   * @return string 
    * */
   abstract protected function _build_input();
 

@@ -11,7 +11,7 @@ interface Inputs_Factory {
    * @param string $type | input type ('calendar', 'checkbox', 'color', 'heading', 'icon', 'multi-select', 'multi-text', 'multi-text-calendar', 'radio', 'select', 'text', 'textarea')
    * @param array $args
    * 
-   * @Return string
+   * @return string
    * */
   public function create( $type, $args );
 

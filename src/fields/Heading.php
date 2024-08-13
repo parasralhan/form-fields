@@ -17,16 +17,18 @@ class Heading extends Input_Abstract {
     * Build Heading input
     * --------------------------------------------------------------------------
     * 
-    * @Return: html 
+    * @return: html 
    * */
   protected function _build_input() {
     ob_start();
     ?>
 
-    <div class="bonzer-inputs input-wrapper heading-input-wapper" data-showif='<?php echo $this->_conditional_data(); ?>'>
+    <div 
+      class="bonzer-inputs input-wrapper heading-input-wapper" 
+      data-showif='<?php echo $this->_conditional_data(); ?>'
+    >
 
-      <div>
-        
+      <div>        
         <h3 class="section-heading" id="<?php echo $this->_id; ?>" <?php echo $this->_additional_attrs; ?>>
           <?php echo $this->_value; ?>
         </h3>
